@@ -8,7 +8,7 @@ import TourOverview from "./pages/tourOverview";
 import TourView from "./pages/tourView";
 import TourReview from "./pages/tourReview";
 import FAQ from "./pages/FAQ";
-import NotesModal from "./components/NotesModal/NotesModal";
+// import NotesModal from "./components/NotesModal/NotesModal";
 
 const App = () => {
   return (
@@ -23,7 +23,7 @@ const App = () => {
         <Route path="/faq" element={<FAQ />} />
       </Routes>
 
-      <NotesModal />
+      {/* <NotesModal /> */}
     </div>
   );
 };
