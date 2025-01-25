@@ -1,0 +1,26 @@
+$tourway-teal: #0BA3A8;
+$tourway-text: #034648;
+
+h2 {
+    font-size: 24px;
+    margin: 16px 24px 0px 24px;
+    color: $tourway-text;
+}
+
+.nearYou {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory; 
+  gap: 0px;
+  padding: 0 16px;
+  margin: 0 0 32px 0;
+
+  &::-webkit-scrollbar {
+      display: none;
+  }
+
+  scrollbar-width: none;  
+}
+
+
+  

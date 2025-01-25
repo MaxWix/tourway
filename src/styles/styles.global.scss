@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap');
+
+$tourway-teal: #0BA3A8;
+$tourway-text: #034648;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    color: $tourway-teal;
+    font-family: 'Hind', Verdana, sans-serif;
+}
+
+.mainContent {
+    background-color: white;
+    padding-top: 12px;
+    border-radius: 0 40px 0 0;
+    z-index: 1;
+    position: absolute;
+    top: 180px;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+
+    // filter: drop-shadow(0px -4px 4px rgba(3, 70, 72, 0.15));
+}
+
+.headerGraphic {
+    z-index: 4;
+    position: absolute;
+    top: 100px;
+    right: 32px;
+}
+
+.headerGraphic img {
+    width: 160px;
+}
+
+.tourwayPath {
+    position: absolute;
+    top: 5px;
+    z-index: -1;
+}

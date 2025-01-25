@@ -1,5 +1,5 @@
 import React from "react";
-import NavMenu from "../components/navigation";
+import NavMenu from "../components/navigation/NavMenu";
 
 const TourOverview = () => {
   console.log("TourOverview");

@@ -1,0 +1,19 @@
+.universityList a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    margin: 12px 0;
+}
+
+.universityList img {
+    height: 50px;
+    width: 50px;
+    object-fit: contain;
+    margin: 0px 12px 0 24px;
+}
+
+.universityList h3 {
+    color: black;
+    margin: 6px 0;
+    font-size: 16px;
+}
