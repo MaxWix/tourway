@@ -1,0 +1,30 @@
+$tourway-teal: #0BA3A8;
+$tourway-text: #034648;
+$tourway-teal-dark: #0B7073;
+$tourway-teal-light: #DFF3F4;
+$medium-text: #5A5A5A;
+
+.searchBar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 24px;
+    position: relative; 
+}
+
+.searchBar input {
+    width: 350px;
+    padding: 12px 40px 12px 16px;  
+    border-radius: 40px;
+    font-size: 16px;
+    font-weight: 500;
+    border: solid 2px $tourway-teal;
+    background-color: $tourway-teal-light;
+}
+
+.searchIcon {
+    position: absolute;
+    right: 40px;  
+    font-size: 24px;  
+    color: $tourway-teal-dark;
+}

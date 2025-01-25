@@ -1,0 +1,70 @@
+$tourway-teal: #0BA3A8;
+$tourway-text: #034648;
+$tourway-teal-dark: #0B7073;
+$tourway-teal-light: #DFF3F4;
+$medium-text: #5A5A5A;
+
+.header {
+    width: 100%;
+    height: 215px;
+    background-size:cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    z-index: -1;
+    position: relative;
+    overflow: hidden;
+    color: white; 
+    font-size: 24px;
+}
+
+.headerBottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 48px 0 0 32px;
+}
+
+.backButton {
+    background-color: $tourway-teal-light;
+    height: 40px;
+    width: 40px;
+    padding: 8px;
+    border-radius: 64px;
+    margin: 16px;
+    border: none;
+    font-size: 24px;
+    color: $tourway-teal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.heartButton {
+    background-color: $tourway-teal-light;
+    height: 40px;
+    width: 40px;
+    padding: 8px;
+    border-radius: 64px;
+    margin: 16px;
+    border: none;
+    font-size: 24px;
+    color: $tourway-teal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header h1 {
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 24px;
+}
+
+.header p {
+    font-size: 16px;
+}
+
+
+
+
+  
