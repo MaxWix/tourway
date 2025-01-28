@@ -1,0 +1,72 @@
+@import "../../../styles/custom-mixins.scss";
+
+p {
+  padding-left: 20px;
+  margin-bottom: 0;
+}
+
+.optionContainer {
+  margin-bottom: 10px; /* Add spacing between options */
+}
+
+/* Hide the default checkbox */
+.hiddenCheckbox {
+  display: none;
+}
+
+/* Custom label styling */
+.optionLabel {
+  display: flex;
+  align-items: center;
+  background-color: $lightBlue;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #000;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+/* Checkmark span */
+.checkmark {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #000;
+  border-radius: 4px;
+  margin-right: 10px;
+  background-color: $lightBlue;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+/* Hover effect */
+.optionLabel:hover {
+  background-color: #d9e8ff;
+}
+
+/* Checked state styles */
+.hiddenCheckbox:checked + .optionLabel {
+  background-color: $drexelBlue;
+  color: $cloud;
+}
+
+/* Checkmark for checked state */
+.hiddenCheckbox:checked + .optionLabel .checkmark {
+  background-color: $drexelBlue;
+  border-color: $drexelBlue;
+}
+
+.hiddenCheckbox:checked + .optionLabel .checkmark::after {
+  content: "";
+  display: block;
+  width: 10px;
+  height: 10px;
+  border: solid $cloud;
+  border-width: 0 2px 2px 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+}

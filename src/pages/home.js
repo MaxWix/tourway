@@ -1,24 +1,24 @@
 import React from "react";
-import '../styles/styles.global.scss';
+import "../styles/styles.global.scss";
 
 import NavMenu from "../components/navigation/NavMenu";
 import NearYou from "../components/universities/NearYou";
 import UniversityList from "../components/universities/UniversityList";
 import Header from "../components/navigation/Header";
-import SearchBar from "../components/common/SearchBar";
+import SearchBar from "../components/common/searchBar";
 
-import ASULogo from '../assets/logos/asu-logo.png';
-import BostonLogo from '../assets/logos/boston-logo.png';
-import CornellLogo from '../assets/logos/cornell-logo.png';
-import DrexelLogo from '../assets/logos/drexel-logo.png';
-import EmersonLogo from '../assets/logos/emerson-logo.png';
-import SJULogo from '../assets/logos/sju-logo.png';
-import TempleLogo from '../assets/logos/temple-logo.png';
-import UPennLogo from '../assets/logos/upenn-logo.png';
+import ASULogo from "../assets/logos/asu-logo.png";
+import BostonLogo from "../assets/logos/boston-logo.png";
+import CornellLogo from "../assets/logos/cornell-logo.png";
+import DrexelLogo from "../assets/logos/drexel-logo.png";
+import EmersonLogo from "../assets/logos/emerson-logo.png";
+import SJULogo from "../assets/logos/sju-logo.png";
+import TempleLogo from "../assets/logos/temple-logo.png";
+import UPennLogo from "../assets/logos/upenn-logo.png";
 
-import HomeHeader from '../assets/tourway/home-header.jpg';
-import HomeHeaderGraphic from '../assets/tourway/home-header-graphic.png';
-import TourwayPath from '../assets/icons/path.svg';
+import HomeHeader from "../assets/tourway/home-header.jpg";
+import HomeHeaderGraphic from "../assets/tourway/home-header-graphic.png";
+import TourwayPath from "../assets/icons/path.svg";
 
 const universities = [
   { name: "Arizona State University", logo: ASULogo },
@@ -35,20 +35,20 @@ const Home = () => {
   console.log("Home");
   return (
     <div className="home">
-      <Header HeaderIMG={HomeHeader}/>
+      <Header HeaderIMG={HomeHeader} />
       <div className="headerGraphic">
-        <img src={HomeHeaderGraphic}/>
+        <img src={HomeHeaderGraphic} />
       </div>
       <div className="mainContent">
-      {/* <NavMenu /> */}
-      <SearchBar/>
-      <div className="tourwayPath">
-        <img src={TourwayPath}/>
-      </div>
-      <NearYou />
-      <div>
-        <UniversityList universities={universities} />
-      </div>
+        {/* <NavMenu /> */}
+        <SearchBar />
+        <div className="tourwayPath">
+          <img src={TourwayPath} />
+        </div>
+        <NearYou />
+        <div>
+          <UniversityList universities={universities} />
+        </div>
       </div>
     </div>
   );

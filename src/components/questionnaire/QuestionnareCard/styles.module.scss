@@ -1,0 +1,21 @@
+@import "../../../styles/custom-mixins.scss";
+
+.questionCon {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: $lightBlue;
+  padding: 5px;
+  height: 50vh;
+  overflow-y: scroll;
+}
+
+.navigationButtons {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nextButton {
+  align-self: flex-end;
+}

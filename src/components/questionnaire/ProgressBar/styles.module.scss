@@ -1,0 +1,25 @@
+.progressBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px 0;
+}
+
+.step {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: lightblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.activeStep {
+  background-color: darkblue;
+}
