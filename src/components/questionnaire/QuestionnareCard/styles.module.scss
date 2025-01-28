@@ -1,5 +1,10 @@
 @import "../../../styles/custom-mixins.scss";
 
+.questionLabel {
+  padding-left: 20px;
+  margin-bottom: 5px;
+}
+
 .questionCon {
   display: flex;
   flex-direction: column;

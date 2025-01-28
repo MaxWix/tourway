@@ -50,7 +50,7 @@ const QuestionnareCard = ({ questions }) => {
       <form onSubmit={handleSubmit}>
         <div className={styles.questionCon}>
           <div key={currentQuestion.id} style={{ marginBottom: "1rem" }}>
-            <p>{currentQuestion.label}</p>
+            <p className={styles.questionLabel}>{currentQuestion.label}</p>
             {currentQuestion.hasAccordion ? (
               <Dropdown accordionOptions={currentQuestion.options} />
             ) : currentQuestion.isCheckbox ? (
