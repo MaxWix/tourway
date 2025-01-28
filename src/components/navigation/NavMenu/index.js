@@ -11,6 +11,12 @@ const NavMenu = () => {
             <Link to="/">Home</Link>
           </li>
           <li>
+            <Link to="/notes">Notes</Link>
+          </li>
+          <li>
+            <Link to="/profile">Profile</Link>
+          </li>
+          <li>
             <Link to="/university/1">University Bio</Link>
           </li>
           <li>

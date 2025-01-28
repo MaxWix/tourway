@@ -1,0 +1,39 @@
+$tourway-teal: #0BA3A8;
+$tourway-text: #034648;
+
+.navbar {
+    background-color: $tourway-teal;
+    position: absolute;
+    z-index: 6;
+    bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-self: center;
+    width: calc(100% - 48px);
+    margin: 24px;
+    padding: 12px 40px 0 40px;
+    border-radius: 40px;
+}
+
+.navbar img {
+    width: auto;
+    height: 24px;
+}
+
+.navItem {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+span {
+    color: white;
+    font-size: 0.8rem;
+    line-height: 1rem;
+}
+
+.active {
+    border-bottom: 2px solid white; 
+    color: white; 
+    padding-bottom: 6px;
+  }

@@ -42,5 +42,15 @@ body {
 .tourwayPath {
     position: absolute;
     top: 5px;
+    max-height: 48px;
+    background-size: cover;
     z-index: -1;
+    width: 100%;
+}
+
+.tourwayPath img {
+    width:100%;
+    height: 100%;
+    background-size: cover;
+
 }

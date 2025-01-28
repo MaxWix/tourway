@@ -4,7 +4,7 @@ import '../styles/styles.global.scss';
 import NavMenu from "../components/navigation/NavMenu";
 import Header from "../components/navigation/Header";
 
-import DrexelOverview from "../assets/imgs/drexel-overview.jpg"
+import DrexelOverview from "../assets/imgs/drexel-overview.jpg";
 
 const UniversityBio = () => {
   console.log("UniversityBio");

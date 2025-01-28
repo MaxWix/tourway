@@ -5,7 +5,8 @@ import NavMenu from "../components/navigation/NavMenu";
 import NearYou from "../components/universities/NearYou";
 import UniversityList from "../components/universities/UniversityList";
 import Header from "../components/navigation/Header";
-import SearchBar from "../components/common/searchBar";
+import SearchBar from "../components/common/SearchBar";
+import Navbar from "../components/navigation/Navbar";
 
 import ASULogo from "../assets/logos/asu-logo.png";
 import BostonLogo from "../assets/logos/boston-logo.png";
@@ -49,6 +50,9 @@ const Home = () => {
         <div>
           <UniversityList universities={universities} />
         </div>
+      </div>
+      <div>
+        <Navbar />
       </div>
     </div>
   );
