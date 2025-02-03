@@ -1,4 +1,6 @@
 import { React, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import Checkbox from "../Checkbox";
 import Radio from "../Radio";
 import styles from "./styles.module.scss";
@@ -6,26 +8,32 @@ import ProgressBar from "../ProgressBar";
 import Dropdown from "../Dropdown";
 
 const QuestionnareCard = ({ questions }) => {
-  const [formData, setFormData] = useState({});
+  const navigate = useNavigate();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [selectedOptions, setSelectedOptions] = useState({});
 
   const handleChange = (name, value) => {
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
+    const updatedValues = Array.isArray(value) ? value : [value]; // Ensure it's always an array
+
+    setSelectedOptions((prev) => ({
+      ...prev,
+      [name]: updatedValues,
     }));
+
+    return updatedValues; // Return only the array of values
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form Data:", formData);
-    // Submit formData to the backend or handle it as needed
+    console.log("Selected Option Values:", selectedOptions);
+
+    localStorage.setItem("formData", JSON.stringify(selectedOptions));
+    navigate("/tour/overview");
   };
 
-  const handleNext = () => {
-    if (currentQuestionIndex < questions.length - 1) {
-      setCurrentQuestionIndex(currentQuestionIndex + 1);
-    }
+  const handleNext = (e) => {
+    e.preventDefault(); // Prevent form submission
+    setCurrentQuestionIndex(currentQuestionIndex + 1);
   };
 
   const handleBack = () => {
@@ -47,22 +55,35 @@ const QuestionnareCard = ({ questions }) => {
         currentQuestion={currentQuestionIndex}
         onStepClick={handleStepClick}
       />
-      <form onSubmit={handleSubmit}>
+      <form
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            e.preventDefault();
+          }
+        }}
+        onSubmit={handleSubmit}
+      >
         <div className={styles.questionCon}>
-          <div key={currentQuestion.id} style={{ marginBottom: "1rem" }}>
+          <div style={{ marginBottom: "1rem" }}>
             <p className={styles.questionLabel}>{currentQuestion.label}</p>
             {currentQuestion.hasAccordion ? (
-              <Dropdown accordionOptions={currentQuestion.options} />
+              <Dropdown
+                accordionOptions={currentQuestion.options}
+                selectedOptions={selectedOptions}
+                onChange={handleChange}
+              />
             ) : currentQuestion.isCheckbox ? (
               <Checkbox
                 options={currentQuestion.options}
                 name={currentQuestion.name}
+                selectedValues={selectedOptions[currentQuestion.name] || []}
                 onChange={handleChange}
               />
             ) : (
               <Radio
                 options={currentQuestion.options}
                 name={currentQuestion.name}
+                selectedValue={selectedOptions[currentQuestion.name]?.[0] || ""}
                 onChange={handleChange}
               />
             )}
@@ -75,8 +96,8 @@ const QuestionnareCard = ({ questions }) => {
             )}
             {currentQuestionIndex < questions.length - 1 ? (
               <button
-                className={styles.nextButton}
                 type="button"
+                className={styles.nextButton}
                 onClick={handleNext}
               >
                 Next

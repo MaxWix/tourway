@@ -1,13 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./styles.module.scss";
 
-const Radio = ({ options = [], name, onChange }) => {
-  const [selectedValue, setSelectedValue] = useState("");
-
+const Radio = ({ options = [], name, selectedValue, onChange }) => {
   const handleRadioChange = (e) => {
-    const { value } = e.target;
-    setSelectedValue(value);
-    onChange(value); // Pass the selected value to the parent component or backend
+    onChange(name, e.target.value);
   };
 
   return (
@@ -17,13 +13,13 @@ const Radio = ({ options = [], name, onChange }) => {
           <input
             type="radio"
             name={name}
+            id={option.id}
             value={option.value}
             checked={selectedValue === option.value}
             onChange={handleRadioChange}
             className={styles.hiddenRadio}
-            id={`radio-${option.id}`}
           />
-          <label htmlFor={`radio-${option.id}`} className={styles.optionLabel}>
+          <label htmlFor={option.id} className={styles.optionLabel}>
             <span className={styles.radioCircle}></span>
             {option.label}
           </label>

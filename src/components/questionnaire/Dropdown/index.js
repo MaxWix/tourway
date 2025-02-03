@@ -1,19 +1,14 @@
-import React, { useState } from "react";
-import Checkbox from "../Checkbox"; // Import Checkbox component
-import styles from "./styles.module.scss"; // Your CSS module
+import { React, useState } from "react";
+import Checkbox from "../Checkbox";
+import styles from "./styles.module.scss";
 
-const Dropdown = ({ accordionOptions }) => {
-  // State to track which accordion sections are open
+const Dropdown = ({ accordionOptions, selectedOptions, onChange }) => {
   const [openAccordionIndices, setOpenAccordionIndices] = useState([]);
 
   const toggleAccordion = (index) => {
-    if (openAccordionIndices.includes(index)) {
-      // If the section is already open, close it
-      setOpenAccordionIndices(openAccordionIndices.filter((i) => i !== index));
-    } else {
-      // Otherwise, open it
-      setOpenAccordionIndices([...openAccordionIndices, index]);
-    }
+    setOpenAccordionIndices((prev) =>
+      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
+    );
   };
 
   return (
@@ -22,17 +17,21 @@ const Dropdown = ({ accordionOptions }) => {
         <div key={index} className={styles.accordionSection}>
           <button
             className={styles.accordionLabel}
-            onClick={() => toggleAccordion(index)} // Toggle the specific accordion section
+            onClick={() => toggleAccordion(index)}
+            type="button"
           >
             {accordionOption.accordionLabel}
           </button>
 
-          {openAccordionIndices.includes(index) && ( // Check if the section is open
+          {openAccordionIndices.includes(index) && (
             <div className={styles.accordionOptions}>
               <Checkbox
                 options={accordionOption.accordionOptions}
                 name={accordionOption.accordionLabel}
-                onChange={(selectedValues) => console.log(selectedValues)}
+                selectedValues={
+                  selectedOptions[accordionOption.accordionLabel] || []
+                }
+                onChange={onChange}
               />
             </div>
           )}

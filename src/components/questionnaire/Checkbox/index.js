@@ -1,18 +1,14 @@
-import { React, useState } from "react";
+import { React } from "react";
 import styles from "./styles.module.scss";
 
-const Checkbox = ({ options = [], name, onChange }) => {
-  console.log("checkbox");
-  const [selectedValues, setSelectedValues] = useState([]);
-
+const Checkbox = ({ options = [], name, selectedValues, onChange }) => {
   const handleCheckboxChange = (e) => {
     const { value, checked } = e.target;
-    const updatedValues = checked
+    let updatedValues = checked
       ? [...selectedValues, value]
       : selectedValues.filter((val) => val !== value);
 
-    setSelectedValues(updatedValues);
-    onChange(updatedValues); // Pass updated values to parent component or backend
+    onChange(name, updatedValues);
   };
 
   return (
@@ -22,16 +18,13 @@ const Checkbox = ({ options = [], name, onChange }) => {
           <input
             type="checkbox"
             name={name}
+            id={option.id}
             value={option.value}
             checked={selectedValues.includes(option.value)}
             onChange={handleCheckboxChange}
             className={styles.hiddenCheckbox}
-            id={`checkbox-${option.id}`}
           />
-          <label
-            htmlFor={`checkbox-${option.id}`}
-            className={styles.optionLabel}
-          >
+          <label htmlFor={option.id} className={styles.optionLabel}>
             <span className={styles.checkmark}></span>
             {option.label}
           </label>

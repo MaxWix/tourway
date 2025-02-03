@@ -1,10 +1,15 @@
-import React from 'react';
-import styles from './styles.module.scss';
+import React from "react";
+import styles from "./styles.module.scss";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 
-const CircleButton = ({ icon = faUser, bgColor = '#0BA3A8', iconColor = '#ffffff', action = '#' }) => {
+const CircleButton = ({
+  icon = faUser,
+  bgColor = "#0BA3A8",
+  iconColor = "#ffffff",
+  action = "#",
+}) => {
   const buttonStyle = {
     backgroundColor: bgColor,
     color: iconColor,
