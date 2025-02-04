@@ -1,7 +1,6 @@
 import React from "react";
 import "../styles/styles.global.scss";
 
-import NavMenu from "../components/navigation/NavMenu";
 import NearYou from "../components/universities/NearYou";
 import UniversityList from "../components/universities/UniversityList";
 import Header from "../components/navigation/Header";
@@ -36,13 +35,15 @@ const Home = () => {
   console.log("Home");
   return (
     <div className="home">
-      <Header HeaderIMG={HomeHeader} />
+      <Header 
+        HeaderIMG={HomeHeader}
+        showSwoop={false}
+        showTourwaySwoop={true} />
       <div className="headerGraphic">
         <img src={HomeHeaderGraphic} />
       </div>
       <div className="mainContent">
-        {/* <NavMenu /> */}
-        <SearchBar />
+        <SearchBar placeholder="Search colleges"/>
         <div className="tourwayPath">
           <img src={TourwayPath} />
         </div>

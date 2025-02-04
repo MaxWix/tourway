@@ -22,8 +22,8 @@ a {
     padding: 4px 8px;
 }
 
-.universityCard h2 {
-    font-size: 16px;
+.universityCard h4 {
+    font-size: 1rem;
     font-weight: 700;
     color: black;
     margin: 0;
@@ -41,7 +41,6 @@ a {
 .universityCard p {
     font-size: 14px;
     color: $medium-text;
-    margin: 0;
 }
 
 svg {

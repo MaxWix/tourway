@@ -3,16 +3,22 @@ $tourway-text: #034648;
 
 .navbar {
     background-color: $tourway-teal;
-    position: absolute;
+    position: fixed; 
     z-index: 6;
     bottom: 1rem;
+    left: 50%; 
+    transform: translateX(-50%); 
     display: flex;
     justify-content: space-between;
     align-self: center;
     width: calc(100% - 48px);
-    margin: 24px;
+    margin: 0 auto; 
     padding: 12px 40px 0 40px;
     border-radius: 40px;
+
+    &.extraPadding {
+        padding-bottom: 8px; // Add extra padding when not on home, notes, or profile
+      }
 }
 
 .navbar img {
@@ -36,4 +42,4 @@ span {
     border-bottom: 2px solid white; 
     color: white; 
     padding-bottom: 6px;
-  }
+}

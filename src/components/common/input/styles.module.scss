@@ -1,0 +1,26 @@
+@import "../../../styles/custom-mixins.scss";
+
+.input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 24px;
+    position: relative; 
+}
+
+.input input {
+    width: calc(100% - 48px);
+    padding: 20px 12px 20px 48px;  
+    border-radius: 40px;
+    font-size: 16px;
+    font-weight: 500;
+    border: solid 2px $tourway-teal;
+    background-color: $tourway-teal-light;
+}
+
+.inputIcon {
+    position: absolute;
+    left: 40px;  
+    font-size: 24px;  
+    color: $tourway-teal;
+}
