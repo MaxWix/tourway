@@ -41,7 +41,7 @@ const UniversityBio = () => {
             <img />
             <img />
           </div>
-          <button onClick={goToQuestionnare}>go to questionnaire</button>
+          <button onClick={goToQuestionnare}>to questionnaire</button>
         </div>
       </div>
       <div>
