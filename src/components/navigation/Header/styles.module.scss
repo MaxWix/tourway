@@ -6,7 +6,6 @@ $medium-text: #5A5A5A;
 
 .header {
     width: 100%;
-    // height: 215px;
     background-size: cover; 
     background-position: center; 
     background-repeat: no-repeat; 
@@ -20,8 +19,9 @@ $medium-text: #5A5A5A;
 .headerBottom {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin: 48px 0 0 32px;
+    align-items: bottom;
+
+    margin: 112px 0 0 32px;
 }
 
 .header h1 {
