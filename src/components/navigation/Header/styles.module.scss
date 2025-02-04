@@ -6,7 +6,7 @@ $medium-text: #5A5A5A;
 
 .header {
     width: 100%;
-    height: 215px;
+    // height: 215px;
     background-size: cover; 
     background-position: center; 
     background-repeat: no-repeat; 
@@ -24,47 +24,41 @@ $medium-text: #5A5A5A;
     margin: 48px 0 0 32px;
 }
 
-.backButton {
-    background-color: $tourway-teal-light;
-    height: 40px;
-    width: 40px;
-    padding: 8px;
-    border-radius: 64px;
-    margin: 16px;
-    border: none;
-    font-size: 24px;
-    color: $tourway-teal;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.heartButton {
-    background-color: $tourway-teal-light;
-    height: 40px;
-    width: 40px;
-    padding: 8px;
-    border-radius: 64px;
-    margin: 16px;
-    border: none;
-    font-size: 24px;
-    color: $tourway-teal;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .header h1 {
-    font-size: 32px;
+    font-size: 1.5rem;
     font-weight: 600;
     line-height: 24px;
 }
 
 .header p {
-    font-size: 16px;
+    font-size: 1rem;
 }
 
+.swoop {
+    z-index: 4;
+    left: 0;
+    position: absolute;
+    top: 143px;
+}
 
+.swoop img {
+    width: 48px;
+}
 
+.tourwaySwoop {
+    z-index: 4;
+    left: -5px;
+    position: absolute;
+    top: 56px;
+}
+
+.tourwaySwoop img {
+    width: 300px;
+}
+
+.heartButtonContainer, .backButtonContainer {
+    margin: 0.5rem;
+    z-index: 10;
+}
 
   

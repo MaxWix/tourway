@@ -1,0 +1,72 @@
+@import "../../../styles/custom-mixins.scss";
+
+.notesCard {
+    width: calc(100% - 48px);
+    margin: 0 auto; 
+    padding: 12px 16px;
+    background-color: $tourway-teal-light;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.notesCardHeader {
+    display: flex;
+    gap: 1.4rem;
+    justify-content: space-between;
+}
+
+.notesCardHeader img {
+    width: 36px;
+}
+
+.universityHeader {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.universityName {
+    font-size: 1rem;
+    color: $dark;
+}
+
+.status {
+    color: $medium-text;
+    font-size: 0.9rem;
+}
+
+.notesCardContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.timeStops {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    color: $dark;
+}
+
+.time svg {
+    width: 1.25rem;
+}
+
+.stops img {
+    width: 1.25rem;
+}
+
+.time, .stops, .cardActions{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.timeStops span {
+    font-weight: 600;
+    font-size: 1rem;
+    color: $dark;
+}

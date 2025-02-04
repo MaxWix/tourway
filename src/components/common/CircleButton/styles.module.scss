@@ -1,24 +1,22 @@
-$tourway-teal: #0BA3A8;
-$tourway-text: #034648;
-$tourway-teal-dark: #0B7073;
-$tourway-teal-light: #DFF3F4;
-$medium-text: #5A5A5A;
+@import "../../../styles/custom-mixins.scss";
 
 .circleButton {
-    width: 2.5rem;
-    height: 2.5rem;
-    font-size: 5rem;
-    border: none;
-    border-radius: 12rem;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    background-color: $tourway-teal; /* Default fallback */
-    color: white; /* Default fallback */
-  }
-  
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $tourway-teal;
+  color: white;
+}
+
 .circleButtonLink {
-    text-decoration: none;
-  }
+  text-decoration: none;
+  display: inline-block;
+  padding: 0;
+  line-height: 0;
+}

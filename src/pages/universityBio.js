@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/styles.global.scss";
 
-import NavMenu from "../components/navigation/NavMenu";
+import Navbar from "../components/navigation/Navbar/index";
 import Header from "../components/navigation/Header";
 
 import DrexelOverview from "../assets/imgs/drexel-overview.jpg";
@@ -25,10 +25,27 @@ const UniversityBio = () => {
         showHeartButton={true}
         isHearted={false}
       />
-      <div className="MainContent">
-        <h1>University Bio</h1>
-        <NavMenu />
-        <button onClick={goToQuestionnare}>go to questionnare</button>
+      <div className="mainContent">
+        <div className="universityBioContent">
+          <h4>Overview</h4>
+          <p>
+            Drexel is well-known for its cooperative education program (co-op),
+            which integrates classroom learning with professional work
+            experience. The university offers over 200 degree programs at the
+            undergraduate, graduate, and doctoral levels across disciplines such
+            as engineering, business, health sciences, arts, and media. Drexel
+            is located in University City, a vibrant neighborhood in
+            Philadelphia.{" "}
+          </p>
+          <div>
+            <img />
+            <img />
+          </div>
+          <button onClick={goToQuestionnare}>go to questionnaire</button>
+        </div>
+      </div>
+      <div>
+        <Navbar />
       </div>
     </div>
   );
