@@ -2,6 +2,7 @@
 
 .optionContainer {
   margin-bottom: 10px; /* Add spacing between options */
+  
 }
 
 /* Hide the default checkbox */
@@ -15,7 +16,7 @@
   align-items: center;
   background-color: $lightBlue;
   border-radius: 8px;
-  padding: 10px 20px;
+  padding: .5rem;
   font-size: 16px;
   color: #000;
   cursor: pointer;
@@ -34,6 +35,7 @@
   background-color: $lightBlue;
   position: relative;
   transition: all 0.3s ease;
+  color: #FFFFFF00;
 }
 
 /* Hover effect */
@@ -51,17 +53,29 @@
 .hiddenCheckbox:checked + .optionLabel .checkmark {
   background-color: $drexelBlue;
   border-color: $drexelBlue;
+  color: $cloud;
+  transition: 300ms;
 }
 
+.hiddenCheckbox:checked + .optionLabel {
+  align-items: baseline;
+
+}
+
+// May not be necc
 .hiddenCheckbox:checked + .optionLabel .checkmark::after {
   content: "";
-  display: block;
+  display: none;
   width: 10px;
-  height: 10px;
+  height: unset;
   border: solid $cloud;
   border-width: 0 2px 2px 0;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) rotate(45deg);
+  color: $cloud;
+  transition: 50ms;
 }
+
+

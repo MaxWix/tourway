@@ -1,25 +1,41 @@
+@import "../../../styles/custom-mixins.scss";
+
 .progressBar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  padding: 10px 0;
+  width: calc(100% - 2rem);
+
+  margin: 2rem auto 2rem 1rem;
+  // padding: 10px 0;
+  background-color: #d0e4f6;
+  height: 4px;
+
 }
 
 .step {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background-color: lightblue;
+  background-color: #d0e4f6;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
+  color: #000;
   font-size: 14px;
   font-weight: bold;
   transition: background-color 0.3s ease-in-out;
 }
 
 .activeStep {
-  background-color: darkblue;
+  background-color: $drexelBlue;
+}
+span.number {
+  color: black;
+  font-family: "Hind";
+  font-size: 1rem;
+  font-weight: normal;
+}
+.activeStep span.number { 
+  color: $cloud;
 }

@@ -1,5 +1,8 @@
 import { React } from "react";
 import styles from "./styles.module.scss";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
+
 
 const Checkbox = ({ options = [], name, selectedValues, onChange }) => {
   const handleCheckboxChange = (e) => {
@@ -24,9 +27,14 @@ const Checkbox = ({ options = [], name, selectedValues, onChange }) => {
             onChange={handleCheckboxChange}
             className={styles.hiddenCheckbox}
           />
+          
           <label htmlFor={option.id} className={styles.optionLabel}>
-            <span className={styles.checkmark}></span>
+            <span className={styles.checkmark}>
+            <FontAwesomeIcon icon={faCheck} size="xl"/>
+            </span>
+            
             {option.label}
+
           </label>
         </div>
       ))}

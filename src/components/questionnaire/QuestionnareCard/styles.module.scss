@@ -1,8 +1,10 @@
 @import "../../../styles/custom-mixins.scss";
 
 .questionLabel {
-  padding-left: 20px;
-  margin-bottom: 5px;
+  // padding-left: 20px;
+  margin-bottom: 1rem;
+  color: #000 ;
+  font-weight: bold;
 }
 
 .questionCon {
@@ -10,9 +12,11 @@
   flex-direction: column;
   justify-content: space-between;
   background-color: $lightBlue;
-  padding: 5px;
-  height: 50vh;
+  height: fit-content;
   overflow-y: scroll;
+  margin: auto 1rem;
+  border-radius: .5rem;
+  padding: 1rem;
 }
 
 .navigationButtons {
@@ -21,6 +25,26 @@
   justify-content: space-between;
 }
 
-.nextButton {
-  align-self: flex-end;
+.nextButton, button[type="submit"] {
+  display: flex; /* Flexbox for text + icon layout */
+  align-items: center; /* Vertically align text and icon */
+  justify-content: center; /* Center both horizontally */
+  font-family: 'Montserrat', Verdana, sans-serif;
+  text-transform: uppercase;
+  font-size: 1rem;
+  border: none;
+  border-radius: 2rem;
+  cursor: pointer;
+  width: calc(100% - 2rem); /* Stretch to full width */
+  padding: 1rem;
+  background-color: $drexelBlue;
+  color: white;
+  gap: 1rem;
+  font-weight: 600;
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+
+
 }
+

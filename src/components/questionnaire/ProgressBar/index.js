@@ -12,7 +12,7 @@ const ProgressBar = ({ questions, currentQuestion, onStepClick }) => {
           }`}
           onClick={() => onStepClick(index)}
         >
-          <span>{index + 1}</span>
+          <span className={styles.number}>{index + 1}</span>
         </div>
       ))}
     </div>
