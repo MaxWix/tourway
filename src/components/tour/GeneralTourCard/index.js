@@ -34,7 +34,8 @@ const GeneralTourCard = () => {
     <Button 
         text="START GENERAL TOUR"
         action="#"
-        bgColor="#07294D" />
+        bgColor="#07294D"
+        borderColor="#07294d" />
       </div>
       </div>
     );

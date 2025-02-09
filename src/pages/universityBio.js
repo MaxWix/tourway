@@ -64,6 +64,7 @@ const UniversityBio = () => {
         text="TAKE A TOUR"
         icon={<FontAwesomeIcon icon={faArrowRightLong} />}
         bgColor="#07294d"
+        borderColor="#07294d"
         action="/university/choose-tour" />
       </div>
       <div>

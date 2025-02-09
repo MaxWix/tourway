@@ -31,14 +31,13 @@ h1, h2, h3 {
     // filter: drop-shadow(0px -4px 4px rgba(3, 70, 72, 0.15));
 }
 
-.mainContentLogin {
+.mainContentLogin, .mainContentSignUp {
     top: 230px;
 }
 
 .mainContentChooseTour {
     top: 120px;
 }
-
 .headerGraphic {
     z-index: 4;
     position: absolute;
@@ -75,7 +74,7 @@ h1, h2, h3 {
 
 }
 
-.altLoginMethods {
+.altLoginMethods, .altSignUpMethods {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -83,8 +82,8 @@ h1, h2, h3 {
     gap: 1rem;
 }
 
-.altLoginMethods p {
-    font-size: 1.25rem;
+.altLoginMethods p, .altSignUpMethods p {
+    font-size: 1rem;
     color: $medium-text;
 }
 
@@ -122,6 +121,18 @@ h1, h2, h3 {
     padding: 1rem 2rem;
   }
 
+  .loginActions p {
+    font-weight: 500;
+  }
+
+  .signUpActions {
+    margin: 1rem 1rem;
+  }
+
+  .signUpActions p {
+    font-weight: 500;
+  }
+
   .rememberMe {
     display: flex;
     gap: 0.5rem;
@@ -130,12 +141,13 @@ h1, h2, h3 {
   }
 
   .rememberMe label {
-    color: $medium-text
+    color: $medium-text;
+    font-weight: 500;
   }
 
-  .Profile h1 {
+  .Login h1, .SignUp h1 {
     text-align: center;
-    font-size: 2rem;
+    font-size: 1.75rem;
     font-weight: 700;
   }
 
@@ -143,6 +155,29 @@ h1, h2, h3 {
     position: absolute;
     z-index: -1;
     right: -24px;
+  }
+
+  .loginCTA, .signUpCTA {
+    margin: 2rem 0 1rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .loginSecondaryCTA, .signUpSecondaryCTA {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .loginSecondaryCTA p, .signUpSecondaryCTA p {
+    color: $medium-text;
+  }
+
+  .loginSecondaryCTA a, .signUpSecondaryCTA a {
+    color: $tourway-teal;
   }
 
   .universityBioContent {
@@ -202,4 +237,47 @@ h1, h2, h3 {
   .universityInfo h3 {
     font-size: 1.5rem;
   }
+
+// Custom teal checkbox for login / signup
+#rememberMeCheckbox, .rememberMecheckbox{
+    display: none;
+  }
+  
+  .rememberMe label {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .rememberMe label::before {
+    content: "";
+    display: inline-block;
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 2px solid $tourway-teal;
+    border-radius: 4px;
+    margin-right: 0.5rem;
+    background-color: transparent;
+    box-sizing: border-box;
+    transition: background-color 0.2s, border-color 0.2s;
+  }
+  
+  #rememberMeCheckbox:checked + label::before {
+    background-color: $tourway-teal;
+    border-color: $tourway-teal;
+    position: relative;
+  }
+  
+  #rememberMeCheckbox:checked + label::before::after {
+    content: "✔";
+    color: white;
+    font-size: 1rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+  }
+  
+  
   

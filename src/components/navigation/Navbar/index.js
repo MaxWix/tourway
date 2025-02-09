@@ -31,12 +31,12 @@ const Navbar = () => {
         />
         <span className={location.pathname === '/notes' ? styles.active : ''}>Notes</span>
       </Link>
-      <Link to="/profile" className={styles.navItem}>
+      <Link to="/login" className={styles.navItem}>
         <img
-          src={location.pathname === '/profile' ? ProfileIconFilled : ProfileIconOutline}
+          src={location.pathname === '/login' ? ProfileIconFilled : ProfileIconOutline}
           alt="Profile"
         />
-        <span className={location.pathname === '/profile' ? styles.active : ''}>Profile</span>
+        <span className={location.pathname === '/login' ? styles.active : ''}>Profile</span>
       </Link>
     </div>
   );

@@ -10,6 +10,8 @@ import TourView from "./pages/tourView";
 import TourReview from "./pages/tourReview";
 import FAQ from "./pages/FAQ";
 import ChooseTour from "./pages/chooseTour";
+import Login from "./pages/login";
+import SignUp from "./pages/signup";
 
 const App = () => {
   return (
@@ -26,6 +28,8 @@ const App = () => {
           <Route path="/tour" element={<TourView />} />
           <Route path="/tour/review" element={<TourReview />} />
           <Route path="/faq" element={<FAQ />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
         </Routes>
       </BrowserRouter>
     </div>

@@ -7,6 +7,8 @@ const Button = ({
   text = 'Button',
   icon,
   bgColor = '#0BA3A8', 
+  textColor = '#FFFFFF',  // New prop for text color
+  borderColor = '#0BA3A8', // New prop for border color
   action = '#',
   onClick,
 }) => {
@@ -14,6 +16,8 @@ const Button = ({
     width: width,
     height: height,
     backgroundColor: bgColor,
+    color: textColor,
+    border: `2px solid ${borderColor}`,
   };
 
   return (
