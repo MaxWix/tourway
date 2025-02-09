@@ -1,0 +1,58 @@
+@import "../../../styles/custom-mixins.scss";
+
+.customTourCard {
+    background: $tourway-teal-light;
+    margin: 1rem;
+    color: $dark;
+    border-radius: 0.5rem;
+    padding-bottom: 1rem;
+}
+
+.customTourCardContent {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.customTourCardHeader {
+    display: flex;
+    gap: 1rem;
+}
+
+.customTourCardHeader h4 {
+    font-size: 1.25rem;
+}
+
+.customInfo h5 {
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+
+.customInfo p, .customTourCard p {
+    font-weight: 500;
+    line-height: 140%
+}
+
+.timeStops {
+    display: flex;
+    gap: 1.2rem;
+}
+
+.time, .stops, .information {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 1rem;
+}
+
+.tourCardCTA {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tourCardCTA p {
+    font-weight: 600;
+}

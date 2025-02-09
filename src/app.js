@@ -9,6 +9,7 @@ import TourOverview from "./pages/tourOverview";
 import TourView from "./pages/tourView";
 import TourReview from "./pages/tourReview";
 import FAQ from "./pages/FAQ";
+import ChooseTour from "./pages/chooseTour";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
           <Route path="/notes" element={<Notes />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/university/:universityId" element={<UniversityBio />} />
+          <Route path="/university/choose-tour" element={<ChooseTour />} />
           <Route path="/tour/questionnaire" element={<Questionnare />} />
           <Route path="/tour/overview" element={<TourOverview />} />
           <Route path="/tour" element={<TourView />} />

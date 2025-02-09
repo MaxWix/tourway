@@ -35,6 +35,10 @@ h1, h2, h3 {
     top: 230px;
 }
 
+.mainContentChooseTour {
+    top: 120px;
+}
+
 .headerGraphic {
     z-index: 4;
     position: absolute;
@@ -180,5 +184,22 @@ h1, h2, h3 {
     bottom: 6rem;
     z-index: 10;
     width: 100%;
+  }
+
+  // Choose custom or general tour
+  .universityInfo {
+    display: flex;
+    align-items: center;
+    margin: 0.5rem 1rem 1.5rem 1rem;
+    gap: 1rem;
+    color: $dark;
+  }
+
+  .universityInfo img {
+    max-width: 4rem;
+  }
+
+  .universityInfo h3 {
+    font-size: 1.5rem;
   }
   

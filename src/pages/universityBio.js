@@ -1,5 +1,6 @@
 import React from "react";
 import '../styles/styles.global.scss';
+import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/navigation/Navbar/index';
 import Header from "../components/navigation/Header";
@@ -15,10 +16,6 @@ import DrexelOverview2 from "../assets/imgs/drexel-overview-2.jpg";
 const UniversityBio = () => {
   const navigate = useNavigate();
 
-  const goToQuestionnare = () => {
-    navigate("/tour/questionnaire");
-  };
-
   console.log("UniversityBio");
   return (
     <div className="universityBio">
@@ -26,9 +23,6 @@ const UniversityBio = () => {
         HeaderIMG={DrexelOverview}
         headerTitle="Drexel University"
         headerSubtitle="Philadelphia, PA"
-        showBackButton={true}
-        showHeartButton={true}
-        isHearted={false}
       />
       <div className="backButton">
         <CircleButton
@@ -69,8 +63,8 @@ const UniversityBio = () => {
         <Button 
         text="TAKE A TOUR"
         icon={<FontAwesomeIcon icon={faArrowRightLong} />}
-        bgColor="#07294d" />
-        <button onClick={goToQuestionnare}>go to questionnare</button>
+        bgColor="#07294d"
+        action="/university/choose-tour" />
       </div>
       <div>
         <Navbar />

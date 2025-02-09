@@ -46,3 +46,5 @@ const InProgressCard = () => {
       </div>
     );
   };
+
+  export default InProgressCard;

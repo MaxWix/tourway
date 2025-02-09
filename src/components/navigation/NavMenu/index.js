@@ -20,6 +20,9 @@ const NavMenu = () => {
             <Link to="/university/1">University Bio</Link>
           </li>
           <li>
+            <Link to="/university/choose-tour">Choose Tour</Link>
+          </li>
+          <li>
             <Link to="/tour/questionnaire">Questionnaire</Link>
           </li>
           <li>
