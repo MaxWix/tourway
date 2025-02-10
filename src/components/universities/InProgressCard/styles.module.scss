@@ -1,0 +1,85 @@
+@import "../../../styles/custom-mixins.scss";
+
+.progressCard {
+    background-color: $tourway-teal-light;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 1rem;
+    color: $dark;
+}
+
+.progressCardHeader {
+    display: flex;
+    justify-content: space-between;
+}
+
+.progressCardHeaderUni {
+    display: flex;
+    gap: 1rem;
+}
+
+.progressCardHeader img {
+    height: auto;
+    width: 3rem;
+}
+
+.progressCardHeader h4 {
+    font-size: 1.25rem;
+    color: $dark;
+}
+
+.progressCardHeader p {
+    color: $medium-text
+}
+
+.timeStops {
+    display: flex;
+    gap: 1.5rem;
+    color: $dark;
+}
+
+.time svg {
+    width: 1.25rem;
+}
+
+.stops img {
+    width: 1.25rem;
+}
+
+.time, .stops {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.timeStops span {
+    font-weight: 600;
+    font-size: 1rem;
+    color: $dark;
+}
+
+.stopsRemaining h5 {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.stopsRemaining span {
+    color: $medium-text;
+    font-size: 1rem;
+    margin-left: 0.5rem;
+}
+
+.progressCardCTA {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: -1.5rem;
+}
+
+.progressCardCTA button {
+    padding: 0;
+}

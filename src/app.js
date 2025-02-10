@@ -12,6 +12,7 @@ import FAQ from "./pages/FAQ";
 import ChooseTour from "./pages/chooseTour";
 import Login from "./pages/login";
 import SignUp from "./pages/signup";
+import TestPage from "./pages/testPage";
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
           <Route path="/faq" element={<FAQ />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/testpage" element={<TestPage />} />
         </Routes>
       </BrowserRouter>
     </div>

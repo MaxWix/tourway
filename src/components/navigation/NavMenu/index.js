@@ -37,6 +37,9 @@ const NavMenu = () => {
           <li>
             <Link to="/faq">FAQ</Link>
           </li>
+          <li>
+            <Link to="/testpage">Test Page</Link>
+          </li>
         </ul>
       </nav>
     </div>
