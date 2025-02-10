@@ -1,0 +1,24 @@
+@import "../../../styles/custom-mixins.scss";
+
+.tag {
+    padding: 0.4rem 0.75rem;
+    font-size: 1rem;
+    border: 2px solid $drexelBlue;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .unselected {
+    background-color: transparent;
+    color: $medium-text;
+    font-weight: 500;
+  }
+  
+  .selected {
+    background-color: $drexelBlue;
+    color: white;
+    font-weight: 500;
+    text-decoration: none;
+  }
+  
