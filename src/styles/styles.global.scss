@@ -278,6 +278,82 @@ h1, h2, h3 {
     transform: translate(-50%, -50%);
     font-weight: bold;
   }
+  // QUESTIONNAIRE 
   
+    //EXIT
+  .TourReview .backButton {
+    left: unset;
+    right: 1rem;
+  }
+  .TourReview h1 {
+    font-size: 24px;
+  }
+  .TourReview .mainContent > h1, .TourReview .mainContent > p {
+    padding: 0 1rem;
+    color: $drexelBlue;
+  }
   
+  // TOUR OVERVIEW
+
+  .TourOverview h3, .TourOverview p {
+    color: #000;
+    font-size: 16px;
+    font-family: "Hind", Verdana, sans-serif;
+  }
+.TourOverview > .StopsHolder {
+  margin: auto 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.5em;
+  position: relative;
+}
+.TourOverview > .StopsHolder p:nth-child(3) {
+  background-color: $drexelBlue;
+  color: white;
+  border-radius: 30px;
+  font-size: 12px;
+  padding: 4px 12px;
+  display: inline;
+}
+.TourOverview > .StopsHolder > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.TourOverview > .StopsHolder > div > p {
+  background-color: $drexelYellow;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.TourOverview > .StopsHolder > div > div { 
+  width: calc(100% - 1rem - 30px);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  // max-width: 100%;
+  gap: 1rem;
+}
+.TourOverview .verticalLine {
+  border-left: 2.5px dashed $drexelBlue;
+  // border-style: dashed;
+  position: absolute;
+  left: 14.5px;
+  height: calc(100% - 3rem);
+  top: 0;
+  z-index: -1;
+}
+.TourOverview .duration {
+  min-width: 50px;
+}
+
+
   

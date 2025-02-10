@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import NavMenu from "../components/navigation/NavMenu";
 import { supabase } from "../supabaseClient";
+import CustomTourName from "../components/tour/CustomTourName";
+
 
 const TourOverview = () => {
   const [formData, setFormData] = useState(null);
@@ -63,18 +65,31 @@ const TourOverview = () => {
     <div className="TourOverview">
       <h1>Tour Overview</h1>
       <NavMenu />
-      <div>
+      <CustomTourName/>
+      <div className="StopsHolder">
         {matchedStops.length > 0 ? (
-          matchedStops.map((stop) => (
+          matchedStops.map((stop, index) => (
             <div key={stop.tagId}>
-              <h3>{stop.title}</h3>
-              <p>{stop.subtitle}</p>
-              <p>{stop.Coordinates}</p>
+              <p>{index + 1}</p>
+              <div>
+                <div>
+                <h3>{stop.subtitle}</h3>
+                <p>{stop.title}</p>
+                <p>{stop.Coordinates}</p>
+                </div>
+                <div>
+                  <p className="duration" >{stop.duration} mins</p>
+                </div>
+              </div>
+             
             </div>
           ))
         ) : (
           <p>No matching stops found based on your selections.</p>
         )}
+          <div className="verticalLine"> 
+            &nbsp; 
+            </div>
       </div>
     </div>
   );
