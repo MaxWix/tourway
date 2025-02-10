@@ -182,7 +182,7 @@ h1, h2, h3 {
 
   .universityBioContent {
     color: $dark;
-    padding: 1rem;
+    padding: 1rem 1rem 4rem ;
   }
 
   .universityBioContent h4 {
@@ -204,9 +204,15 @@ h1, h2, h3 {
   }
 
   .overviewIMGs {
-    margin: 1rem;
+    margin: 1rem 0;
     display: flex;
     gap: 0.5rem;
+    // overflow: scroll;
+    width: 100%;
+    justify-content: space-between;
+  }
+  .overviewIMGs img {
+    width: calc(50% - .5rem);
   }
 
   .universityBioContent li {
@@ -308,7 +314,16 @@ h1, h2, h3 {
   gap: 1.5em;
   position: relative;
 }
-.TourOverview > .StopsHolder p:nth-child(3) {
+
+.TourOverview .CatWraper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  gap: .5rem;
+}
+
+.TourOverview > .StopsHolder .CatWraper p {
   background-color: $drexelBlue;
   color: white;
   border-radius: 30px;

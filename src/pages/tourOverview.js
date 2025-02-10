@@ -44,6 +44,7 @@ const TourOverview = () => {
     if (formData && Object.keys(formData).length > 0) {
       // Match tags from form data with stops
       const matched = [];
+      
 
       // Iterate over each key in formData
       Object.values(formData).forEach((tags) => {
@@ -74,8 +75,12 @@ const TourOverview = () => {
               <div>
                 <div>
                 <h3>{stop.subtitle}</h3>
-                <p>{stop.title}</p>
-                <p>{stop.Coordinates}</p>
+                {/* <p>{stop.title}</p> */}
+                <div className="CatWraper">
+                  {stop.categories.map((category, index) => (
+                   <p key={index}>{category}</p>
+                    ))}
+                     </div>
                 </div>
                 <div>
                   <p className="duration" >{stop.duration} mins</p>
