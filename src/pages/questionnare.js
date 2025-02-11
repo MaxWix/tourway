@@ -28,14 +28,14 @@ const Questionnare = () => {
         {
           id: "freshmanHousing",
           value: "freshmanHousing",
-          label: "First Year",
+          label: "Incoming Freshman",
         },
         {
           id: "sophomoreHousing",
           value: "sophomoreHousing",
-          label: "Second Year",
+          label: "Transfer Student",
         },
-        { id: "upper", value: "upper", label: "Upper Classmen" },
+        // { id: "upper", value: "upper", label: "Upper Classmen" },
       ],
     },
     {
@@ -50,6 +50,8 @@ const Questionnare = () => {
           accordionLabel: "Lebow College of Business",
           accordionOptions: [
             { id: "accounting", value: "accounting", label: "Accounting" },
+            { id: "marketing", value: "marketing", label: "Marketing" },
+
           ],
         },
         {
@@ -75,9 +77,9 @@ const Questionnare = () => {
         {
           id: "performingArts",
           value: "performingArts",
-          label: "Performing Arts",
+          label: "Performing Arts and Music",
         },
-        { id: "workout", value: "workout", label: "Gym and sports" },
+        { id: "workout", value: "workout", label: "Gym and Sports" },
       ],
     },
   ];

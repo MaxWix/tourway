@@ -9,6 +9,7 @@ import Button from "../components/common/Button";
 
 import LoginHeader from "../assets/tourway/login-header.jpg";
 import TourwayPathSmall from "../assets/icons/path-small.svg";
+import TourwayPathLogin from "../assets/icons/path-login.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
 import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
@@ -89,6 +90,9 @@ const SignUp = () => {
             text="SIGN UP"
             action="/"/>
             <div className="signUpSecondaryCTA">
+            <div className="tourwayPathSignUp">
+            <img src={TourwayPathLogin}/>
+            </div>
                 <p>Already have an account? <a href="/login">Login here</a></p>
             </div>
         </div>

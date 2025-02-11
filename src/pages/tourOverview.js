@@ -87,8 +87,12 @@ const TourOverview = () => {
               <div>
                 <div>
                   <h3>{stop.subtitle}</h3>
-                  <p>{stop.title}</p>
-                  <p>{stop.Coordinates}</p>
+                  {/* <p>{stop.title}</p> */}
+                  <div className="CatWraper">
+                    {stop.categories.map((category, index) => (
+                      <p key={index}>{category}</p>
+                    ))}
+                  </div>
                 </div>
                 <div>
                   <p className="duration">{stop.duration} mins</p>

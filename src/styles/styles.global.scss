@@ -27,6 +27,7 @@ h1, h2, h3, h4 {
     width: 100%;
     z-index: 1;
     padding-bottom: 5rem;
+    overflow: hidden;
 
     // filter: drop-shadow(0px -4px 4px rgba(3, 70, 72, 0.15));
 }
@@ -157,6 +158,18 @@ h1, h2, h3, h4 {
     right: -24px;
   }
 
+  .tourwayPathLogin {
+    position: absolute;
+    top: 26rem;
+    z-index: -2;
+  }
+
+  .tourwayPathSignUp {
+    position: absolute;
+    top: 35.5rem;
+    z-index: -2;
+  }
+ 
   .loginCTA, .signUpCTA {
     margin: 2rem 0 1rem 0;
     display: flex;
@@ -182,7 +195,7 @@ h1, h2, h3, h4 {
 
   .universityBioContent {
     color: $dark;
-    padding: 1rem;
+    padding: 1rem 1rem 4rem ;
   }
 
   .universityBioContent h4 {
@@ -204,9 +217,15 @@ h1, h2, h3, h4 {
   }
 
   .overviewIMGs {
-    margin: 1rem;
+    margin: 1rem 0;
     display: flex;
     gap: 0.5rem;
+    // overflow: scroll;
+    width: 100%;
+    justify-content: space-between;
+  }
+  .overviewIMGs img {
+    width: calc(50% - .5rem);
   }
 
   .universityBioContent li {
@@ -219,6 +238,10 @@ h1, h2, h3, h4 {
     bottom: 6rem;
     z-index: 10;
     width: 100%;
+  }
+
+  .mainContentLogin, .mainContentSignUp {
+    padding-bottom: 1rem;
   }
 
   // Choose custom or general tour
@@ -278,6 +301,7 @@ h1, h2, h3, h4 {
     transform: translate(-50%, -50%);
     font-weight: bold;
   }
+
   // QUESTIONNAIRE 
   
     //EXIT
@@ -308,7 +332,16 @@ h1, h2, h3, h4 {
   gap: 1.5em;
   position: relative;
 }
-.TourOverview > .StopsHolder p:nth-child(3) {
+
+.TourOverview .CatWraper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  gap: .5rem;
+}
+
+.TourOverview > .StopsHolder .CatWraper p {
   background-color: $drexelBlue;
   color: white;
   border-radius: 30px;
