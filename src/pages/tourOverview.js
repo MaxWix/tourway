@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import NavMenu from "../components/navigation/NavMenu";
+import { useNavigate } from "react-router-dom";
 import { supabase } from "../supabaseClient";
 import CustomTourName from "../components/tour/CustomTourName";
-
 
 const TourOverview = () => {
   const [formData, setFormData] = useState(null);
   const [matchedStops, setMatchedStops] = useState([]);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Check if form data is stored in localStorage
@@ -60,36 +62,44 @@ const TourOverview = () => {
     }
   }, [formData, stops]);
 
+  const handleStopClick = (stopId) => {
+    console.log(stopId);
+    localStorage.setItem("tagId", stopId);
+    navigate("/tour");
+  };
+
   console.log("TourOverview");
   return (
     <div className="TourOverview">
       <h1>Tour Overview</h1>
       <NavMenu />
-      <CustomTourName/>
+      <CustomTourName />
       <div className="StopsHolder">
         {matchedStops.length > 0 ? (
           matchedStops.map((stop, index) => (
-            <div key={stop.tagId}>
+            <div
+              key={stop.tagId}
+              id={stop.tag}
+              onClick={() => handleStopClick(stop.tag)}
+              style={{ cursor: "pointer" }}
+            >
               <p>{index + 1}</p>
               <div>
                 <div>
-                <h3>{stop.subtitle}</h3>
-                <p>{stop.title}</p>
-                <p>{stop.Coordinates}</p>
+                  <h3>{stop.subtitle}</h3>
+                  <p>{stop.title}</p>
+                  <p>{stop.Coordinates}</p>
                 </div>
                 <div>
-                  <p className="duration" >{stop.duration} mins</p>
+                  <p className="duration">{stop.duration} mins</p>
                 </div>
               </div>
-             
             </div>
           ))
         ) : (
           <p>No matching stops found based on your selections.</p>
         )}
-          <div className="verticalLine"> 
-            &nbsp; 
-            </div>
+        <div className="verticalLine">&nbsp;</div>
       </div>
     </div>
   );
