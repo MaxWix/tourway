@@ -27,6 +27,7 @@ h1, h2, h3, h4 {
     width: 100%;
     z-index: 1;
     padding-bottom: 5rem;
+    overflow: hidden;
 
     // filter: drop-shadow(0px -4px 4px rgba(3, 70, 72, 0.15));
 }
@@ -157,6 +158,18 @@ h1, h2, h3, h4 {
     right: -24px;
   }
 
+  .tourwayPathLogin {
+    position: absolute;
+    top: 26rem;
+    z-index: -2;
+  }
+
+  .tourwayPathSignUp {
+    position: absolute;
+    top: 35.5rem;
+    z-index: -2;
+  }
+ 
   .loginCTA, .signUpCTA {
     margin: 2rem 0 1rem 0;
     display: flex;
@@ -227,6 +240,10 @@ h1, h2, h3, h4 {
     width: 100%;
   }
 
+  .mainContentLogin, .mainContentSignUp {
+    padding-bottom: 1rem;
+  }
+
   // Choose custom or general tour
   .universityInfo {
     display: flex;
@@ -284,6 +301,7 @@ h1, h2, h3, h4 {
     transform: translate(-50%, -50%);
     font-weight: bold;
   }
+
   // QUESTIONNAIRE 
   
     //EXIT
