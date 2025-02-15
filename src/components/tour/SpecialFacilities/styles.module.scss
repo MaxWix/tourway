@@ -1,0 +1,16 @@
+@import "../../../styles/custom-mixins.scss";
+
+.specialFacilitiesCon {
+    background-color: $lightBlue;
+    padding: 1rem;
+    border-radius: 13px;
+}
+.specialFacilitiesCon ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+}
+.specialFacilitiesCon li {
+    font-size: 16px;
+    font-weight: 500;
+}

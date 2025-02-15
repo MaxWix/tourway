@@ -11,7 +11,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useNavigate } from 'react-router-dom';
 import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
 import { faX } from "@fortawesome/free-solid-svg-icons";
-
+import SpecialFacilities from "../SpecialFacilities";
 
 
 const TourCard = (tag) => {
@@ -88,7 +88,14 @@ const TourCard = (tag) => {
       )
     ) : (
       <p>&nbsp;</p> // Render nothing (or an empty space) if there are no images
-    )}   
+    )}  
+
+  {cardData?.facilitiesText && cardData.facilitiesText.length > 0 ? (
+    <SpecialFacilities facilitiesTextS={cardData.facilitiesText} />
+  ) : (
+    <p>&nbsp;</p> // Fallback message
+  )}
+
       <div>
         <h3>{cardData?.header1}</h3>
         {cardData?.body1.length > 0
@@ -113,18 +120,19 @@ const TourCard = (tag) => {
         <ImageSlider images={cardData.image2} /> // Render the image slider for multiple images
       )
     ) : (
-      <p>&nbsp;</p> // Render nothing (or an empty space) if there are no images
+      <p> &nbsp; </p> // Render nothing (or an empty space) if there are no images
     )}   
 
 
       </div>
-      <div>
-        <h3>{cardData?.header3}</h3>
-        {cardData?.body3.length > 0
-          ? cardData.body3.map((item) => <p>{item}</p>)
-          : null}
-   {/* For every image, put it in the slide */}
-      {cardData?.image3?.length > 0 ? ( // Check if there are images
+      {cardData?.header3 && ( // Only render the block if header3 is not null
+  <div>
+    <h3>{cardData.header3}</h3> {/* Render the header */}
+    {cardData?.body3?.length > 0 && // Check if body3 exists and has items
+      cardData.body3.map((item, index) => <p key={index}>{item}</p>)} {/* Render body3 paragraphs */}
+
+    {/* Render images */}
+    {cardData?.image3?.length > 0 ? ( // Check if there are images
       cardData.image3.length === 1 ? ( // Check if there's exactly 1 image
         <img src={cardData.image3[0]} alt="Single Image" /> // Render a single img element
       ) : (
@@ -132,12 +140,12 @@ const TourCard = (tag) => {
       )
     ) : (
       <p>&nbsp;</p> // Render nothing (or an empty space) if there are no images
-    )}   
+    )}
 
-        {cardData?.body31.length > 0
-          ? cardData.body31.map((item) => <p>{item}</p>)
-          : null}
-      </div>
+    {cardData?.body31?.length > 0 && // Check if body31 exists and has items
+      cardData.body31.map((item, index) => <p key={index}>{item}</p>)} {/* Render body31 paragraphs */}
+  </div>
+)}
       <div>
         <h3>{cardData?.header4}</h3>
         {cardData?.body4?.length > 0
