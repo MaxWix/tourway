@@ -5,7 +5,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 
 const Dropdown = ({ accordionOptions, selectedOptions, onChange }) => {
-  const [openAccordionIndices, setOpenAccordionIndices] = useState([]);
+  const [openAccordionIndices, setOpenAccordionIndices] = useState(
+    accordionOptions.map((_, index) => index)
+  );
+
   // const [isOpen, setIsOpen] = useState(false);
 
   const toggleAccordion = (index) => {

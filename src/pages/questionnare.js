@@ -47,7 +47,7 @@ const Questionnare = () => {
       hasAccordion: true,
       options: [
         {
-          accordionLabel: "Lebow College of Business",
+          accordionLabel: "Business",
           accordionOptions: [
             { id: "accounting", value: "accounting", label: "Accounting" },
             { id: "marketing", value: "marketing", label: "Marketing" },
@@ -55,7 +55,7 @@ const Questionnare = () => {
           ],
         },
         {
-          accordionLabel: "Westphal College of Art and Design",
+          accordionLabel: "Art and Design",
           accordionOptions: [
             {
               id: "graphicDesign",

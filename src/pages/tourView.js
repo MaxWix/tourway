@@ -21,7 +21,7 @@ const TourView = () => {
 
   return (
     <div className="universityBio">
-      <h1>Tour View</h1>
+      {/* <h1>Tour View</h1> */}
       <TourCard tag={tag} />
     </div>
   );
