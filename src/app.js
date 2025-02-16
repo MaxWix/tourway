@@ -13,6 +13,8 @@ import ChooseTour from "./pages/chooseTour";
 import Login from "./pages/login";
 import SignUp from "./pages/signup";
 import TestPage from "./pages/testPage";
+import TourResources from "./pages/tourResources";
+import TourSummary from "./pages/tourSummary";
 
 const App = () => {
   return (
@@ -32,6 +34,8 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/testpage" element={<TestPage />} />
+          <Route path="/tour/summary" element={<TourSummary />} />
+          <Route path="/tour/resources" element={<TourResources />} />
         </Routes>
       </BrowserRouter>
     </div>

@@ -102,7 +102,7 @@ const Questionnare = () => {
         </div>
     
       <div className="mainContent mainContentChooseTour">
-      <h1>Tour Questionnare</h1>
+      <h1>Tour Questionnaire</h1>
       <p>
       Answer <b>8 questions </b> below to build your own tour!
       </p>

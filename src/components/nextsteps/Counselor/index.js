@@ -19,6 +19,8 @@ const Counselor = () => {
           <p>Email: anderson@drexel.edu</p>
         </div>
         <CircleButton
+            bgColor="#d0e4f6"
+            iconColor="#07294d"
             icon={<FontAwesomeIcon icon={faEnvelope} />}
             action="#"
         />

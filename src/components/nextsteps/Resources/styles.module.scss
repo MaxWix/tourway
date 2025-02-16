@@ -1,0 +1,20 @@
+@import "../../../styles/custom-mixins.scss";
+
+.resourcesCard {
+    background-color: $lightBlue;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    width: 175px;
+    height: 144px;
+    padding: 1rem 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.resourcesCard p {
+    text-align: center;
+    font-size: 1rem;
+    color: $dark;
+    font-weight: bold;
+}

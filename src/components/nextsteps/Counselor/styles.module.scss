@@ -5,6 +5,7 @@
     color: white;
     padding: 1rem;
     border-radius: 0.5rem;
+    margin: 1rem 0;
 }
 
 .counselorCard h5 {
@@ -15,11 +16,13 @@
 .counselorContent {
     display: flex;
     gap: 0.75rem;
+    align-items: center;
 }
 
 .counselorContent img {
     border-radius: 64px;
-    width: 6rem;
+    width: 5rem;
+    height: 5rem;
 }
 
 .counselorContent h6 {

@@ -39,6 +39,8 @@ h1, h2, h3, h4 {
 .mainContentChooseTour {
     top: 120px;
 }
+
+
 .headerGraphic {
     z-index: 4;
     position: absolute;
@@ -391,4 +393,83 @@ h1, h2, h3, h4 {
 }
 
 
-  
+// TOUR SUMMARY
+.mainContentSummary {
+    top: 164px;
+    padding: 1rem;
+}
+
+.mainContentSummary h1 {
+    color: $dark;
+    font-size: 1.5rem;
+}
+
+.headerGraphicSummary img {
+    width: 140px;
+}
+
+.headerGraphicSummary {
+    right: 16px;
+    top: 60px;
+}
+
+.headerTextSummary {
+    position: absolute;
+    z-index: 5;
+    color: white;
+    width: 200px;
+    top: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    left: 2rem;
+}
+
+.headerTextSummary h4 {
+    font-size: 1.25rem;
+}
+
+.headerTextSummary p {
+    font-size: 1rem;
+    line-height: 140%;
+}
+
+// NEXT STEPS AND RESOURCES
+.mainContentResources {
+    top: 85px;
+    padding: 1rem;
+}
+
+.mainContentResources h1 {
+    color: $dark;
+    font-size: 1.5rem;
+}
+
+.resourcesContainer {
+    display: flex;
+    width: 366px;
+    align-items: flex-start;
+    align-content: flex-start;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.CTA-1 {
+    position: absolute;
+    z-index: 5;
+    bottom: 1rem;
+}
+
+.exitButton {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 10;
+}
+
+.voiceoverButton {
+    position: absolute;
+    top: 1rem;
+    right: 4.5rem;
+    z-index: 10;
+}

@@ -40,6 +40,12 @@ const NavMenu = () => {
           <li>
             <Link to="/testpage">Test Page</Link>
           </li>
+          <li>
+            <Link to="/tour/summary">Tour Summary</Link>
+          </li>
+          <li>
+            <Link to="/tour/resources">Next Steps and Resources</Link>
+          </li>
         </ul>
       </nav>
     </div>
