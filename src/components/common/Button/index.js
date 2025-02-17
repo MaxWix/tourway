@@ -9,6 +9,7 @@ const Button = ({
   bgColor = '#0BA3A8', 
   textColor = '#FFFFFF',  // New prop for text color
   borderColor = '#0BA3A8', // New prop for border color
+  iconColor = '#FFFFFF', // New prop for icon color
   action = '#',
   onClick,
 }) => {
@@ -20,12 +21,16 @@ const Button = ({
     border: `2px solid ${borderColor}`,
   };
 
+  const iconStyle = {
+    color: iconColor,
+  };
+
   return (
     <div className={styles.CTAButtonContainer}>
       <a href={action} className={styles.CTAButtonLink} onClick={onClick}>
         <button className={styles.CTAButton} style={buttonStyle}>
           {text && <p className={styles.text}>{text}</p>}
-          {icon && <span className={styles.icon}>{icon}</span>}
+          {icon && <span className={styles.icon} style={iconStyle}>{icon}</span>}
         </button>
       </a>
     </div>

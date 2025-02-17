@@ -8,6 +8,7 @@ import Button from "../components/common/Button";
 import SummaryHeader from "../assets/tourway/summary-header.jpg"
 import SummaryHeaderGraphic from "../assets/tourway/summary-header-graphic.png";
 import VoiceoverIcon from "../assets/icons/voiceover.svg"; 
+import SummaryNotesCard from "../components/notes/SummaryNotesCard";
 
 
 
@@ -54,6 +55,10 @@ const navigate = useNavigate();
       </div>
       <div className="mainContent mainContentSummary">
       <h1>Tour Summary</h1>
+      <SummaryNotesCard />
+      <div className="tourSummary">
+      <p>Click on a stop to view it again if you wish!</p>
+      </div>
       
 
       </div>

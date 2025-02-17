@@ -397,11 +397,20 @@ h1, h2, h3, h4 {
 .mainContentSummary {
     top: 164px;
     padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .mainContentSummary h1 {
     color: $dark;
     font-size: 1.5rem;
+}
+
+.tourSummary p {
+    color: $dark;
+    font-size: 1.15rem;
+    font-weight: 500;
 }
 
 .headerGraphicSummary img {
@@ -446,12 +455,11 @@ h1, h2, h3, h4 {
 }
 
 .resourcesContainer {
-    display: flex;
-    width: 366px;
-    align-items: flex-start;
-    align-content: flex-start;
-    gap: 16px;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); // 2 columns
+    grid-template-rows: repeat(2, auto);  // 2 rows (auto height based on content)
+    gap: 1rem; // Adjust spacing as needed
+    width: 100%;
 }
 
 .CTA-1 {
