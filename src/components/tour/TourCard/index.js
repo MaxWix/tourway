@@ -90,11 +90,15 @@ const TourCard = (tag) => {
       <p>&nbsp;</p> // Render nothing (or an empty space) if there are no images
     )}  
 
-  {cardData?.facilitiesText && cardData.facilitiesText.length > 0 ? (
-    <SpecialFacilities facilitiesTextS={cardData.facilitiesText} />
+{cardData?.facilitiesText && cardData.facilitiesText.length > 0 ? (
+    <SpecialFacilities
+      facilitiesIcons={cardData.facilitiesIcons} // Pass the icons array
+      facilitiesTextS={cardData.facilitiesText} // Pass the text array
+    />
   ) : (
     <p>&nbsp;</p> // Fallback message
-  )}
+  )
+}
 
       <div>
         <h3>{cardData?.header1}</h3>
