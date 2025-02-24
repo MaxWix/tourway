@@ -24,7 +24,7 @@ const SummaryNotesCard = () => {
                     bgColor="#d0e4f6"
                     iconColor="#07294d"
                     icon={<FontAwesomeIcon icon={faDownload} />}
-                    action="/" />
+                    action="#" />
             </div>
             <div className={styles.summaryNotesCardContent}>
                 <div className={styles.timeStops}>

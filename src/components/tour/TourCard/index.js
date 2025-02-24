@@ -9,10 +9,12 @@ import blueBG from "../../../assets/imgs/DrexelBlue.svg";
 import CircleButton from "../../../components/common/CircleButton";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useNavigate } from 'react-router-dom';
-import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeftLong, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { faX } from "@fortawesome/free-solid-svg-icons";
 import SpecialFacilities from "../SpecialFacilities";
 import ScrollButtons from "../../navigation/ScrollButtons";
+import VoiceoverIcon from "../../../assets/icons/voiceover.svg"; 
+import NotesIcon from "../../../assets/icons/notes-outline.svg";
 
 
 const TourCard = (tag) => {
@@ -77,6 +79,22 @@ const TourCard = (tag) => {
           onClick={() => navigate('../tour/overview')} 
         />
       </div>
+      <div className="voiceoverButton">
+      <CircleButton
+          icon={<img src={VoiceoverIcon} alt="Voiceover Icon" />}
+          bgColor="#DFF3F4"
+          iconColor="#07294d"
+          onClick={() => navigate('#')} 
+        />
+      </div>
+      <div className="exitButton">
+      <CircleButton
+          icon={<FontAwesomeIcon icon={faXmark} />}
+          bgColor="#ffc600"
+          iconColor="#07294d"
+          onClick={() => navigate('#')} 
+        />
+      </div>
 
       
       <div className="mainContent mainContentChooseTour">
@@ -90,6 +108,14 @@ const TourCard = (tag) => {
         <div>
         <h1>{cardData?.title}</h1>
         <h2>{cardData?.subTitle}</h2>
+        </div>
+        <div className={styles.notesButton}>
+        <CircleButton
+          icon={<img src={NotesIcon} />}
+          bgColor="#0BA3A8"
+          iconColor="white"
+          onClick={() => navigate('#')} 
+        />
         </div>
       </div>
 
