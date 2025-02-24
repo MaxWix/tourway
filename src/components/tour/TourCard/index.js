@@ -12,6 +12,7 @@ import { useNavigate } from 'react-router-dom';
 import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
 import { faX } from "@fortawesome/free-solid-svg-icons";
 import SpecialFacilities from "../SpecialFacilities";
+import ScrollButtons from "../../navigation/ScrollButtons";
 
 
 const TourCard = (tag) => {
@@ -41,8 +42,25 @@ const TourCard = (tag) => {
 
     fetchCardData();
   }, [tagId]); // Runs when `tag` changes
+
+  const getHeadersFromDatabase = (cardData) => {
+    // Define the columns to check
+    const columns = ['header1', 'header2', 'header3', 'header4'];
+  
+    // Filter out columns with no value and map to their values
+    const headers = columns
+      .map((column) => cardData?.[column]?.trim()) // Trim whitespace and handle undefined/null
+      .filter((header) => header); // Remove empty strings, null, or undefined
+  
+    return headers;
+  };
+
+  const headers = cardData ? getHeadersFromDatabase(cardData) : [];
+
+
   const navigate = useNavigate(); 
   console.log(cardData);
+
   return (
     <>
 
@@ -60,10 +78,9 @@ const TourCard = (tag) => {
         />
       </div>
 
-
+      
       <div className="mainContent mainContentChooseTour">
-
-
+    
       <div className={styles.cardHead}>
         <div>
           <p>
@@ -75,6 +92,8 @@ const TourCard = (tag) => {
         <h2>{cardData?.subTitle}</h2>
         </div>
       </div>
+
+      {headers.length > 0 && <ScrollButtons headers={headers} />}
 
 
       <div className={styles.allSections}>
@@ -101,13 +120,13 @@ const TourCard = (tag) => {
 }
 
       <div>
-        <h3>{cardData?.header1}</h3>
+        <h4>{cardData?.header1}</h4>
         {cardData?.body1.length > 0
           ? cardData.body1.map((item) => <p>{item}</p>)
           : null}
       </div>
       <div>
-        <h3>{cardData?.header2}</h3>
+        <h4>{cardData?.header2}</h4>
         {cardData?.body2.length > 0
           ? cardData.body2.map((item) => <p>{item}</p>)
           : null}
@@ -131,7 +150,7 @@ const TourCard = (tag) => {
       </div>
       {cardData?.header3 && ( // Only render the block if header3 is not null
   <div>
-    <h3>{cardData.header3}</h3> {/* Render the header */}
+    <h4>{cardData.header3}</h4> {/* Render the header */}
     {cardData?.body3?.length > 0 && // Check if body3 exists and has items
       cardData.body3.map((item, index) => <p key={index}>{item}</p>)} {/* Render body3 paragraphs */}
 
@@ -151,7 +170,7 @@ const TourCard = (tag) => {
   </div>
 )}
       <div>
-        <h3>{cardData?.header4}</h3>
+        <h4>{cardData?.header4}</h4>
         {cardData?.body4?.length > 0
           ? cardData.body4.map((item) => <p>{item}</p>)
           : null}

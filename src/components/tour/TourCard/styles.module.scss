@@ -24,6 +24,10 @@ div.cardHead {
     margin: 0 auto;
     flex-direction: row;
     gap: .5rem;
+    position: sticky;
+    top: 0;
+    background-color: white;
+    padding-top: 1rem
 
     
 }

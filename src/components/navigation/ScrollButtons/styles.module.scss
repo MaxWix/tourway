@@ -1,0 +1,37 @@
+@import "../../../styles/custom-mixins.scss";
+
+
+.scrollButtonsHolder {
+    z-index: 5;
+    color: #000000;
+    position: sticky ;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    top: calc(54.5px + 1rem);
+    padding: 1rem 1rem;
+    background-color: white;
+    // width: calc(100vw - 2rem);
+    width: 100%;
+    overflow-x: scroll;
+}
+
+.scrollButtonsHolder button {
+    border-radius: 30px;
+    color: $drexelBlue;
+    font-size: 14px;
+    padding: 4px 12px;
+    background-color: white;
+    border-style: solid;
+    border-color: $drexelBlue;
+    white-space: nowrap;
+}
+
+// .styles_scrollButtonsHolder__AmSn6 button.active {
+//     background-color: black;
+//   }
+
+.scrollButtonsHolder button.active {
+    background-color: #000000;
+    color: #000000;
+}
