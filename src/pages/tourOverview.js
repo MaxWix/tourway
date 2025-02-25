@@ -3,6 +3,9 @@ import NavMenu from "../components/navigation/NavMenu";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../supabaseClient";
 import CustomTourName from "../components/tour/CustomTourName";
+import Button from "../components/common/Button";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
 
 const TourOverview = () => {
   const [formData, setFormData] = useState(null);
@@ -65,6 +68,7 @@ const TourOverview = () => {
   const handleStopClick = (stopId) => {
     console.log(stopId);
     localStorage.setItem("tagId", stopId);
+    localStorage.setItem("matchedStops", JSON.stringify(matchedStops));
     navigate("/tour");
   };
 
@@ -104,6 +108,13 @@ const TourOverview = () => {
           <p>No matching stops found based on your selections.</p>
         )}
         <div className="verticalLine">&nbsp;</div>
+        <Button
+          text="TAKE A TOUR"
+          icon={<FontAwesomeIcon icon={faArrowRightLong} />}
+          bgColor="#07294d"
+          borderColor="#07294d"
+          onClick={handleStopClick}
+        />
       </div>
     </div>
   );

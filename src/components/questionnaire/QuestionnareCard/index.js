@@ -66,7 +66,7 @@ const QuestionnareCard = ({ questions }) => {
         <div className={styles.questionCon}>
           <div style={{ marginBottom: "1rem" }}>
             <p className={styles.questionLabel}>{currentQuestion.label}</p>
-            {currentQuestion.hasAccordion ? (
+            {currentQuestion.hasAccordian ? (
               <Dropdown
                 accordionOptions={currentQuestion.options}
                 selectedOptions={selectedOptions}

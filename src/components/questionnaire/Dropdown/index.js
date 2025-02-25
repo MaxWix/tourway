@@ -17,6 +17,8 @@ const Dropdown = ({ accordionOptions, selectedOptions, onChange }) => {
     );
   };
 
+  console.log(accordionOptions);
+
   return (
     <div className={styles.dropdownContainer}>
       {accordionOptions.map((accordionOption, index) => {
