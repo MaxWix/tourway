@@ -12,7 +12,9 @@ import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import DrexelOverview from "../assets/imgs/drexel-overview1.jpg";
 import DrexelOverview1 from "../assets/imgs/drexel-overview-1.jpg";
 import DrexelOverview2 from "../assets/imgs/drexel-overview-2.jpg";
+import ScrollButtons from "../components/navigation/ScrollButtons";
 
+  const headers = ['Overview', 'Financial Aid'];
 const UniversityBio = () => {
   const navigate = useNavigate();
 
@@ -39,7 +41,13 @@ const UniversityBio = () => {
           iconColor="#0BA3A8"
         />
       </div>
+
+
+
       <div className="mainContent">
+        <div className="uniBioScrollCon">
+      <ScrollButtons headers={headers}/>
+      </div>
         <div className="universityBioContent">
           <h4>Overview</h4>
           <p>

@@ -9,6 +9,7 @@ import SummaryHeader from "../assets/tourway/summary-header.jpg"
 import SummaryHeaderGraphic from "../assets/tourway/summary-header-graphic.png";
 import VoiceoverIcon from "../assets/icons/voiceover.svg"; 
 import SummaryNotesCard from "../components/notes/SummaryNotesCard";
+import SummaryTourCard from "../components/tour/SummaryTourCard";
 
 
 
@@ -42,7 +43,7 @@ const navigate = useNavigate();
           icon={<img src={VoiceoverIcon} alt="Voiceover Icon" />}
           bgColor="#DFF3F4"
           iconColor="#07294d"
-          onClick={() => navigate('/')} 
+          onClick={() => navigate('#')} 
         />
       </div>
       <div className="exitButton">
@@ -50,7 +51,7 @@ const navigate = useNavigate();
           icon={<FontAwesomeIcon icon={faXmark} />}
           bgColor="#ffc600"
           iconColor="#07294d"
-          onClick={() => navigate('/')} 
+          onClick={() => navigate('#')} 
         />
       </div>
       <div className="mainContent mainContentSummary">
@@ -58,9 +59,9 @@ const navigate = useNavigate();
       <SummaryNotesCard />
       <div className="tourSummary">
       <p>Click on a stop to view it again if you wish!</p>
+      <SummaryTourCard
+        />
       </div>
-      
-
       </div>
       <div className="CTA-1">
         <Button 
