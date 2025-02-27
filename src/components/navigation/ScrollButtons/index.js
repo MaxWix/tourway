@@ -17,8 +17,8 @@ const ScrollButtons = ({ headers }) => {
       const parentHeight = parentDiv.offsetHeight; // Height of the parent <div>
 
       return {
-        top: parentTop - 200, // Offset for better trigger point
-        bottom: parentTop + parentHeight, // Bottom position of the parent <div>
+        top: parentTop - 40, // Offset for better trigger point
+        bottom: parentTop + parentHeight - 30, // Bottom position of the parent <div>
       };
     });
 
@@ -33,7 +33,7 @@ const ScrollButtons = ({ headers }) => {
   const handleHeaderClick = (index) => {
     const h4Elements = document.querySelectorAll('h4');
     if (h4Elements[index]) {
-      const offset = -10; // Adjust this value based on your header height
+      const offset = -40; // Adjust this value based on your header height
       const elementPosition = h4Elements[index].offsetTop + offset;
 
       window.scrollTo({

@@ -59,7 +59,7 @@ const TourCard = ({ tag, closeCard }) => {
 
   return (
     <>
-      <Header HeaderIMG={blueBG} height="156px" swoopTop="83px" />
+      <Header HeaderIMG={blueBG} height="90px" swoopTop="53px" />
       <div className="backButton">
         <CircleButton
           icon={<FontAwesomeIcon icon={faArrowLeftLong} />}
