@@ -197,7 +197,7 @@ h1, h2, h3, h4 {
 
   .universityBioContent {
     color: $dark;
-    padding: 1rem 1rem 4rem ;
+    padding: 0 1rem 4rem ;
   }
 
   .universityBioContent h4 {
@@ -249,17 +249,26 @@ h1, h2, h3, h4 {
     width: 100%;
   }
 
+  .CTAsingle {
+    position: fixed;
+    bottom: 1rem;
+    z-index: 10;
+    width: 100%;
+  }
+
   .mainContentLogin, .mainContentSignUp {
     padding-bottom: 1rem;
   }
 
   // Choose custom or general tour
-  .universityInfo {
+  .universityInfo, .universityTourOv {
     display: flex;
     align-items: center;
     margin: 0.5rem 1rem 1.5rem 1rem;
     gap: 1rem;
     color: $dark;
+    flex-direction: row;
+    justify-content: space-between;
   }
 
   .universityInfo img {
@@ -268,6 +277,42 @@ h1, h2, h3, h4 {
 
   .universityInfo h3 {
     font-size: 1.5rem;
+  }
+
+  // College name top On tour overview
+  .universityTourOv {
+    height: 3.25rem;
+    margin: 0.5rem 1rem 1rem 1rem;
+  }
+  .universityTourOv > div {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: .5rem;
+    height: 100%;
+  }
+
+  .universityTourOv > div > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+  .universityTourOv > div > div p {
+    font-weight: 600;
+    line-height: 1;
+    color: $drexelBlue;
+  }
+
+  .universityTourOv div > img {
+    max-width: 3.5rem;
+    height: 100%;
+  }
+  
+  .universityTourOv h4 {
+    font-size: 20px;
+    line-height: 1;
+    color: $drexelBlue;
   }
 
 // Custom teal checkbox for login / signup
@@ -333,13 +378,14 @@ h1, h2, h3, h4 {
     font-size: 16px;
     font-family: "Hind", Verdana, sans-serif;
   }
-.TourOverview > .StopsHolder {
-  margin: auto 1rem;
+.TourOverview > .mainContent > .StopsHolder {
+  margin: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 1.5em;
   position: relative;
+
 }
 
 .TourOverview .CatWraper {
@@ -350,7 +396,7 @@ h1, h2, h3, h4 {
   gap: .5rem;
 }
 
-.TourOverview > .StopsHolder .CatWraper p {
+.TourOverview .StopsHolder .CatWraper p {
   background-color: $drexelBlue;
   color: white;
   border-radius: 30px;
@@ -358,7 +404,11 @@ h1, h2, h3, h4 {
   padding: 4px 12px;
   display: inline;
 }
-.TourOverview > .StopsHolder > div {
+.TourOverview .StopsHolder h3 {
+  font-weight: 500;
+}
+
+.TourOverview .StopsHolder > div {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -366,8 +416,8 @@ h1, h2, h3, h4 {
   align-items: flex-start;
 }
 
-.TourOverview > .StopsHolder > div > p {
-  background-color: $drexelYellow;
+.TourOverview .StopsHolder > div > p {
+  background-color: #FFDE6B;
   border-radius: 50%;
   width: 30px;
   height: 30px;
@@ -376,7 +426,7 @@ h1, h2, h3, h4 {
   align-items: center;
 }
 
-.TourOverview > .StopsHolder > div > div { 
+.TourOverview .StopsHolder > div > div { 
   width: calc(100% - 1rem - 30px);
   display: flex;
   flex-direction: row;
