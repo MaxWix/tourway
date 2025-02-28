@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { React, useEffect, useState } from "react";
 import NavMenu from "../components/navigation/NavMenu";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../supabaseClient";
@@ -6,6 +6,15 @@ import CustomTourName from "../components/tour/CustomTourName";
 import Button from "../components/common/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import Header from "../components/navigation/Header";
+import mapPlaceholder from "../assets/imgs/map-placeholder.png";
+import CircleButton from "../components/common/CircleButton";
+import TourTimeandStops from "../components/tour/TourTimeandStops";
+import DrexelLogo from "../assets/imgs/drexel-logo.png"
+import sendIcon from "../assets/icons/send.svg"
+
 
 const TourOverview = () => {
   const [formData, setFormData] = useState(null);
@@ -75,9 +84,41 @@ const TourOverview = () => {
   console.log("TourOverview");
   return (
     <div className="TourOverview">
-      <h1>Tour Overview</h1>
-      <NavMenu />
-      <CustomTourName />
+      <Header HeaderIMG={mapPlaceholder} height="220px" swoopTop="143px" />
+      <div className="backButton">
+        <CircleButton
+          icon={<FontAwesomeIcon icon={faArrowLeftLong} />}
+          bgColor="#07294D"
+          iconColor="#D0E4F6"
+          onClick={() => navigate("../university")}
+        />
+      </div>
+      {/* <div className="exitButton">
+        <CircleButton
+          icon={<FontAwesomeIcon icon={faXmark} />}
+          bgColor="#ffc600"
+          iconColor="#07294d"
+          onClick={() => navigate("#")}
+        />
+      </div> */}
+      <div className="mainContent">
+      {/* <CustomTourName /> */}
+      <div className="universityTourOv">
+            <div>
+              <img src={DrexelLogo}/>
+              <div>
+                  <h4>Drexel University</h4>
+                  <p>Custom Campus Tour</p>
+              </div>
+            </div>
+            <CircleButton
+              icon={<img src={sendIcon} />}
+              bgColor="#D0E4F6"
+              iconColor="#07294D"
+              onClick={() => navigate("#")}
+            />
+        </div>
+      <TourTimeandStops/>
       <div className="StopsHolder">
         {matchedStops.length > 0 ? (
           matchedStops.map((stop, index) => (
@@ -108,14 +149,18 @@ const TourOverview = () => {
           <p>No matching stops found based on your selections.</p>
         )}
         <div className="verticalLine">&nbsp;</div>
-        <Button
-          text="TAKE A TOUR"
+     
+      </div>
+      <div className="CTAsingle">
+      <Button
+          text="START TOUR"
           icon={<FontAwesomeIcon icon={faArrowRightLong} />}
           bgColor="#07294d"
           borderColor="#07294d"
           onClick={handleStopClick}
         />
-      </div>
+        </div>
+    </div>
     </div>
   );
 };

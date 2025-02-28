@@ -41,7 +41,7 @@ h4 {
 }
 
 .mainContentChooseTour {
-  top: 120px;
+  top: 90px;
 }
 
 .headerGraphic {
@@ -194,9 +194,9 @@ h4 {
   gap: 0.5rem;
 }
 
-.loginSecondaryCTA p,
-.signUpSecondaryCTA p {
-  color: $medium-text;
+.universityBioContent {
+  color: $dark;
+  padding: 0 1rem 4rem;
 }
 
 .loginSecondaryCTA a,
@@ -250,9 +250,9 @@ h4 {
 //   height: 100%;
 // }
 
-.CTA {
+.CTAsingle {
   position: fixed;
-  bottom: 6rem;
+  bottom: 1rem;
   z-index: 10;
   width: 100%;
 }
@@ -260,6 +260,18 @@ h4 {
 .mainContentLogin,
 .mainContentSignUp {
   padding-bottom: 1rem;
+}
+
+// Choose custom or general tour
+.universityInfo,
+.universityTourOv {
+  display: flex;
+  align-items: center;
+  margin: 0.5rem 1rem 1.5rem 1rem;
+  gap: 1rem;
+  color: $dark;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 // Choose custom or general tour
@@ -279,6 +291,42 @@ h4 {
   font-size: 1.5rem;
 }
 
+// College name top On tour overview
+.universityTourOv {
+  height: 3.25rem;
+  margin: 0.5rem 1rem 1rem 1rem;
+}
+.universityTourOv > div {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 0.5rem;
+  height: 100%;
+}
+
+.universityTourOv > div > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+.universityTourOv > div > div p {
+  font-weight: 600;
+  line-height: 1;
+  color: $drexelBlue;
+}
+
+.universityTourOv div > img {
+  max-width: 3.5rem;
+  height: 100%;
+}
+
+.universityTourOv h4 {
+  font-size: 20px;
+  line-height: 1;
+  color: $drexelBlue;
+}
+
 // Custom teal checkbox for login / signup
 #rememberMeCheckbox,
 .rememberMecheckbox {
@@ -291,62 +339,14 @@ h4 {
   cursor: pointer;
 }
 
-.rememberMe label::before {
-  content: "";
-  display: inline-block;
-  width: 1.25rem;
-  height: 1.25rem;
-  border: 2px solid $tourway-teal;
-  border-radius: 4px;
-  margin-right: 0.5rem;
-  background-color: transparent;
-  box-sizing: border-box;
-  transition: background-color 0.2s, border-color 0.2s;
-}
-
-#rememberMeCheckbox:checked + label::before {
-  background-color: $tourway-teal;
-  border-color: $tourway-teal;
-  position: relative;
-}
-
-#rememberMeCheckbox:checked + label::before::after {
-  content: "✔";
-  color: white;
-  font-size: 1rem;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-weight: bold;
-}
-
-// QUESTIONNAIRE
-
-//EXIT
-.TourReview .backButton {
-  left: unset;
-  right: 1rem;
-}
-.TourReview h1 {
-  font-size: 24px;
-}
-.TourReview .mainContent > h1,
-.TourReview .mainContent > p {
-  padding: 0 1rem;
-  color: $drexelBlue;
-}
-
-// TOUR OVERVIEW
-
 .TourOverview h3,
 .TourOverview p {
   color: #000;
   font-size: 16px;
   font-family: "Hind", Verdana, sans-serif;
 }
-.TourOverview > .StopsHolder {
-  margin: auto 1rem;
+.TourOverview > .mainContent > .StopsHolder {
+  margin: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -362,7 +362,7 @@ h4 {
   gap: 0.5rem;
 }
 
-.TourOverview > .StopsHolder .CatWraper p {
+.TourOverview .StopsHolder .CatWraper p {
   background-color: $drexelBlue;
   color: white;
   border-radius: 30px;
@@ -370,7 +370,11 @@ h4 {
   padding: 4px 12px;
   display: inline;
 }
-.TourOverview > .StopsHolder > div {
+.TourOverview .StopsHolder h3 {
+  font-weight: 500;
+}
+
+.TourOverview .StopsHolder > div {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -378,8 +382,8 @@ h4 {
   align-items: flex-start;
 }
 
-.TourOverview > .StopsHolder > div > p {
-  background-color: $drexelYellow;
+.TourOverview .StopsHolder > div > p {
+  background-color: #ffde6b;
   border-radius: 50%;
   width: 30px;
   height: 30px;
@@ -388,7 +392,7 @@ h4 {
   align-items: center;
 }
 
-.TourOverview > .StopsHolder > div > div {
+.TourOverview .StopsHolder > div > div {
   width: calc(100% - 1rem - 30px);
   display: flex;
   flex-direction: row;

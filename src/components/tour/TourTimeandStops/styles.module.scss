@@ -1,0 +1,26 @@
+@import "../../../styles/custom-mixins.scss";
+
+.TimeStopsHolder {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 1rem;
+    align-items: center;
+}
+.TimeStopsHolder p {
+    font-weight: 600;
+    color: $drexelBlue;
+}
+.TimeStopsHolder > div {
+    display: flex;
+    flex-direction: row;
+    gap: .25rem;
+    align-items: center;
+}
+.TimeStopsHolder > div svg, .TimeStopsHolder > div svg path {
+    fill: $drexelBlue;
+
+}
+.TimeStopsHolder > div img {
+    max-height: 20px;
+}

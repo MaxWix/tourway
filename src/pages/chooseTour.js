@@ -22,7 +22,7 @@ const ChooseTour = () => {
         <Header
             HeaderIMG={DrexelChooseTour}
             height="155px"
-            swoopTop="83px"
+            swoopTop="56px"
         />
       <div className="backButton">
         <CircleButton

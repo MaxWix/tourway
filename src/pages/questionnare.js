@@ -98,7 +98,7 @@ const Questionnare = () => {
 
   return (
     <div className="TourReview">
-      <Header HeaderIMG={QuestionnaireILL1} height="155px" swoopTop="83px" />
+      <Header HeaderIMG={QuestionnaireILL1} height="155px" swoopTop="53px" />
       <div className="backButton">
         <CircleButton
           icon={<FontAwesomeIcon icon={faX} />}
