@@ -1,338 +1,350 @@
-@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap");
 @import "../styles/custom-mixins.scss";
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    color: $tourway-teal;
-    font-family: 'Hind', Verdana, sans-serif;
+  color: $tourway-teal;
+  font-family: "Hind", Verdana, sans-serif;
 }
 
-h1, h2, h3, h4 {
-    font-family: 'Montserrat', Verdana, sans-serif;
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Montserrat", Verdana, sans-serif;
 }
 
 .mainContent {
-    background-color: white;
-    padding-top: 12px;
-    border-radius: 0 40px 0 0;
-    z-index: 1;
-    position: absolute;
-    top: 180px;
-    left: 0;
-    width: 100%;
-    z-index: 1;
-    padding-bottom: 5rem;
-    overflow: unset;
+  background-color: white;
+  padding-top: 12px;
+  border-radius: 0 40px 0 0;
+  z-index: 1;
+  position: absolute;
+  top: 180px;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  padding-bottom: 5rem;
+  overflow: unset;
 
-    // filter: drop-shadow(0px -4px 4px rgba(3, 70, 72, 0.15));
+  // filter: drop-shadow(0px -4px 4px rgba(3, 70, 72, 0.15));
 }
 
-.mainContentLogin, .mainContentSignUp {
-    top: 230px;
+.mainContentLogin,
+.mainContentSignUp {
+  top: 230px;
 }
 
 .mainContentChooseTour {
-    top: 120px;
+  top: 120px;
 }
 
-
 .headerGraphic {
-    z-index: 4;
-    position: absolute;
-    top: 100px;
-    right: 32px;
+  z-index: 4;
+  position: absolute;
+  top: 100px;
+  right: 32px;
 }
 
 .headerGraphic img {
-    width: 160px;
+  width: 160px;
 }
 
 .headerGraphicNotes {
-    right: 44px;
-    top: 92px;
+  right: 44px;
+  top: 92px;
 }
 
 .headerGraphicNotes img {
-    width: 140px;
+  width: 140px;
 }
 
 .tourwayPath {
-    position: absolute;
-    top: 5px;
-    max-height: 48px;
-    background-size: cover;
-    z-index: -1;
-    width: 100%;
+  position: absolute;
+  top: 5px;
+  max-height: 48px;
+  background-size: cover;
+  z-index: -1;
+  width: 100%;
 }
 
 .tourwayPath img {
-    width:100%;
-    height: 100%;
-    background-size: cover;
-
+  width: 100%;
+  height: 100%;
+  background-size: cover;
 }
 
-.altLoginMethods, .altSignUpMethods {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
+.altLoginMethods,
+.altSignUpMethods {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
 }
 
-.altLoginMethods p, .altSignUpMethods p {
-    font-size: 1rem;
-    color: $medium-text;
+.altLoginMethods p,
+.altSignUpMethods p {
+  font-size: 1rem;
+  color: $medium-text;
 }
 
 .socialMedia {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
 }
 
 .socialMediaButton {
-    width: 3.5rem;
-    height: 3.5rem;
-    font-size: 1.5rem;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background-color: $tourway-teal-light;
-    color: white;
-  }
-  
-  .socialMediaLink {
-    text-decoration: none;
-    display: inline-block;
-    padding: 0;
-    line-height: 0;
-  }
+  width: 3.5rem;
+  height: 3.5rem;
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $tourway-teal-light;
+  color: white;
+}
 
-  .loginActions {
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem 2rem;
-  }
+.socialMediaLink {
+  text-decoration: none;
+  display: inline-block;
+  padding: 0;
+  line-height: 0;
+}
 
-  .loginActions p {
-    font-weight: 500;
-  }
+.loginActions {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+}
 
-  .signUpActions {
-    margin: 1rem 1rem;
-  }
+.loginActions p {
+  font-weight: 500;
+}
 
-  .signUpActions p {
-    font-weight: 500;
-  }
+.signUpActions {
+  margin: 1rem 1rem;
+}
 
-  .rememberMe {
-    display: flex;
-    gap: 0.5rem;
-    justify-content: center;
-    align-items: center;
-  }
+.signUpActions p {
+  font-weight: 500;
+}
 
-  .rememberMe label {
-    color: $medium-text;
-    font-weight: 500;
-  }
+.rememberMe {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+}
 
-  .Login h1, .SignUp h1 {
-    text-align: center;
-    font-size: 1.75rem;
-    font-weight: 700;
-  }
+.rememberMe label {
+  color: $medium-text;
+  font-weight: 500;
+}
 
-  .tourwayPathSmall {
-    position: absolute;
-    z-index: -1;
-    right: -24px;
-  }
+.Login h1,
+.SignUp h1 {
+  text-align: center;
+  font-size: 1.75rem;
+  font-weight: 700;
+}
 
-  .tourwayPathLogin {
-    position: absolute;
-    top: 26rem;
-    z-index: -2;
-  }
+.tourwayPathSmall {
+  position: absolute;
+  z-index: -1;
+  right: -24px;
+}
 
-  .tourwayPathSignUp {
-    position: absolute;
-    top: 35.5rem;
-    z-index: -2;
-  }
- 
-  .loginCTA, .signUpCTA {
-    margin: 2rem 0 1rem 0;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-  }
+.tourwayPathLogin {
+  position: absolute;
+  top: 26rem;
+  z-index: -2;
+}
 
-  .loginSecondaryCTA, .signUpSecondaryCTA {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-  }
+.tourwayPathSignUp {
+  position: absolute;
+  top: 35.5rem;
+  z-index: -2;
+}
 
-  .loginSecondaryCTA p, .signUpSecondaryCTA p {
-    color: $medium-text;
-  }
+.loginCTA,
+.signUpCTA {
+  margin: 2rem 0 1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
 
-  .loginSecondaryCTA a, .signUpSecondaryCTA a {
-    color: $tourway-teal;
-  }
+.loginSecondaryCTA,
+.signUpSecondaryCTA {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
 
-  .universityBioContent {
-    color: $dark;
-    padding: 1rem 1rem 4rem ;
-  }
+.loginSecondaryCTA p,
+.signUpSecondaryCTA p {
+  color: $medium-text;
+}
 
-  .universityBioContent h4 {
-    font-size: 1.5rem;
-  }
+.loginSecondaryCTA a,
+.signUpSecondaryCTA a {
+  color: $tourway-teal;
+}
 
-  .backButton {
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    z-index: 10;
-  }
+.universityBioContent {
+  color: $dark;
+  padding: 1rem 1rem 4rem;
+}
 
-  .favButton {
-    position: absolute;
-    top: 8rem;
-    right: 1rem;
-    z-index: 10;
-  }
+.universityBioContent h4 {
+  font-size: 1.5rem;
+}
 
-  .overviewIMGs {
-    margin: 1rem 0;
-    display: flex;
-    gap: 0.5rem;
-    width: 100%;
-    justify-content: space-between;
-  }
+.backButton {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 10;
+}
 
-  .overviewIMGs img {
-    width: calc(50% - .5rem);
-    border-radius: 13px;
-    object-fit: cover;
-  }
+.favButton {
+  position: absolute;
+  top: 8rem;
+  right: 1rem;
+  z-index: 10;
+}
 
-  .universityBioContent li {
-    margin: 1rem;
-  }
+.overviewIMGs {
+  margin: 1rem 0;
+  display: flex;
+  gap: 0.5rem;
+  width: 100%;
+  justify-content: space-between;
+}
 
-  // .universityBio {
-  //   position: relative;
-  //   height: 100%;
-  // }
+.overviewIMGs img {
+  width: calc(50% - 0.5rem);
+  border-radius: 13px;
+  object-fit: cover;
+}
 
+.universityBioContent li {
+  margin: 1rem;
+}
 
-  .CTA {
-    position: fixed;
-    bottom: 6rem;
-    z-index: 10;
-    width: 100%;
-  }
+// .universityBio {
+//   position: relative;
+//   height: 100%;
+// }
 
-  .mainContentLogin, .mainContentSignUp {
-    padding-bottom: 1rem;
-  }
+.CTA {
+  position: fixed;
+  bottom: 6rem;
+  z-index: 10;
+  width: 100%;
+}
 
-  // Choose custom or general tour
-  .universityInfo {
-    display: flex;
-    align-items: center;
-    margin: 0.5rem 1rem 1.5rem 1rem;
-    gap: 1rem;
-    color: $dark;
-  }
+.mainContentLogin,
+.mainContentSignUp {
+  padding-bottom: 1rem;
+}
 
-  .universityInfo img {
-    max-width: 4rem;
-  }
+// Choose custom or general tour
+.universityInfo {
+  display: flex;
+  align-items: center;
+  margin: 0.5rem 1rem 1.5rem 1rem;
+  gap: 1rem;
+  color: $dark;
+}
 
-  .universityInfo h3 {
-    font-size: 1.5rem;
-  }
+.universityInfo img {
+  max-width: 4rem;
+}
+
+.universityInfo h3 {
+  font-size: 1.5rem;
+}
 
 // Custom teal checkbox for login / signup
-#rememberMeCheckbox, .rememberMecheckbox{
-    display: none;
-  }
-  
-  .rememberMe label {
-    display: inline-flex;
-    align-items: center;
-    cursor: pointer;
-  }
-  
-  .rememberMe label::before {
-    content: "";
-    display: inline-block;
-    width: 1.25rem;
-    height: 1.25rem;
-    border: 2px solid $tourway-teal;
-    border-radius: 4px;
-    margin-right: 0.5rem;
-    background-color: transparent;
-    box-sizing: border-box;
-    transition: background-color 0.2s, border-color 0.2s;
-  }
-  
-  #rememberMeCheckbox:checked + label::before {
-    background-color: $tourway-teal;
-    border-color: $tourway-teal;
-    position: relative;
-  }
-  
-  #rememberMeCheckbox:checked + label::before::after {
-    content: "✔";
-    color: white;
-    font-size: 1rem;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-weight: bold;
-  }
+#rememberMeCheckbox,
+.rememberMecheckbox {
+  display: none;
+}
 
-  // QUESTIONNAIRE 
-  
-    //EXIT
-  .TourReview .backButton {
-    left: unset;
-    right: 1rem;
-  }
-  .TourReview h1 {
-    font-size: 24px;
-  }
-  .TourReview .mainContent > h1, .TourReview .mainContent > p {
-    padding: 0 1rem;
-    color: $drexelBlue;
-  }
-  
-  // TOUR OVERVIEW
+.rememberMe label {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
 
-  .TourOverview h3, .TourOverview p {
-    color: #000;
-    font-size: 16px;
-    font-family: "Hind", Verdana, sans-serif;
-  }
+.rememberMe label::before {
+  content: "";
+  display: inline-block;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 2px solid $tourway-teal;
+  border-radius: 4px;
+  margin-right: 0.5rem;
+  background-color: transparent;
+  box-sizing: border-box;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+#rememberMeCheckbox:checked + label::before {
+  background-color: $tourway-teal;
+  border-color: $tourway-teal;
+  position: relative;
+}
+
+#rememberMeCheckbox:checked + label::before::after {
+  content: "✔";
+  color: white;
+  font-size: 1rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+}
+
+// QUESTIONNAIRE
+
+//EXIT
+.TourReview .backButton {
+  left: unset;
+  right: 1rem;
+}
+.TourReview h1 {
+  font-size: 24px;
+}
+.TourReview .mainContent > h1,
+.TourReview .mainContent > p {
+  padding: 0 1rem;
+  color: $drexelBlue;
+}
+
+// TOUR OVERVIEW
+
+.TourOverview h3,
+.TourOverview p {
+  color: #000;
+  font-size: 16px;
+  font-family: "Hind", Verdana, sans-serif;
+}
 .TourOverview > .StopsHolder {
   margin: auto 1rem;
   display: flex;
@@ -347,7 +359,7 @@ h1, h2, h3, h4 {
   flex-direction: row;
   width: 100%;
   align-items: center;
-  gap: .5rem;
+  gap: 0.5rem;
 }
 
 .TourOverview > .StopsHolder .CatWraper p {
@@ -376,7 +388,7 @@ h1, h2, h3, h4 {
   align-items: center;
 }
 
-.TourOverview > .StopsHolder > div > div { 
+.TourOverview > .StopsHolder > div > div {
   width: calc(100% - 1rem - 30px);
   display: flex;
   flex-direction: row;
@@ -397,94 +409,93 @@ h1, h2, h3, h4 {
   min-width: 50px;
 }
 
-
 // TOUR SUMMARY
 .mainContentSummary {
-    top: 164px;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+  top: 164px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .mainContentSummary h1 {
-    color: $dark;
-    font-size: 1.5rem;
+  color: $dark;
+  font-size: 1.5rem;
 }
 
 .tourSummary p {
-    color: $dark;
-    font-size: 1.15rem;
-    font-weight: 500;
+  color: $dark;
+  font-size: 1.15rem;
+  font-weight: 500;
 }
 
 .headerGraphicSummary img {
-    width: 140px;
+  width: 140px;
 }
 
 .headerGraphicSummary {
-    right: 16px;
-    top: 60px;
+  right: 16px;
+  top: 60px;
 }
 
 .headerTextSummary {
-    position: absolute;
-    z-index: 5;
-    color: white;
-    width: 200px;
-    top: 60px;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    left: 2rem;
+  position: absolute;
+  z-index: 5;
+  color: white;
+  width: 200px;
+  top: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  left: 2rem;
 }
 
 .headerTextSummary h4 {
-    font-size: 1.25rem;
+  font-size: 1.25rem;
 }
 
 .headerTextSummary p {
-    font-size: 1rem;
-    line-height: 140%;
+  font-size: 1rem;
+  line-height: 140%;
 }
 
 // NEXT STEPS AND RESOURCES
 .mainContentResources {
-    top: 85px;
-    padding: 1rem;
+  top: 85px;
+  padding: 1rem;
 }
 
 .mainContentResources h1 {
-    color: $dark;
-    font-size: 1.5rem;
+  color: $dark;
+  font-size: 1.5rem;
 }
 
 .resourcesContainer {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); // 2 columns
-    grid-template-rows: repeat(2, auto);  // 2 rows (auto height based on content)
-    gap: 1rem; // Adjust spacing as needed
-    width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); // 2 columns
+  grid-template-rows: repeat(2, auto); // 2 rows (auto height based on content)
+  gap: 1rem; // Adjust spacing as needed
+  width: 100%;
 }
 
 .CTA-1 {
-    position: absolute;
-    z-index: 5;
-    bottom: 1rem;
+  position: absolute;
+  z-index: 5;
+  bottom: 1rem;
 }
 
 .exitButton {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    z-index: 10;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
 }
 
 .voiceoverButton {
-    position: absolute;
-    top: 1rem;
-    right: 4.5rem;
-    z-index: 10;
+  position: absolute;
+  top: 1rem;
+  right: 4.5rem;
+  z-index: 10;
 }
 
 // ACTIVE SCROLL
@@ -499,4 +510,24 @@ h1, h2, h3, h4 {
 .uniBioScrollCon {
   position: sticky;
   top: 0;
+}
+
+// TOUR VIEW
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
 }
