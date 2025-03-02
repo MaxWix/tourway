@@ -16,7 +16,7 @@ import NotesIcon from "../../../assets/icons/notes-outline.svg";
 import Button from "../../common/Button";
 
 
-const TourCard = ({ tag, closeCard }) => {
+const TourCard = ({ tag, closeCard, viewNextStop }) => {
   const [cardData, setCardData] = useState(null);
 
   const tagId = tag;
@@ -205,7 +205,7 @@ const TourCard = ({ tag, closeCard }) => {
         icon={<FontAwesomeIcon icon={faArrowRightLong} />}
         bgColor="#07294d"
         borderColor="#07294d"
-        onClick={() => closeCard()}/>
+        onClick={() => viewNextStop()}/>
           </div>
       </div>
       

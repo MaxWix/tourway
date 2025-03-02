@@ -63,6 +63,14 @@ const TourView = () => {
     }
   };
 
+  const viewNextStop = () => {
+    // First, close the card to return to map view
+    closeCard();
+    
+    // Then, go to the next stop
+    goToNextStop();
+  };
+
   if (!matchedStops || matchedStops.length < 2) {
     return <p>Loading stop details...</p>;
   }
@@ -80,6 +88,7 @@ const TourView = () => {
             <Directions
               matchedStops={matchedStops}
               currentStopIndex={currentStopIndex}
+              currentStop={currentStop}
             />
             <div style={{ height: "60vh" }}>
               <Map
@@ -127,7 +136,7 @@ const TourView = () => {
             <button onClick={() => openCard(currentStop.tag)}>View Stop</button>
           </>
         ) : (
-          <TourCard tag={tagId} closeCard={closeCard} />
+          <TourCard tag={tagId} closeCard={closeCard} viewNextStop={viewNextStop} />
         )}
       </div>
     </APIProvider>
@@ -135,7 +144,7 @@ const TourView = () => {
 };
 
 // Directions component to handle map directions and contains directions text
-function Directions({ matchedStops, currentStopIndex }) {
+function Directions({ matchedStops, currentStopIndex, currentStop }) {
   const map = useMap();
   const isApiLoaded = useApiIsLoaded();
   const [directions, setDirections] = useState(null);
@@ -228,7 +237,7 @@ function Directions({ matchedStops, currentStopIndex }) {
       {directions && (
         <div>
           <div className="mainContent mainContentChooseTour tourCardContent">
-        {/* <div> */}
+
         <div className="cardtop">
       <Header HeaderIMG={blueBG} height="90px" swoopTop="53px" />
       <div className="backButton">
@@ -256,6 +265,8 @@ function Directions({ matchedStops, currentStopIndex }) {
         />
       </div>
       </div>
+          {/* Display current stop title as h1 */}
+          <h1>{currentStop ? currentStop.title : "Next Stop"}</h1>
           <h3>Next Direction</h3>
           <p dangerouslySetInnerHTML={{ __html: currentInstruction }}></p>
           <p>
