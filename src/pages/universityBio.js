@@ -46,10 +46,15 @@ const UniversityBio = () => {
 
       <div className="mainContent">
         <div className="uniBioScrollCon">
-      <ScrollButtons headers={headers}/>
+      <ScrollButtons 
+      headers={headers}
+      scrollOffset={-130}
+      topBuffer={40}
+       bottomBuffer={40}
+      />
       </div>
         <div className="universityBioContent">
-          <h4>Overview</h4>
+          <h3>Overview</h3>
           <p>
             Drexel is well-known for its cooperative education program (co-op), which integrates classroom learning with professional work experience. The university offers over 200 degree programs at the undergraduate, graduate, and doctoral levels across disciplines such as engineering, business, health sciences, arts, and media. Drexel is located in University City, a vibrant neighborhood in Philadelphia.
           </p>
@@ -57,7 +62,7 @@ const UniversityBio = () => {
             <img src={DrexelOverview1}/>
             <img src={DrexelOverview2}/>
           </div>
-          <h4>Financial Aid</h4>
+          <h3>Financial Aid</h3>
           <p>From scholarships to loans to work-study and more, take a look at the best ways to fund your education and what to complete to make the most of these opportunities.</p>
           <ul>
             <li>Prospective Students – If you are applying to Drexel as a new student, check out how to apply for financial aid and the different resources available to you.</li>

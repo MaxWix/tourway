@@ -35,6 +35,11 @@ h4 {
   // filter: drop-shadow(0px -4px 4px rgba(3, 70, 72, 0.15));
 }
 
+.mainContent > p, .mainContent > h1, .mainContent > h3 {
+  width: calc(100% - 2rem);
+  margin: auto;
+}
+
 .mainContentLogin,
 .mainContentSignUp {
   top: 230px;
@@ -257,6 +262,13 @@ h4 {
   width: 100%;
 }
 
+.CTA {
+  position: fixed;
+  bottom: 6rem;
+  z-index: 10;
+  width: 100%;
+}
+
 .mainContentLogin,
 .mainContentSignUp {
   padding-bottom: 1rem;
@@ -271,7 +283,7 @@ h4 {
   gap: 1rem;
   color: $dark;
   flex-direction: row;
-  justify-content: space-between;
+
 }
 
 // Choose custom or general tour
@@ -295,6 +307,7 @@ h4 {
 .universityTourOv {
   height: 3.25rem;
   margin: 0.5rem 1rem 1rem 1rem;
+  justify-content: space-between;
 }
 .universityTourOv > div {
   display: flex;
@@ -534,4 +547,16 @@ h4 {
   padding: 20px;
   border-radius: 8px;
   text-align: center;
+}
+
+
+// Tour Content view
+
+.tourview {
+  position: relative;
+}
+
+.tourCardContent {
+  padding-top: 0;
+  top: 0;
 }

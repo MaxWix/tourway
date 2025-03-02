@@ -9,12 +9,12 @@
     flex-direction: row;
     gap: 10px;
     top: calc(54.5px + 1rem);
-    padding: 1rem 1rem;
+    padding: .5rem 1rem 1rem ;
     background-color: white;
     // width: calc(100vw - 2rem);
     width: 100%;
     overflow-x: scroll;
-    border-radius: 0 30px 0 0;
+    border-radius: 0 0 0 0;
 }
 
 .scrollButtonsHolder button {
@@ -33,6 +33,6 @@
 //   }
 
 .scrollButtonsHolder button.active {
-    background-color: #000000;
-    color: #000000;
+    background-color: $drexelBlue;
+    color: white;
 }

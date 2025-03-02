@@ -1,13 +1,13 @@
 @import "../../../styles/custom-mixins.scss";
 
-.cardHead h1 {
+.cardtitle h1 {
     color: black;
     font-size: 24px;;
     font-family:  'Montserrat', Verdana, sans-serif;
     ;
 }
 
-.cardHead h2 {
+.cardtitle h2 {
     color: $drexelBlue;
     font-size: 14px;
     font-family: 'Hind', Verdana, sans-serif;
@@ -28,11 +28,28 @@ div.cardHead {
     top: 0;
     background-color: white;
     padding-top: 1rem
-
-    
 }
 
-div.cardHead > div > p {
+.cardtitle {
+    width: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-radius: 0 4% 0 0;
+    background-color: white;
+    padding: 1rem 1rem 0 1rem;
+    border-radius:0 40px 0 0 ;
+}
+
+.cardtitle .titleNum {
+    display: flex;
+    flex-direction: row;
+    gap: .5rem;
+    align-items: center;
+}
+
+div.cardHead div > p, .cardtitle p {
     background-color: $drexelYellow;
     color: black;
     height: 26px;
@@ -40,7 +57,20 @@ div.cardHead > div > p {
     font-size: 18px;
     border-radius: 100%;
     text-align: center;
+    font-weight: 100;
 }
+
+.cardTop {
+    position: sticky;
+    top: 0;
+    background-color: $drexelBlue;
+    // background-color: white;
+    // padding-top:1rem;
+}
+.card.tourCardContent .cardTop > div:last-of-type {
+    border-radius: 0;
+  } 
+
 .allSections {
     color: black;
     width: calc(100% - 2rem);
@@ -56,5 +86,15 @@ div.cardHead > div > p {
 
 .allSections > div > img { 
     width: 100%;
+}
+
+.allSections > div:not(:first-child) {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.invis {
+    display: none;
 }
 

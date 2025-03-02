@@ -5,6 +5,7 @@
     display: flex;
     justify-content: center; /* Optional for alignment */
     padding: 0 1.5rem;
+    bottom: 1rem;
 }
 
 .CTAButton {
@@ -37,4 +38,9 @@
   .icon {
     font-size: 1.5rem; /* Ensure the icon has a visible size */
   }
+
+//   On tour card page
+// .CTAButtonContainer {
+//     // position: fixed;
+// }
   

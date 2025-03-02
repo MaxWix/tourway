@@ -13,6 +13,12 @@ import {
 
 import Header from "../components/navigation/Header";
 import blueBG from "../assets/imgs/DrexelBlue.svg";
+import Button from "../components/common/Button";
+import CircleButton from "../components/common/CircleButton";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeftLong, faXmark } from "@fortawesome/free-solid-svg-icons";
+import VoiceoverIcon from "../assets/icons/voiceover.svg"
+
 
 // Main TourView component
 const TourView = () => {
@@ -28,6 +34,7 @@ const TourView = () => {
 
   const apiUrl = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
   const mapId = process.env.REACT_APP_GOOGLE_MAPS_MAP_ID;
+
 
   // Load stops from localStorage
   useEffect(() => {
@@ -220,11 +227,42 @@ function Directions({ matchedStops, currentStopIndex }) {
     <div className="directions">
       {directions && (
         <div>
+          <div className="mainContent mainContentChooseTour tourCardContent">
+        {/* <div> */}
+        <div className="cardtop">
+      <Header HeaderIMG={blueBG} height="90px" swoopTop="53px" />
+      <div className="backButton">
+        <CircleButton
+          icon={<FontAwesomeIcon icon={faArrowLeftLong} />}
+          bgColor="#DFF3F4"
+          iconColor="#07294d"
+          // onClick={() => closeCard()}
+        />
+      </div>
+      <div className="voiceoverButton">
+        <CircleButton
+          icon={<img src={VoiceoverIcon} alt="Voiceover Icon" />}
+          bgColor="#DFF3F4"
+          iconColor="#07294d"
+          // onClick={() => navigate("#")}
+        />
+      </div>
+      <div className="exitButton">
+        <CircleButton
+          icon={<FontAwesomeIcon icon={faXmark} />}
+          bgColor="#ffc600"
+          iconColor="#07294d"
+          // onClick={() => navigate("#")}
+        />
+      </div>
+      </div>
           <h3>Next Direction</h3>
           <p dangerouslySetInnerHTML={{ __html: currentInstruction }}></p>
           <p>
             Arrive by: {steps[nextStepIndex]?.arrivalTime || "Calculating..."}
           </p>
+        </div>
+      
         </div>
       )}
     </div>
