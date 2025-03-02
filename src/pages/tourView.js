@@ -17,8 +17,9 @@ import Button from "../components/common/Button";
 import CircleButton from "../components/common/CircleButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeftLong, faXmark } from "@fortawesome/free-solid-svg-icons";
-import VoiceoverIcon from "../assets/icons/voiceover.svg"
-
+import VoiceoverIcon from "../assets/icons/voiceover.svg";
+import sendIcon from "../assets/icons/send-white.svg";
+import DirectionArrow from "../components/navigation/DirectionArrow";
 
 // Main TourView component
 const TourView = () => {
@@ -84,13 +85,40 @@ const TourView = () => {
       <div className="tourView">
         {isMapView ? (
           <>
-            <Header HeaderIMG={blueBG} height="156px" swoopTop="83px" />
+          <div class="cardtop">
+          <Header HeaderIMG={blueBG} height="148px" swoopTop="73px" />
+            <div className="backButton">
+              <CircleButton
+                icon={<FontAwesomeIcon icon={faArrowLeftLong} />}
+                bgColor="#DFF3F4"
+                iconColor="#07294d"
+                // onClick={() => closeCard()}
+              />
+            </div>
+            <div className="voiceoverButton">
+              <CircleButton
+                icon={<img src={VoiceoverIcon} alt="Voiceover Icon" />}
+                bgColor="#DFF3F4"
+                iconColor="#07294d"
+                // onClick={() => navigate("#")}
+              />
+            </div>
+            <div className="exitButton">
+              <CircleButton
+                icon={<FontAwesomeIcon icon={faXmark} />}
+                bgColor="#ffc600"
+                iconColor="#07294d"
+                // onClick={() => navigate("#")}
+              />
+            </div>          
+            </div>
+           
             <Directions
               matchedStops={matchedStops}
               currentStopIndex={currentStopIndex}
               currentStop={currentStop}
             />
-            <div style={{ height: "60vh" }}>
+            <div className="mapview">
               <Map
                 disableDefaultUI
                 defaultZoom={15}
@@ -233,51 +261,39 @@ function Directions({ matchedStops, currentStopIndex, currentStop }) {
   }, [directions]);
 
   return (
-    <div className="directions">
+    <div>
+    <div className="mapMainContent">
+       <div class="stopTitle">
+        <div> <p>#</p> </div>
+       <h1>{currentStop ? currentStop.title : "Next Stop"}</h1>
+       </div>
+   
       {directions && (
-        <div>
-          <div className="mainContent mainContentChooseTour tourCardContent">
-
-        <div className="cardtop">
-      <Header HeaderIMG={blueBG} height="90px" swoopTop="53px" />
-      <div className="backButton">
-        <CircleButton
-          icon={<FontAwesomeIcon icon={faArrowLeftLong} />}
-          bgColor="#DFF3F4"
-          iconColor="#07294d"
-          // onClick={() => closeCard()}
-        />
-      </div>
-      <div className="voiceoverButton">
-        <CircleButton
-          icon={<img src={VoiceoverIcon} alt="Voiceover Icon" />}
-          bgColor="#DFF3F4"
-          iconColor="#07294d"
-          // onClick={() => navigate("#")}
-        />
-      </div>
-      <div className="exitButton">
-        <CircleButton
-          icon={<FontAwesomeIcon icon={faXmark} />}
-          bgColor="#ffc600"
-          iconColor="#07294d"
-          // onClick={() => navigate("#")}
-        />
-      </div>
-      </div>
-          {/* Display current stop title as h1 */}
-          <h1>{currentStop ? currentStop.title : "Next Stop"}</h1>
-          <h3>Next Direction</h3>
-          <p dangerouslySetInnerHTML={{ __html: currentInstruction }}></p>
-          <p>
-            Arrive by: {steps[nextStepIndex]?.arrivalTime || "Calculating..."}
-          </p>
+      <div className="directions">      
+          {/* <h3>Next Direction</h3> */}
+          <div class="compass"> 
+          <DirectionArrow instruction={currentInstruction} />
+            <p dangerouslySetInnerHTML={{ __html: currentInstruction }}></p> 
+          </div>
+          <div>
+            <p>
+              Arriving at: {steps[nextStepIndex]?.arrivalTime || "Calculating..."}
+            </p>
+          </div>
+          
         </div>
-      
-        </div>
+     
       )}
     </div>
+    <CircleButton
+              icon={<img src={sendIcon} />}
+              bgColor="#07294D"
+              iconColor="#FFFFFF"
+              // onClick={() => navigate("#")}
+            />
+     </div>
   );
+  
 }
 
 export default TourView;

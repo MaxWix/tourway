@@ -1,0 +1,21 @@
+@import "../../../styles/custom-mixins.scss";
+
+.directionContainer {
+    display: flex;
+    flex-direction: row;
+    gap: .5rem;
+}
+
+.directionText {
+    font-size: 18px;
+    color: black;
+    line-height: 1.4;
+}
+.Arrow {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}

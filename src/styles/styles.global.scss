@@ -566,3 +566,80 @@ h4 {
   padding-top: 0;
   top: 0;
 }
+
+// Map view
+.mapview {
+  height: 75vh;
+  margin-top: -20px;
+  // top: 10px;
+}
+
+.mapMainContent  {
+  background-color: $lightBlue;
+  // padding-top: 12px;
+  border-radius: 0 40px 40px 0;
+  z-index: 1;
+  position: absolute;
+  top: 180px;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  overflow: unset;
+  top: 110px;
+  color: black;
+  padding: 1rem 0;
+  filter: drop-shadow(#00000090 1px 6px 6px);
+}
+.mapMainContent > * {
+  width: calc(100% - 2rem);
+  margin: 0 auto;
+}
+.mapMainContent .directions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+.mapMainContent .directions > div > p {
+  font-size: 14px;
+  max-height: fit-content;
+  line-height: 1.4;
+}
+
+.mapMainContent .directions .compass {
+  display: flex;
+  flex-direction: row;
+  gap: .5rem;
+  // justify-content: center; 
+  align-items: center; 
+}
+
+.mapMainContent .stopTitle {
+    display: flex;
+    flex-direction: row;
+    gap: .5rem;
+    align-items: center;
+    position: absolute;
+    top: -2.75rem;
+    left: 1.5rem;
+}
+
+.mapMainContent .stopTitle h1 { 
+  font-family: "Hind", Verdana, sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  height: min-content;
+  color: white;
+}
+
+.mapMainContent .stopTitle p {
+  background-color: $drexelYellow;
+  color: black;
+  height: 26px;
+  width: 26px;
+  font-size: 18px;
+  border-radius: 100%;
+  text-align: center;
+  font-weight: 100;
+}
