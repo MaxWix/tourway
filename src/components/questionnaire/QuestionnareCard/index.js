@@ -64,7 +64,7 @@ const QuestionnareCard = ({ questions }) => {
         onSubmit={handleSubmit}
       >
         <div className={styles.questionCon}>
-          <div style={{ marginBottom: "1rem" }}>
+          <div>
             <p className={styles.questionLabel}>{currentQuestion.label}</p>
             {currentQuestion.hasAccordian ? (
               <Dropdown
@@ -89,11 +89,11 @@ const QuestionnareCard = ({ questions }) => {
             )}
           </div>
           <div className={styles.navigationButtons}>
-            {currentQuestionIndex > 0 && (
+            {/* {currentQuestionIndex > 0 && (
               <button type="button" onClick={handleBack}>
                 Back
               </button>
-            )}
+            )} */}
             {currentQuestionIndex < questions.length - 1 ? (
               <button
                 type="button"
