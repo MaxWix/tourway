@@ -32,6 +32,15 @@
 //     background-color: black;
 //   }
 
+:global(.universityBio) .scrollButtonsHolder  {
+    width: calc(100% - 1rem);
+    // width: 100%;
+}
+:global(.universityBio) .scrollButtonsHolder button  {
+    z-index: 4;
+}
+
+
 .scrollButtonsHolder button.active {
     background-color: $drexelBlue;
     color: white;

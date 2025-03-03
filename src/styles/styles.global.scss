@@ -205,10 +205,10 @@ h4 {
   color: #757575;
 }
 
-.universityBioContent {
-  color: $dark;
-  padding: 0 1rem 4rem;
-}
+// .universityBioContent {
+//   color: $dark;
+//   padding: 0 1rem 6rem;
+// }
 
 .loginSecondaryCTA a,
 .signUpSecondaryCTA a {
@@ -217,7 +217,7 @@ h4 {
 
 .universityBioContent {
   color: $dark;
-  padding: 1rem 1rem 4rem;
+  padding: 0 1rem 5rem;
 }
 
 .universityBioContent h4 {
@@ -250,6 +250,12 @@ h4 {
   width: calc(50% - 0.5rem);
   border-radius: 13px;
   object-fit: cover;
+}
+.overviewIMG img {
+  width: 100%;
+  border-radius: 13px;
+  object-fit: cover;
+  margin: 1rem 0;
 }
 
 .universityBioContent li {
