@@ -1,17 +1,19 @@
 .sliderContainer {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: start;
   width: 100%; // Full width
   margin: 1rem 0 0;
   justify-content: space-between;
+  gap: .5rem;
 }
 
 .imgDisplay {
-  width: 75%;
+  width: 100%;
   height: 300px; // Fixed height
   display: flex;
   overflow: hidden;
+  
 }
 
 .displayImage {
@@ -24,24 +26,30 @@
 
 .imgSelect {
   display: flex;
-  flex-direction: column;
-  // gap: .5rem;
+  flex-direction: row;
+  gap: .5rem;
   // margin-top: 10px;
   justify-content: start;
-  width:calc(25% - .5rem);
-  height: 300px;
-  overflow-y: scroll;
+  width:100%;
+  height: 80px;
+  overflow-x: scroll;
+  overflow-y:hidden;
+}
+
+
+.imgItem a, .imgItem {
+  height: 100%;
 }
 
 .imgItem img {
-  width: 100%;
-  height: auto;
+  height: 100%;
   aspect-ratio: 1/1;
   object-fit: cover;
   cursor: pointer;
   border: 2px solid transparent;
   transition: border 0.3s;
-  border-radius: 13px;;
+  border-radius: 13px;
+  
 }
 
 .imgItem.active img,

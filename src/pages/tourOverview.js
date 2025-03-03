@@ -19,6 +19,8 @@ import sendIcon from "../assets/icons/send.svg"
 const TourOverview = () => {
   const [formData, setFormData] = useState(null);
   const [matchedStops, setMatchedStops] = useState([]);
+  const [totalDuration, setTotalDuration] = useState(0);
+  const [stopCount, setStopCount] = useState(0);
 
   const navigate = useNavigate();
 
@@ -71,6 +73,10 @@ const TourOverview = () => {
       });
 
       setMatchedStops(matched); // Set the matched stops to state
+
+      const totalMinutes = matched.reduce((total, stop) => total + parseInt(stop.duration || 0), 0);
+      setTotalDuration(totalMinutes);
+      setStopCount(matched.length);
     }
   }, [formData, stops]);
 
@@ -118,7 +124,7 @@ const TourOverview = () => {
               onClick={() => navigate("#")}
             />
         </div>
-      <TourTimeandStops/>
+        <TourTimeandStops totalDuration={totalDuration} stopCount={stopCount} />
       <div className="StopsHolder">
         {matchedStops.length > 0 ? (
           matchedStops.map((stop, index) => (

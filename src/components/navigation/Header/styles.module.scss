@@ -66,7 +66,8 @@
 
 // BLUE SWOOP 
 
-.tourView .swoop img {
-    filter: invert(87%) sepia(16%) saturate(795%) hue-rotate(185deg) brightness(105%) contrast(93%);
+:global(.tourView:has(> .mapview)) .swoop img {
+    filter: brightness(0) saturate(100%) invert(89%) sepia(16%) saturate(848%) hue-rotate(181deg) brightness(103%) contrast(93%);
+    
 }
   

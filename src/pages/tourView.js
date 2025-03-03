@@ -77,7 +77,8 @@ const TourView = () => {
   }
 
   const currentStop = matchedStops[currentStopIndex + 1];
-
+  // Calculate the stop number for display (adding 1 because arrays are 0-indexed)
+  const currentStopNumber = currentStopIndex + 1; // 
   console.log(currentStop);
 
   return (
@@ -117,6 +118,7 @@ const TourView = () => {
               matchedStops={matchedStops}
               currentStopIndex={currentStopIndex}
               currentStop={currentStop}
+              currentStopNumber={currentStopNumber}
             />
             <div className="mapview">
               <Map
@@ -164,7 +166,7 @@ const TourView = () => {
             <button onClick={() => openCard(currentStop.tag)}>View Stop</button>
           </>
         ) : (
-          <TourCard tag={tagId} closeCard={closeCard} viewNextStop={viewNextStop} />
+          <TourCard tag={tagId} closeCard={closeCard} viewNextStop={viewNextStop} currentStopNumber={currentStopNumber} />
         )}
       </div>
     </APIProvider>
@@ -172,7 +174,7 @@ const TourView = () => {
 };
 
 // Directions component to handle map directions and contains directions text
-function Directions({ matchedStops, currentStopIndex, currentStop }) {
+function Directions({ matchedStops, currentStopIndex, currentStop, currentStopNumber  }) {
   const map = useMap();
   const isApiLoaded = useApiIsLoaded();
   const [directions, setDirections] = useState(null);
@@ -264,7 +266,7 @@ function Directions({ matchedStops, currentStopIndex, currentStop }) {
     <div>
     <div className="mapMainContent">
        <div class="stopTitle">
-        <div> <p>#</p> </div>
+        <div> <p>{currentStopNumber}</p> </div>
        <h1>{currentStop ? currentStop.title : "Next Stop"}</h1>
        </div>
    

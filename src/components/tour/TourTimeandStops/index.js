@@ -7,17 +7,17 @@ import stopsIcon from "../../../assets/icons/location-outline.svg"
 import { faClock } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const TourTimeandStops = () => {
+const TourTimeandStops = ({ totalDuration, stopCount }) => {
       const navigate = useNavigate();
     return (
         <div className={styles.TimeStopsHolder}>
         <div>
             <img src={stopsIcon}/>
-            <p>4 stops</p>
+            <p>{stopCount} stops</p>
         </div>
         <div>
              <FontAwesomeIcon icon={faClock} />
-            <p>40 mins</p>
+            <p>{totalDuration} mins</p>
         </div>
             <CircleButton
                 icon={<img src={editIcon} />}

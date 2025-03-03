@@ -16,7 +16,7 @@ import NotesIcon from "../../../assets/icons/notes-outline.svg";
 import Button from "../../common/Button";
 
 
-const TourCard = ({ tag, closeCard, viewNextStop }) => {
+const TourCard = ({ tag, closeCard, viewNextStop, currentStopNumber }) => {
   const [cardData, setCardData] = useState(null);
 
   const tagId = tag;
@@ -92,7 +92,7 @@ const TourCard = ({ tag, closeCard, viewNextStop }) => {
         <div className={styles.cardtitle}>
           <div className={styles.titleNum}>
             <div>
-              <p>#</p>
+              <p>{currentStopNumber}</p>
             </div>
             <div>
               <h1> {cardData?.title} </h1>
