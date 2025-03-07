@@ -35,7 +35,9 @@ h4 {
   // filter: drop-shadow(0px -4px 4px rgba(3, 70, 72, 0.15));
 }
 
-.mainContent > p, .mainContent > h1, .mainContent > h3 {
+.mainContent > p,
+.mainContent > h1,
+.mainContent > h3 {
   width: calc(100% - 2rem);
   margin: auto;
 }
@@ -198,7 +200,6 @@ h4 {
   align-items: center;
   gap: 0.5rem;
   color: #757575;
- 
 }
 
 .loginSecondaryCTA button p {
@@ -295,7 +296,6 @@ h4 {
   gap: 1rem;
   color: $dark;
   flex-direction: row;
-
 }
 
 // Choose custom or general tour
@@ -369,73 +369,6 @@ h4 {
   color: #000;
   font-size: 16px;
   font-family: "Hind", Verdana, sans-serif;
-}
-.TourOverview > .mainContent > .StopsHolder {
-  margin: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 1.5em;
-  position: relative;
-}
-
-.TourOverview .CatWraper {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.TourOverview .StopsHolder .CatWraper p {
-  background-color: $drexelBlue;
-  color: white;
-  border-radius: 30px;
-  font-size: 12px;
-  padding: 4px 12px;
-  display: inline;
-}
-.TourOverview .StopsHolder h3 {
-  font-weight: 500;
-}
-
-.TourOverview .StopsHolder > div {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  gap: 1rem;
-  align-items: flex-start;
-}
-
-.TourOverview .StopsHolder > div > p {
-  background-color: #ffde6b;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.TourOverview .StopsHolder > div > div {
-  width: calc(100% - 1rem - 30px);
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  // max-width: 100%;
-  gap: 1rem;
-}
-.TourOverview .verticalLine {
-  border-left: 2.5px dashed $drexelBlue;
-  // border-style: dashed;
-  position: absolute;
-  left: 14.5px;
-  height: calc(100% - 3rem);
-  top: 0;
-  z-index: -1;
-}
-.TourOverview .duration {
-  min-width: 50px;
 }
 
 // TOUR SUMMARY
@@ -561,7 +494,6 @@ h4 {
   text-align: center;
 }
 
-
 // Tour Content view
 
 .tourview {
@@ -575,12 +507,12 @@ h4 {
 
 // Map view
 .mapview {
-  height: 75vh;
+  height: 70vh;
   margin-top: -20px;
   // top: 10px;
 }
 
-.mapMainContent  {
+.mapMainContent {
   background-color: $lightBlue;
   // padding-top: 12px;
   border-radius: 0 40px 40px 0;
@@ -616,22 +548,22 @@ h4 {
 .mapMainContent .directions .compass {
   display: flex;
   flex-direction: row;
-  gap: .5rem;
-  // justify-content: center; 
-  align-items: center; 
+  gap: 0.5rem;
+  // justify-content: center;
+  align-items: center;
 }
 
 .mapMainContent .stopTitle {
-    display: flex;
-    flex-direction: row;
-    gap: .5rem;
-    align-items: center;
-    position: absolute;
-    top: -2.75rem;
-    left: 1.5rem;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  align-items: center;
+  position: absolute;
+  top: -2.75rem;
+  left: 1.5rem;
 }
 
-.mapMainContent .stopTitle h1 { 
+.mapMainContent .stopTitle h1 {
   font-family: "Hind", Verdana, sans-serif;
   font-weight: 500;
   font-size: 24px;

@@ -11,6 +11,7 @@ import {
   useApiIsLoaded,
 } from "@vis.gl/react-google-maps";
 
+import TourList from "../components/tour/TourList";
 import Header from "../components/navigation/Header";
 import blueBG from "../assets/imgs/DrexelBlue.svg";
 import Button from "../components/common/Button";
@@ -35,7 +36,6 @@ const TourView = () => {
 
   const apiUrl = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
   const mapId = process.env.REACT_APP_GOOGLE_MAPS_MAP_ID;
-
 
   // Load stops from localStorage
   useEffect(() => {
@@ -64,10 +64,16 @@ const TourView = () => {
     }
   };
 
+  const goToPreviousStop = () => {
+    if (matchedStops && currentStopIndex > 0) {
+      setCurrentStopIndex((prev) => prev - 1); // Move to the previous stop
+    }
+  };
+
   const viewNextStop = () => {
     // First, close the card to return to map view
     closeCard();
-    
+
     // Then, go to the next stop
     goToNextStop();
   };
@@ -78,7 +84,7 @@ const TourView = () => {
 
   const currentStop = matchedStops[currentStopIndex + 1];
   // Calculate the stop number for display (adding 1 because arrays are 0-indexed)
-  const currentStopNumber = currentStopIndex + 1; // 
+  const currentStopNumber = currentStopIndex + 1; //
   console.log(currentStop);
 
   return (
@@ -86,34 +92,34 @@ const TourView = () => {
       <div className="tourView">
         {isMapView ? (
           <>
-          <div class="cardtop">
-          <Header HeaderIMG={blueBG} height="148px" swoopTop="73px" />
-            <div className="backButton">
-              <CircleButton
-                icon={<FontAwesomeIcon icon={faArrowLeftLong} />}
-                bgColor="#DFF3F4"
-                iconColor="#07294d"
-                // onClick={() => closeCard()}
-              />
+            <div class="cardtop">
+              <Header HeaderIMG={blueBG} height="148px" swoopTop="73px" />
+              <div className="backButton">
+                <CircleButton
+                  icon={<FontAwesomeIcon icon={faArrowLeftLong} />}
+                  bgColor="#DFF3F4"
+                  iconColor="#07294d"
+                  // onClick={() => closeCard()}
+                />
+              </div>
+              <div className="voiceoverButton">
+                <CircleButton
+                  icon={<img src={VoiceoverIcon} alt="Voiceover Icon" />}
+                  bgColor="#DFF3F4"
+                  iconColor="#07294d"
+                  // onClick={() => navigate("#")}
+                />
+              </div>
+              <div className="exitButton">
+                <CircleButton
+                  icon={<FontAwesomeIcon icon={faXmark} />}
+                  bgColor="#ffc600"
+                  iconColor="#07294d"
+                  // onClick={() => navigate("#")}
+                />
+              </div>
             </div>
-            <div className="voiceoverButton">
-              <CircleButton
-                icon={<img src={VoiceoverIcon} alt="Voiceover Icon" />}
-                bgColor="#DFF3F4"
-                iconColor="#07294d"
-                // onClick={() => navigate("#")}
-              />
-            </div>
-            <div className="exitButton">
-              <CircleButton
-                icon={<FontAwesomeIcon icon={faXmark} />}
-                bgColor="#ffc600"
-                iconColor="#07294d"
-                // onClick={() => navigate("#")}
-              />
-            </div>          
-            </div>
-           
+
             <Directions
               matchedStops={matchedStops}
               currentStopIndex={currentStopIndex}
@@ -162,19 +168,34 @@ const TourView = () => {
             </div>
 
             {/* Buttons for Navigation */}
+            <button
+              onClick={goToPreviousStop}
+              disabled={currentStopIndex === 0}
+            >
+              Back
+            </button>
             <button onClick={goToNextStop}>Next Stop</button>
             <button onClick={() => openCard(currentStop.tag)}>View Stop</button>
+            <TourList
+              matchedStops={matchedStops}
+              handleStopClick={openCard}
+              currentStopIndex={currentStopIndex}
+            />
           </>
         ) : (
-          <TourCard tag={tagId} closeCard={closeCard} viewNextStop={viewNextStop} currentStopNumber={currentStopNumber} />
+          <TourCard
+            tag={tagId}
+            closeCard={closeCard}
+            viewNextStop={viewNextStop}
+            currentStopNumber={currentStopNumber}
+          />
         )}
       </div>
     </APIProvider>
   );
 };
 
-// Directions component to handle map directions and contains directions text
-function Directions({ matchedStops, currentStopIndex, currentStop, currentStopNumber  }) {
+function Directions({ matchedStops, currentStopIndex, currentStopNumber }) {
   const map = useMap();
   const isApiLoaded = useApiIsLoaded();
   const [directions, setDirections] = useState(null);
@@ -182,6 +203,25 @@ function Directions({ matchedStops, currentStopIndex, currentStop, currentStopNu
   const [steps, setSteps] = useState([]);
   const [nextStepIndex, setNextStepIndex] = useState(0);
   const [currentInstruction, setCurrentInstruction] = useState("");
+  const [userLocation, setUserLocation] = useState(null);
+
+  // Watch user's live location
+  useEffect(() => {
+    if (navigator.geolocation) {
+      const watchId = navigator.geolocation.watchPosition(
+        (position) => {
+          setUserLocation({
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          });
+        },
+        (error) => console.error("Error getting live location", error),
+        { enableHighAccuracy: true, maximumAge: 0 }
+      );
+
+      return () => navigator.geolocation.clearWatch(watchId); // Cleanup on unmount
+    }
+  }, []);
 
   // Request Directions from Google Maps API
   useEffect(() => {
@@ -190,17 +230,14 @@ function Directions({ matchedStops, currentStopIndex, currentStop, currentStopNu
       !isApiLoaded ||
       !matchedStops ||
       currentStopIndex === null ||
-      matchedStops.length < 2
+      !userLocation
     )
       return;
 
     const directionsService = new window.google.maps.DirectionsService();
 
-    const origin = matchedStops[currentStopIndex].Coordinates;
-    const destination =
-      currentStopIndex < matchedStops.length - 1
-        ? matchedStops[currentStopIndex + 1].Coordinates
-        : null;
+    const origin = userLocation; // Live location
+    const destination = matchedStops[currentStopIndex]?.Coordinates;
 
     if (!destination) return;
 
@@ -214,18 +251,19 @@ function Directions({ matchedStops, currentStopIndex, currentStop, currentStopNu
         if (status === window.google.maps.DirectionsStatus.OK) {
           setDirections(result);
         } else {
-          console.error(`Directions request failed due to ${status}`);
+          console.error(`Directions request failed: ${status}`);
         }
       }
     );
-  }, [map, isApiLoaded, matchedStops, currentStopIndex]);
+  }, [map, isApiLoaded, matchedStops, currentStopIndex, userLocation]); // Update when location or stop changes
 
-  // Create & Attach Directions Renderer to Map
+  // Render directions on the map
   useEffect(() => {
     if (!map || !isApiLoaded || !window.google || !directions) return;
 
     const renderer = new window.google.maps.DirectionsRenderer({
       map: map,
+      suppressMarkers: true, // Hides extra Google markers
     });
 
     renderer.setDirections(directions);
@@ -258,44 +296,40 @@ function Directions({ matchedStops, currentStopIndex, currentStop, currentStopNu
 
         setSteps(routeSteps);
         setCurrentInstruction(routeSteps[0]?.instruction || "Start Navigation");
+        setNextStepIndex(0);
       }
     }
   }, [directions]);
 
   return (
     <div>
-    <div className="mapMainContent">
-       <div class="stopTitle">
-        <div> <p>{currentStopNumber}</p> </div>
-       <h1>{currentStop ? currentStop.title : "Next Stop"}</h1>
-       </div>
-   
-      {directions && (
-      <div className="directions">      
-          {/* <h3>Next Direction</h3> */}
-          <div class="compass"> 
-          <DirectionArrow instruction={currentInstruction} />
-            <p dangerouslySetInnerHTML={{ __html: currentInstruction }}></p> 
-          </div>
+      <div className="mapMainContent">
+        <div class="stopTitle">
           <div>
-            <p>
-              Arriving at: {steps[nextStepIndex]?.arrivalTime || "Calculating..."}
-            </p>
+            <p>{currentStopNumber}</p>
           </div>
-          
+          <h1>{matchedStops[currentStopIndex]?.title || "Next Stop"}</h1>
         </div>
-     
-      )}
+
+        {directions && steps.length > 0 ? (
+          <div className="directions">
+            <div class="compass">
+              <DirectionArrow instruction={currentInstruction} />
+              <p dangerouslySetInnerHTML={{ __html: currentInstruction }}></p>
+            </div>
+            <div>
+              <p>
+                Arriving at:{" "}
+                {steps[nextStepIndex]?.arrivalTime || "Calculating..."}
+              </p>
+            </div>
+          </div>
+        ) : (
+          <p>Loading Directions...</p>
+        )}
+      </div>
     </div>
-    <CircleButton
-              icon={<img src={sendIcon} />}
-              bgColor="#07294D"
-              iconColor="#FFFFFF"
-              // onClick={() => navigate("#")}
-            />
-     </div>
   );
-  
 }
 
 export default TourView;

@@ -1,0 +1,80 @@
+@import "../../../styles/custom-mixins.scss";
+
+.StopsHolder {
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.5em;
+  position: relative;
+}
+
+.CatWraper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.CatWraper p {
+  background-color: $drexelBlue;
+  color: white;
+  border-radius: 30px;
+  font-size: 12px;
+  padding: 4px 12px;
+  display: inline;
+}
+.StopsHolder h3 {
+  font-weight: 500;
+}
+
+.StopsHolder > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.circle {
+  background-color: #ffde6b;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.blueCircle {
+  background-color: $drexelBlue;
+  color: white;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.StopsHolder > div > div {
+  width: calc(100% - 1rem - 30px);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  // max-width: 100%;
+  gap: 1rem;
+}
+.verticalLine {
+  border-left: 2.5px dashed $drexelBlue;
+  // border-style: dashed;
+  position: absolute;
+  left: 14.5px;
+  height: calc(100% - 3rem);
+  top: 0;
+  z-index: -1;
+}
+.duration {
+  min-width: 50px;
+}

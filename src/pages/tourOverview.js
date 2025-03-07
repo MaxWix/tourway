@@ -5,37 +5,39 @@ import { supabase } from "../supabaseClient";
 import CustomTourName from "../components/tour/CustomTourName";
 import Button from "../components/common/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
-import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowRightLong,
+  faArrowLeftLong,
+  faXmark,
+} from "@fortawesome/free-solid-svg-icons";
 import Header from "../components/navigation/Header";
 import mapPlaceholder from "../assets/imgs/map-placeholder.png";
 import CircleButton from "../components/common/CircleButton";
 import TourTimeandStops from "../components/tour/TourTimeandStops";
-import DrexelLogo from "../assets/imgs/drexel-logo.png"
-import sendIcon from "../assets/icons/send.svg"
-
+import DrexelLogo from "../assets/imgs/drexel-logo.png";
+import sendIcon from "../assets/icons/send.svg";
+import TourList from "../components/tour/TourList";
+import TourEditModal from "../components/modals/TourEditModal";
 
 const TourOverview = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false); // Modal state
   const [formData, setFormData] = useState(null);
   const [matchedStops, setMatchedStops] = useState([]);
   const [totalDuration, setTotalDuration] = useState(0);
   const [stopCount, setStopCount] = useState(0);
+  const [editMode, setEditMode] = useState(false); // Edit mode state
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Check if form data is stored in localStorage
     const storedFormData = localStorage.getItem("formData");
     if (storedFormData) {
-      // Parse the stored data and set it to state
       setFormData(JSON.parse(storedFormData));
     }
   }, []);
 
   useEffect(() => {
     if (formData) {
-      // Use formData to perform your query or other logic
       console.log("Querying with form data:", formData);
     }
   }, [formData]);
@@ -46,10 +48,9 @@ const TourOverview = () => {
     const fetchStops = async () => {
       const { data, error } = await supabase.from("stops").select("*");
       if (error) {
-        console.error("error fetching stops:", error);
+        console.error("Error fetching stops:", error);
       } else {
         setStops(data);
-        console.log(data);
       }
     };
 
@@ -58,13 +59,10 @@ const TourOverview = () => {
 
   useEffect(() => {
     if (formData && Object.keys(formData).length > 0) {
-      // Match tags from form data with stops
       const matched = [];
 
-      // Iterate over each key in formData
       Object.values(formData).forEach((tags) => {
         tags.forEach((tag) => {
-          // Find the matching stop for each tag
           const matchedStop = stops.find((stop) => stop.tag === tag);
           if (matchedStop) {
             matched.push(matchedStop);
@@ -72,22 +70,30 @@ const TourOverview = () => {
         });
       });
 
-      setMatchedStops(matched); // Set the matched stops to state
-
-      const totalMinutes = matched.reduce((total, stop) => total + parseInt(stop.duration || 0), 0);
+      setMatchedStops(matched);
+      const totalMinutes = matched.reduce(
+        (total, stop) => total + parseInt(stop.duration || 0),
+        0
+      );
       setTotalDuration(totalMinutes);
       setStopCount(matched.length);
     }
   }, [formData, stops]);
 
   const handleStopClick = (stopId) => {
-    console.log(stopId);
     localStorage.setItem("tagId", stopId);
     localStorage.setItem("matchedStops", JSON.stringify(matchedStops));
     navigate("/tour");
   };
 
-  console.log("TourOverview");
+  const handleDeleteClick = (stopId) => {
+    setMatchedStops(matchedStops.filter((stop) => stop.tagId !== stopId));
+  };
+
+  const handleEditClick = () => {
+    setEditMode((prevEditMode) => !prevEditMode); // Toggle edit mode
+  };
+
   return (
     <div className="TourOverview">
       <Header HeaderIMG={mapPlaceholder} height="220px" swoopTop="143px" />
@@ -99,74 +105,62 @@ const TourOverview = () => {
           onClick={() => navigate("../university")}
         />
       </div>
-      {/* <div className="exitButton">
-        <CircleButton
-          icon={<FontAwesomeIcon icon={faXmark} />}
-          bgColor="#ffc600"
-          iconColor="#07294d"
-          onClick={() => navigate("#")}
-        />
-      </div> */}
       <div className="mainContent">
-      {/* <CustomTourName /> */}
-      <div className="universityTourOv">
+        <div className="universityTourOv">
+          <div>
+            <img src={DrexelLogo} />
             <div>
-              <img src={DrexelLogo}/>
-              <div>
-                  <h4>Drexel University</h4>
-                  <p>Custom Campus Tour</p>
-              </div>
+              <h4>Drexel University</h4>
+              <p>Custom Campus Tour</p>
             </div>
-            <CircleButton
-              icon={<img src={sendIcon} />}
-              bgColor="#D0E4F6"
-              iconColor="#07294D"
-              onClick={() => navigate("#")}
-            />
+          </div>
+          <CircleButton
+            icon={<img src={sendIcon} />}
+            bgColor="#D0E4F6"
+            iconColor="#07294D"
+            onClick={() => navigate("#")}
+          />
         </div>
-        <TourTimeandStops totalDuration={totalDuration} stopCount={stopCount} />
-      <div className="StopsHolder">
-        {matchedStops.length > 0 ? (
-          matchedStops.map((stop, index) => (
-            <div
-              key={stop.tagId}
-              id={stop.tag}
-              onClick={() => handleStopClick(stop.tag)}
-              style={{ cursor: "pointer" }}
-            >
-              <p>{index + 1}</p>
-              <div>
-                <div>
-                  <h3>{stop.subtitle}</h3>
-                  {/* <p>{stop.title}</p> */}
-                  <div className="CatWraper">
-                    {stop.categories.map((category, index) => (
-                      <p key={index}>{category}</p>
-                    ))}
-                  </div>
-                </div>
-                <div>
-                  <p className="duration">{stop.duration} mins</p>
-                </div>
-              </div>
-            </div>
-          ))
-        ) : (
-          <p>No matching stops found based on your selections.</p>
-        )}
-        <div className="verticalLine">&nbsp;</div>
-     
-      </div>
-      <div className="CTAsingle">
-      <Button
-          text="START TOUR"
-          icon={<FontAwesomeIcon icon={faArrowRightLong} />}
-          bgColor="#07294d"
-          borderColor="#07294d"
-          onClick={handleStopClick}
+        <TourTimeandStops
+          totalDuration={totalDuration}
+          stopCount={stopCount}
+          onEditClick={handleEditClick} // Toggle edit mode
         />
+        <TourList
+          matchedStops={matchedStops}
+          handleStopClick={handleStopClick}
+          editMode={editMode}
+          onDeleteClick={handleDeleteClick}
+          hasEditMode
+        />
+        <div className="CTAsingle">
+          <Button
+            text="START TOUR"
+            icon={<FontAwesomeIcon icon={faArrowRightLong} />}
+            bgColor="#07294d"
+            borderColor="#07294d"
+            onClick={handleStopClick}
+          />
         </div>
-    </div>
+        {/* Add Stop Button */}
+        {editMode && (
+          <Button
+            text="Add Stop"
+            icon={<FontAwesomeIcon icon={faXmark} />}
+            bgColor="#07294d"
+            borderColor="#07294d"
+            onClick={() => setIsModalOpen(true)} // Open tour edit modal
+          />
+        )}
+      </div>
+
+      {/* Modal */}
+      {isModalOpen && (
+        <TourEditModal
+          onClose={() => setIsModalOpen(false)}
+          matchedStops={matchedStops}
+        />
+      )}
     </div>
   );
 };
