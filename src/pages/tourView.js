@@ -119,7 +119,7 @@ const TourView = () => {
 
   
 
-  const currentStop = matchedStops[currentStopIndex + 1];
+  const currentStop = matchedStops[currentStopIndex];
   // Calculate the stop number for display (adding 1 because arrays are 0-indexed)
   const currentStopNumber = currentStopIndex + 1; //
   console.log(currentStop);
