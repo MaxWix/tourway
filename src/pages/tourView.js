@@ -17,10 +17,14 @@ import blueBG from "../assets/imgs/DrexelBlue.svg";
 import Button from "../components/common/Button";
 import CircleButton from "../components/common/CircleButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeftLong, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeftLong, faXmark,faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
 import VoiceoverIcon from "../assets/icons/voiceover.svg";
-import sendIcon from "../assets/icons/send-white.svg";
+import sendIcon from "../assets/icons/share.svg";
+import arrowup from "../assets/icons/arrowup.svg";
 import DirectionArrow from "../components/navigation/DirectionArrow";
+import TourTimeandStops from "../components/tour/TourTimeandStops";
+import { useNavigate } from "react-router-dom";
+
 
 // Main TourView component
 const TourView = () => {
@@ -33,6 +37,9 @@ const TourView = () => {
     lng: -75.19000576731226,
   });
   const [currentStopIndex, setCurrentStopIndex] = useState(0);
+  const [totalDuration, setTotalDuration] = useState(0);
+  const [stopCount, setStopCount] = useState(0);
+  const [editMode, setEditMode] = useState(false);
 
   const apiUrl = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
   const mapId = process.env.REACT_APP_GOOGLE_MAPS_MAP_ID;
@@ -70,6 +77,16 @@ const TourView = () => {
     }
   };
 
+  const handleStopClick = (stopId) => {
+    localStorage.setItem("tagId", stopId);
+    localStorage.setItem("matchedStops", JSON.stringify(matchedStops));
+    navigate("/tour");
+  };
+
+  const handleDeleteClick = (stopId) => {
+    setMatchedStops(matchedStops.filter((stop) => stop.tagId !== stopId));
+  };
+
   const viewNextStop = () => {
     // First, close the card to return to map view
     closeCard();
@@ -78,9 +95,29 @@ const TourView = () => {
     goToNextStop();
   };
 
+  const handleEditClick = () => {
+    setEditMode((prevEditMode) => !prevEditMode);
+  };
+
+    const navigate = useNavigate();
+
+  useEffect(() => {
+    if (matchedStops && matchedStops.length > 0) {
+      // Calculate total duration from matched stops
+      const totalMinutes = matchedStops.reduce(
+        (total, stop) => total + parseInt(stop.duration || 0),
+        0
+      );
+      setTotalDuration(totalMinutes);
+      setStopCount(matchedStops.length);
+    }
+  }, [matchedStops]);
+
   if (!matchedStops || matchedStops.length < 2) {
     return <p>Loading stop details...</p>;
   }
+
+  
 
   const currentStop = matchedStops[currentStopIndex + 1];
   // Calculate the stop number for display (adding 1 because arrays are 0-indexed)
@@ -97,7 +134,7 @@ const TourView = () => {
               <div className="backButton">
                 <CircleButton
                   icon={<FontAwesomeIcon icon={faArrowLeftLong} />}
-                  bgColor="#DFF3F4"
+                  bgColor="#D0E4F6"
                   iconColor="#07294d"
                   // onClick={() => closeCard()}
                 />
@@ -105,7 +142,7 @@ const TourView = () => {
               <div className="voiceoverButton">
                 <CircleButton
                   icon={<img src={VoiceoverIcon} alt="Voiceover Icon" />}
-                  bgColor="#DFF3F4"
+                  bgColor="#D0E4F6"
                   iconColor="#07294d"
                   // onClick={() => navigate("#")}
                 />
@@ -113,7 +150,7 @@ const TourView = () => {
               <div className="exitButton">
                 <CircleButton
                   icon={<FontAwesomeIcon icon={faXmark} />}
-                  bgColor="#ffc600"
+                  bgColor="#D0E4F6"
                   iconColor="#07294d"
                   // onClick={() => navigate("#")}
                 />
@@ -168,19 +205,54 @@ const TourView = () => {
             </div>
 
             {/* Buttons for Navigation */}
-            <button
+            <button className="testingBtns"
               onClick={goToPreviousStop}
               disabled={currentStopIndex === 0}
             >
               Back
             </button>
-            <button onClick={goToNextStop}>Next Stop</button>
-            <button onClick={() => openCard(currentStop.tag)}>View Stop</button>
+            <button className="testingBtns" onClick={goToNextStop}>Next Stop</button>
+            <button className="testingBtns" onClick={() => openCard(currentStop.tag)}>View Stop</button>
+            <div className="onScroll">
+            <div className="CTA">
+              <Button
+              text="VIEW STOP"
+              icon={<FontAwesomeIcon icon={faArrowRightLong} />}
+              bgColor="#FFD74D"
+              borderColor="#FFD74D"
+                textColor="#000000"
+                iconColor="#000000"
+                onClick={() => openCard(currentStop.tag)}
+            />
+        </div>
+            <div className="onmap">
+              <span>
+                <img src={arrowup} alt="arrow up"></img>
+              </span>
+              <div className="NameShare"> 
+                <h3> Drexel University </h3>
+                <CircleButton
+                  icon={<img src={sendIcon} />}
+                  bgColor="#D0E4F6"
+                  iconColor="#07294D"
+                  // onClick={() => navigate("#")}
+                />
+              </div>
+              <TourTimeandStops
+                totalDuration={totalDuration}
+                stopCount={stopCount}
+                onEditClick={handleEditClick} // Toggle edit mode
+                editMode={editMode}
+              />
             <TourList
               matchedStops={matchedStops}
-              handleStopClick={openCard}
-              currentStopIndex={currentStopIndex}
+              handleStopClick={handleStopClick}
+              editMode={editMode}
+              onDeleteClick={handleDeleteClick}
+              hasEditMode
             />
+            </div>
+            </div>
           </>
         ) : (
           <TourCard

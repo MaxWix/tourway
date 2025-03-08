@@ -291,6 +291,8 @@ h4 {
   width: 100%;
 }
 
+
+
 .mainContentLogin,
 .mainContentSignUp {
   padding-bottom: 1rem;
@@ -505,8 +507,9 @@ h4 {
 
 // Tour Content view
 
-.tourview {
+.tourView {
   position: relative;
+  min-height: 100vh;
 }
 
 .tourCardContent {
@@ -517,14 +520,15 @@ h4 {
 // Map view
 .mapview {
   height: 70vh;
-  margin-top: -20px;
+  // margin-top: -20px;
+  width: 100%;
+  position: absolute;
+  top: 17vh;
   // top: 10px;
 }
 
 .mapMainContent {
-  background-color: $lightBlue;
   // padding-top: 12px;
-  border-radius: 0 40px 40px 0;
   z-index: 1;
   position: absolute;
   top: 180px;
@@ -533,9 +537,7 @@ h4 {
   z-index: 1;
   overflow: unset;
   top: 110px;
-  color: black;
-  padding: 1rem 0;
-  filter: drop-shadow(#00000090 0 8px 4px);
+ 
 }
 .mapMainContent > * {
   width: calc(100% - 2rem);
@@ -543,10 +545,16 @@ h4 {
 }
 .mapMainContent .directions {
   display: flex;
+  width: 100%;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
+  padding: 1rem;
+  border-radius: 0 40px 40px 0;
+  background-color: $lightBlue;
+  color: black;
+  filter: drop-shadow(#00000090 0 8px 4px);
 }
 .mapMainContent .directions > div > p {
   font-size: 14px;
@@ -570,6 +578,7 @@ h4 {
   position: absolute;
   top: -2.75rem;
   left: 1.5rem;
+  filter: unset;
 }
 
 .mapMainContent .stopTitle h1 {
@@ -589,4 +598,77 @@ h4 {
   border-radius: 100%;
   text-align: center;
   font-weight: 100;
+}
+
+.mapMainContent .stopTitle + p {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 0 40px 40px 0;
+  background-color: $lightBlue;
+  color: black;
+  filter: drop-shadow(#00000090 0 8px 4px);
+}
+
+.onmap > span > img {
+  margin: 0 auto;
+  display: block;
+}
+
+.onmap .NameShare {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem;
+}
+.onmap .NameShare h3 {
+  color: white;
+  font-size: 24px;
+}
+
+.onmap {
+  // position: sticky;
+
+  // top: 500px;
+  position: absolute;
+  // bottom: -50%;
+  top: calc(100% - 15vh);
+
+  z-index: 2;
+  height: fit-content;
+}
+
+.onScroll {
+  position: absolute;
+  bottom: 0;
+  height: 650px;
+  width: 100%;
+  overflow: scroll;
+}
+
+.onScroll .CTA {
+  position: absolute;
+  top: calc(100% - 23vh);
+}
+
+.testingBtns {
+  z-index: 10;
+  position: absolute;
+  top: 25%
+}
+.testingBtns:first-of-type { 
+  left: 10px;
+}
+
+.testingBtns:nth-of-type(2) { 
+  left: 70px;
+}
+
+.testingBtns:nth-of-type(3) { 
+  left: 150px;
 }

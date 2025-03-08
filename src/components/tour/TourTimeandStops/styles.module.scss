@@ -24,3 +24,18 @@
 .TimeStopsHolder > div img {
     max-height: 20px;
 }
+
+:global(.onmap) .TimeStopsHolder p {
+    color: white;
+}
+:global(.onmap) .TimeStopsHolder path, :global(.onmap) .TimeStopsHolder img  {
+    fill: white;
+    stroke: white;
+}
+:global(.onmap) .TimeStopsHolder button svg path {
+    fill: $drexelBlue;
+}
+
+:global(.onmap) .TimeStopsHolder > div > img {
+    filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(0%) hue-rotate(306deg) brightness(103%) contrast(101%);
+}

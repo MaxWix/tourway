@@ -27,6 +27,9 @@
 }
 .StopsHolder h3 {
   font-weight: 500;
+  color: black;
+  font-family: "Hind", Verdana, sans-serif;
+  font-size: 16px;
 }
 
 .StopsHolder > div {
@@ -46,6 +49,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  color: black;
+  z-index: 1;
 }
 
 .blueCircle {
@@ -57,6 +62,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
 }
 .numNamCat {
   display: flex;
@@ -96,4 +102,30 @@
 }
 .duration {
   min-width: 50px;
+  color: black;
+}
+
+
+// ON MAP 
+:global(.onmap) {
+  width: 100%;
+  background-color: $drexelBlue;
+  padding: 1rem 0;
+  border-radius: 20px 20px 0 0;
+}
+
+:global(.onmap) .StopsHolder h3, :global(.onmap) .StopsHolder .duration  { 
+  color: white;
+  // background-color: blue;
+
+}
+
+:global(.onmap) .verticalLine { 
+  border-left: 2.5px dashed white;
+  z-index: 0;
+}
+
+:global(.onmap) .CatWraper p { 
+  color: black;
+  background-color: $lightBlue;
 }
