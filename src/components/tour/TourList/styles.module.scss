@@ -39,9 +39,10 @@
 
 .circle {
   background-color: #ffde6b;
-  border-radius: 50%;
+  border-radius: 25px;
   width: 30px;
   height: 30px;
+  min-width: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -57,15 +58,33 @@
   justify-content: center;
   align-items: center;
 }
+.numNamCat {
+  display: flex;
+    flex-direction: row;
+    gap: 1em;
+ 
+}
 
 .StopsHolder > div > div {
-  width: calc(100% - 1rem - 30px);
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  // max-width: 100%;
-  gap: 1rem;
-}
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    gap:1em;
+ }
+
+ .deleteButton {
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFCCC5;
+  border: none;
+ }
+
 .verticalLine {
   border-left: 2.5px dashed $drexelBlue;
   // border-style: dashed;

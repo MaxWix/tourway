@@ -12,10 +12,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Header from "../components/navigation/Header";
 import mapPlaceholder from "../assets/imgs/map-placeholder.png";
+import addStopsIcon from "../assets/icons/add_stops.svg";
 import CircleButton from "../components/common/CircleButton";
 import TourTimeandStops from "../components/tour/TourTimeandStops";
 import DrexelLogo from "../assets/imgs/drexel-logo.png";
-import sendIcon from "../assets/icons/send.svg";
+import sendIcon from "../assets/icons/share.svg";
 import TourList from "../components/tour/TourList";
 import TourEditModal from "../components/modals/TourEditModal";
 
@@ -125,6 +126,7 @@ const TourOverview = () => {
           totalDuration={totalDuration}
           stopCount={stopCount}
           onEditClick={handleEditClick} // Toggle edit mode
+          editMode={editMode}
         />
         <TourList
           matchedStops={matchedStops}
@@ -133,7 +135,20 @@ const TourOverview = () => {
           onDeleteClick={handleDeleteClick}
           hasEditMode
         />
-        <div className="CTAsingle">
+        <div className="CTAdouble">
+
+          {/* Add Stop Button */}
+        {editMode && (
+          <Button
+            text="ADD STOPS"
+            icon={<img src={addStopsIcon} />}
+            bgColor="#FFFFFF"
+            borderColor="#07294d"
+            textColor="#07294d"
+            onClick={() => setIsModalOpen(true)} // Open tour edit modal
+          />
+        )}
+
           <Button
             text="START TOUR"
             icon={<FontAwesomeIcon icon={faArrowRightLong} />}
@@ -141,17 +156,9 @@ const TourOverview = () => {
             borderColor="#07294d"
             onClick={handleStopClick}
           />
+          
         </div>
-        {/* Add Stop Button */}
-        {editMode && (
-          <Button
-            text="Add Stop"
-            icon={<FontAwesomeIcon icon={faXmark} />}
-            bgColor="#07294d"
-            borderColor="#07294d"
-            onClick={() => setIsModalOpen(true)} // Open tour edit modal
-          />
-        )}
+        
       </div>
 
       {/* Modal */}

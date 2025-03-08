@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./styles.module.scss";
+import trashIcon from "../../../assets/icons/trash.svg"
 
 const TourList = ({
   matchedStops,
@@ -15,9 +16,10 @@ const TourList = ({
         matchedStops.map((stop, index) => (
           <div key={stop.tagId} id={stop.tag}>
             <div
-              onClick={() => handleStopClick(stop.tag)}
-              style={{ cursor: "pointer" }}
+              
+              
             >
+              <div className={styles.numNamCat} onClick={() => handleStopClick(stop.tag)}>
               <p
                 className={
                   currentStopIndex
@@ -36,19 +38,22 @@ const TourList = ({
                     <p key={index}>{category}</p>
                   ))}
                 </div>
+                </div>
               </div>
               <div>
-                <p className={styles.duration}>{stop.duration} mins</p>
+                {hasEditMode && editMode ? (
+                  <button
+                    className={styles.deleteButton}
+                    onClick={() => onDeleteClick(stop.tagId)}
+                  >
+                    <img src={trashIcon}/>
+                  </button>
+                ) : (
+                  <p className={styles.duration}>{stop.duration} mins</p>
+                )}
               </div>
             </div>
-            {hasEditMode && editMode && (
-              <button
-                className={styles.deleteButton}
-                onClick={() => onDeleteClick(stop.tagId)}
-              >
-                Delete
-              </button>
-            )}
+            
           </div>
         ))
       ) : (

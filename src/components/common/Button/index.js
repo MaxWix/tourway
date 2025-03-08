@@ -21,6 +21,10 @@ const Button = ({
     border: `2px solid ${borderColor}`,
   };
 
+  const textStyle = {
+    color: textColor,
+  };
+
   const iconStyle = {
     color: iconColor,
   };
@@ -29,7 +33,7 @@ const Button = ({
     <div className={styles.CTAButtonContainer}>
       <a href={action} className={styles.CTAButtonLink} onClick={onClick}>
         <button className={styles.CTAButton} style={buttonStyle}>
-          {text && <p className={styles.text}>{text}</p>}
+          {text && <p className={styles.text} style={textStyle}>{text}</p>}
           {icon && (
             <span className={styles.icon} style={iconStyle}>
               {icon}

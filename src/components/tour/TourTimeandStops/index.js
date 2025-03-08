@@ -4,9 +4,10 @@ import CircleButton from "../../common/CircleButton";
 import editIcon from "../../../assets/icons/edit.svg";
 import stopsIcon from "../../../assets/icons/location-outline.svg";
 import { faClock } from "@fortawesome/free-regular-svg-icons";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const TourTimeandStops = ({ totalDuration, stopCount, onEditClick }) => {
+const TourTimeandStops = ({ totalDuration, stopCount, onEditClick, editMode }) => {
   return (
     <div className={styles.TimeStopsHolder}>
       <div>
@@ -17,12 +18,24 @@ const TourTimeandStops = ({ totalDuration, stopCount, onEditClick }) => {
         <FontAwesomeIcon icon={faClock} />
         <p>{totalDuration} mins</p>
       </div>
-      <CircleButton
-        icon={<img src={editIcon} />}
-        bgColor="#D0E4F6"
-        iconColor="#07294D"
-        onClick={onEditClick}
-      />
+      {editMode ? (
+          <CircleButton
+          icon={<FontAwesomeIcon icon={faXmark} />}
+          bgColor="#FFD74D"
+          iconColor="#07294D"
+          onClick={onEditClick}
+        />
+      )
+      : (
+        <CircleButton
+            icon={<img src={editIcon} />}
+            bgColor="#FFD74D"
+            iconColor="#07294D"
+            onClick={onEditClick}
+          />
+        )
+      }
+      
     </div>
   );
 };

@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import styles from "./styles.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faXmark, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { supabase } from "../../../supabaseClient";
 import Dropdown from "../../questionnaire/Dropdown";
+import CircleButton from "../../common/CircleButton";
+import addStopsIcon from "../../../assets/icons/add_stops-white.svg";
 
 const TourEditModal = ({ onClose, matchedStops }) => {
   const [questions, setQuestions] = useState([]);
@@ -58,12 +60,27 @@ const TourEditModal = ({ onClose, matchedStops }) => {
 
   return (
     <div className={styles.modalOverlay}>
-      <div className={styles.modalContent}>
-        <button className={styles.closeButton} onClick={onClose}>
-          <FontAwesomeIcon icon={faXmark} />
-        </button>
-        <h2>Edit Tour</h2>
+      <div className={styles.modalCon}>
+        <div className={styles.modalHeader}>
+          <div>
+            <img src={addStopsIcon} />
+          <h2>Add Stops</h2>
+          </div>
+          
 
+          <CircleButton
+          icon={<FontAwesomeIcon icon={faXmark}/>}
+          bgColor="#D0E4F6"
+          iconColor="#07294D"
+          onClick={onClose}
+          />
+
+        </div>
+        <div className={styles.modalContent}>
+          <div className={styles.stopsSearchBar}>
+              <input type="text" placeholder="Search for stops to add" />
+              <FontAwesomeIcon className={styles.searchIcon} icon={faMagnifyingGlass} />
+          </div>
         {/* Display Dropdown Only if There are Questions */}
         {questions.length > 0 ? (
           <Dropdown
@@ -74,6 +91,8 @@ const TourEditModal = ({ onClose, matchedStops }) => {
         ) : (
           <p>Loading...</p>
         )}
+        </div>
+        <button> SAVE CHANGES</button>
       </div>
     </div>
   );
