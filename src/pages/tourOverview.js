@@ -72,14 +72,22 @@ const TourOverview = () => {
       });
 
       setMatchedStops(matched);
-      const totalMinutes = matched.reduce(
+    }
+  }, [formData, stops]);
+
+  useEffect(() => {
+    if (matchedStops.length > 0) {
+      const totalMinutes = matchedStops.reduce(
         (total, stop) => total + parseInt(stop.duration || 0),
         0
       );
       setTotalDuration(totalMinutes);
-      setStopCount(matched.length);
+      setStopCount(matchedStops.length);
+    } else {
+      setTotalDuration(0);
+      setStopCount(0);
     }
-  }, [formData, stops]);
+  }, [matchedStops]); // Only re-run when matchedStops changes
 
   const handleStopClick = (stopId) => {
     localStorage.setItem("tagId", stopId);
@@ -93,6 +101,16 @@ const TourOverview = () => {
 
   const handleEditClick = () => {
     setEditMode((prevEditMode) => !prevEditMode); // Toggle edit mode
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+
+    // Reload formData from localStorage
+    const updatedFormData = localStorage.getItem("formData");
+    if (updatedFormData) {
+      setFormData(JSON.parse(updatedFormData));
+    }
   };
 
   return (
@@ -136,18 +154,17 @@ const TourOverview = () => {
           hasEditMode
         />
         <div className="CTAdouble">
-
           {/* Add Stop Button */}
-        {editMode && (
-          <Button
-            text="ADD STOPS"
-            icon={<img src={addStopsIcon} />}
-            bgColor="#FFFFFF"
-            borderColor="#07294d"
-            textColor="#07294d"
-            onClick={() => setIsModalOpen(true)} // Open tour edit modal
-          />
-        )}
+          {editMode && (
+            <Button
+              text="ADD STOPS"
+              icon={<img src={addStopsIcon} />}
+              bgColor="#FFFFFF"
+              borderColor="#07294d"
+              textColor="#07294d"
+              onClick={() => setIsModalOpen(true)} // Open tour edit modal
+            />
+          )}
 
           <Button
             text="START TOUR"
@@ -156,17 +173,12 @@ const TourOverview = () => {
             borderColor="#07294d"
             onClick={handleStopClick}
           />
-          
         </div>
-        
       </div>
 
       {/* Modal */}
       {isModalOpen && (
-        <TourEditModal
-          onClose={() => setIsModalOpen(false)}
-          matchedStops={matchedStops}
-        />
+        <TourEditModal onClose={handleModalClose} matchedStops={matchedStops} />
       )}
     </div>
   );
