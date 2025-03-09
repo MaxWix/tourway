@@ -1,0 +1,24 @@
+.shareModalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #07294d80;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.shareModalCon {
+  background: white;
+  width: calc(100% - 2rem);
+  max-width: 375px;
+  height: fit-content;
+  // padding: 20px;
+  border-radius: 10px;
+  position: relative;
+  overflow-y: auto;
+  z-index: 101;
+}

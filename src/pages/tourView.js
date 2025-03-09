@@ -17,14 +17,18 @@ import blueBG from "../assets/imgs/DrexelBlue.svg";
 import Button from "../components/common/Button";
 import CircleButton from "../components/common/CircleButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeftLong, faXmark,faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowLeftLong,
+  faXmark,
+  faArrowRightLong,
+} from "@fortawesome/free-solid-svg-icons";
 import VoiceoverIcon from "../assets/icons/voiceover.svg";
 import sendIcon from "../assets/icons/share.svg";
 import arrowup from "../assets/icons/arrowup.svg";
 import DirectionArrow from "../components/navigation/DirectionArrow";
 import TourTimeandStops from "../components/tour/TourTimeandStops";
 import { useNavigate } from "react-router-dom";
-
+import ShareModal from "../components/modals/ShareModal";
 
 // Main TourView component
 const TourView = () => {
@@ -40,6 +44,7 @@ const TourView = () => {
   const [totalDuration, setTotalDuration] = useState(0);
   const [stopCount, setStopCount] = useState(0);
   const [editMode, setEditMode] = useState(false);
+  const [isShareModalOpen, setIsShareModalOpen] = useState(false);
 
   const apiUrl = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
   const mapId = process.env.REACT_APP_GOOGLE_MAPS_MAP_ID;
@@ -99,7 +104,7 @@ const TourView = () => {
     setEditMode((prevEditMode) => !prevEditMode);
   };
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (matchedStops && matchedStops.length > 0) {
@@ -117,12 +122,13 @@ const TourView = () => {
     return <p>Loading stop details...</p>;
   }
 
-  
-
   const currentStop = matchedStops[currentStopIndex];
   // Calculate the stop number for display (adding 1 because arrays are 0-indexed)
   const currentStopNumber = currentStopIndex + 1; //
-  console.log(currentStop);
+
+  const handleCloseShareModal = () => {
+    setIsShareModalOpen(false);
+  };
 
   return (
     <APIProvider apiKey={apiUrl}>
@@ -205,54 +211,65 @@ const TourView = () => {
             </div>
 
             {/* Buttons for Navigation */}
-            <button className="testingBtns"
+            <button
+              className="testingBtns"
               onClick={goToPreviousStop}
               disabled={currentStopIndex === 0}
             >
               Back
             </button>
-            <button className="testingBtns" onClick={goToNextStop}>Next Stop</button>
-            <button className="testingBtns" onClick={() => openCard(currentStop.tag)}>View Stop</button>
+            <button className="testingBtns" onClick={goToNextStop}>
+              Next Stop
+            </button>
+            <button
+              className="testingBtns"
+              onClick={() => openCard(currentStop.tag)}
+            >
+              View Stop
+            </button>
             <div className="onScroll">
-            <div className="CTA">
-              <Button
-              text="VIEW STOP"
-              icon={<FontAwesomeIcon icon={faArrowRightLong} />}
-              bgColor="#FFD74D"
-              borderColor="#FFD74D"
-                textColor="#000000"
-                iconColor="#000000"
-                onClick={() => openCard(currentStop.tag)}
-            />
-        </div>
-            <div className="onmap">
-              <span>
-                <img src={arrowup} alt="arrow up"></img>
-              </span>
-              <div className="NameShare"> 
-                <h3> Drexel University </h3>
-                <CircleButton
-                  icon={<img src={sendIcon} />}
-                  bgColor="#D0E4F6"
-                  iconColor="#07294D"
-                  // onClick={() => navigate("#")}
+              <div className="CTA">
+                <Button
+                  text="VIEW STOP"
+                  icon={<FontAwesomeIcon icon={faArrowRightLong} />}
+                  bgColor="#FFD74D"
+                  borderColor="#FFD74D"
+                  textColor="#000000"
+                  iconColor="#000000"
+                  onClick={() => openCard(currentStop.tag)}
                 />
               </div>
-              <TourTimeandStops
-                totalDuration={totalDuration}
-                stopCount={stopCount}
-                onEditClick={handleEditClick} // Toggle edit mode
-                editMode={editMode}
-              />
-            <TourList
-              matchedStops={matchedStops}
-              handleStopClick={handleStopClick}
-              editMode={editMode}
-              onDeleteClick={handleDeleteClick}
-              hasEditMode
-            />
+              <div className="onmap">
+                <span>
+                  <img src={arrowup} alt="arrow up"></img>
+                </span>
+                <div className="NameShare">
+                  <h3> Drexel University </h3>
+                  <CircleButton
+                    icon={<img src={sendIcon} />}
+                    bgColor="#D0E4F6"
+                    iconColor="#07294D"
+                    onClick={() => setIsShareModalOpen(true)}
+                  />
+                </div>
+                <TourTimeandStops
+                  totalDuration={totalDuration}
+                  stopCount={stopCount}
+                  onEditClick={handleEditClick} // Toggle edit mode
+                  editMode={editMode}
+                />
+                <TourList
+                  matchedStops={matchedStops}
+                  handleStopClick={handleStopClick}
+                  editMode={editMode}
+                  onDeleteClick={handleDeleteClick}
+                  hasEditMode
+                />
+              </div>
             </div>
-            </div>
+            {isShareModalOpen && (
+              <ShareModal closeShareModal={handleCloseShareModal} />
+            )}
           </>
         ) : (
           <TourCard
