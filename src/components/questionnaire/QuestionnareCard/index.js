@@ -6,6 +6,10 @@ import Radio from "../Radio";
 import styles from "./styles.module.scss";
 import ProgressBar from "../ProgressBar";
 import Dropdown from "../Dropdown";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faArrowRightLong,
+} from "@fortawesome/free-solid-svg-icons";
 
 const QuestionnareCard = ({ questions }) => {
   const navigate = useNavigate();
@@ -100,10 +104,10 @@ const QuestionnareCard = ({ questions }) => {
                 className={styles.nextButton}
                 onClick={handleNext}
               >
-                Next
+                Next <span> <FontAwesomeIcon icon={faArrowRightLong}/> </span>
               </button>
             ) : (
-              <button type="submit">Submit</button>
+              <button type="submit">Submit <span> <FontAwesomeIcon icon={faArrowRightLong}/></span></button>
             )}
           </div>
         </div>

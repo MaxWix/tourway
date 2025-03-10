@@ -62,19 +62,36 @@ const TourOverview = () => {
   }, []);
 
   useEffect(() => {
-    if (formData && Object.keys(formData).length > 0) {
-      const matched = [];
-
+    if (formData && Object.keys(formData).length > 0 && stops.length > 0) {
+      // Will hold unique stops by their tag
+      const uniqueStopsByTag = new Map();
+  
       Object.values(formData).forEach((tags) => {
         tags.forEach((tag) => {
-          const matchedStop = stops.find((stop) => stop.tag === tag);
-          if (matchedStop) {
-            matched.push(matchedStop);
+          // Try to extract school prefix (for major-based matching)
+          const schoolPrefix = tag.match(/^[A-Z]+/)?.[0];
+          
+          if (schoolPrefix && /^[A-Z]+[a-z]+/.test(tag)) {
+            // This is a major ID with school prefix pattern
+            const matchedStop = stops.find((stop) => stop.tag === schoolPrefix);
+            if (matchedStop) {
+              uniqueStopsByTag.set(matchedStop.tagId, matchedStop);
+            }
+          } else {
+            // This is a regular tag (non-major question) - use original matching
+            const matchedStop = stops.find((stop) => stop.tag === tag);
+            if (matchedStop) {
+              uniqueStopsByTag.set(matchedStop.tagId, matchedStop);
+            }
           }
         });
       });
-
+  
+      // Convert to array for display
+      const matched = Array.from(uniqueStopsByTag.values());
       setMatchedStops(matched);
+    } else {
+      setMatchedStops([]);
     }
   }, [formData, stops]);
 
