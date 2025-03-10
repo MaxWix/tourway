@@ -19,6 +19,8 @@ import DrexelLogo from "../assets/imgs/drexel-logo.png";
 import sendIcon from "../assets/icons/share.svg";
 import TourList from "../components/tour/TourList";
 import TourEditModal from "../components/modals/TourEditModal";
+import ShareModal from "../components/modals/ShareModal";
+
 
 const TourOverview = () => {
   const [isModalOpen, setIsModalOpen] = useState(false); // Modal state
@@ -27,6 +29,7 @@ const TourOverview = () => {
   const [totalDuration, setTotalDuration] = useState(0);
   const [stopCount, setStopCount] = useState(0);
   const [editMode, setEditMode] = useState(false); // Edit mode state
+  const [isShareModalOpen, setIsShareModalOpen] = useState(false);
 
   const navigate = useNavigate();
 
@@ -113,6 +116,10 @@ const TourOverview = () => {
     }
   };
 
+  const handleCloseShareModal = () => {
+    setIsShareModalOpen(false);
+  };
+
   return (
     <div className="TourOverview">
       <Header HeaderIMG={mapPlaceholder} height="220px" swoopTop="143px" />
@@ -137,7 +144,8 @@ const TourOverview = () => {
             icon={<img src={sendIcon} />}
             bgColor="#D0E4F6"
             iconColor="#07294D"
-            onClick={() => navigate("#")}
+            onClick={() => setIsShareModalOpen(true)}
+
           />
         </div>
         <TourTimeandStops
@@ -180,7 +188,11 @@ const TourOverview = () => {
       {isModalOpen && (
         <TourEditModal onClose={handleModalClose} matchedStops={matchedStops} />
       )}
+      {isShareModalOpen && (
+        <ShareModal closeShareModal={handleCloseShareModal} />
+      )}
     </div>
+    
   );
 };
 

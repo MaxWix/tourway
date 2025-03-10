@@ -1,3 +1,6 @@
+@import "../../../styles/custom-mixins.scss";
+@import "../../../styles/styles.global.scss";
+
 .shareModalOverlay {
   position: fixed;
   top: 0;
@@ -8,17 +11,115 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 100;
+  z-index: 11;
 }
 
 .shareModalCon {
   background: white;
   width: calc(100% - 2rem);
   max-width: 375px;
-  height: fit-content;
+  height: fit-content !important;
   // padding: 20px;
   border-radius: 10px;
   position: relative;
   overflow-y: auto;
   z-index: 101;
+}
+
+
+.modalHeader {
+  background-color: $drexelBlue;
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.modalHeader > div {
+  display: flex;
+  flex-direction: row;
+  gap: .5rem;
+  align-items: center;
+}
+
+.modalHeader h2 {
+  color: white;
+  font-family: "Hind", Verdana, sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.modalContent {
+  width: 100%;
+  padding: 1rem 1rem 0 1rem;
+  // max-height: 250px;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.shareModalCon .modalContent h3 {
+  font-size: 20px;
+  font-family: "Hind", Verdana, sans-serif;
+  line-height: 140%;
+  
+}
+
+.shareModalCon p, .shareModalCon .modalContent h3  {
+  color: $dark;
+  text-align: center;
+}
+
+.imgBtnsCon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: calc(100% - 8rem);
+  max-width: 175px;
+  min-width: 140px;
+  margin: 0 auto;
+  gap: .5rem;
+}
+
+.imgBtnsCon > img {
+  width: 100%;
+}
+
+.imgBtnsCon > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+
+}
+
+.imgBtnsCon > div > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ }
+
+ .imgBtnsCon p {
+  font-size: 14px;
+ }
+
+ .modalContent + button {
+  background-color: $drexelBlue;
+  color: white;
+  display: block;
+  width: calc(100% - 2rem);
+  margin: 1rem auto ;
+  border: none;
+  font-size: 16px;
+  font-family: "Montserrat", Verdana, sans-serif;
+  font-weight: 600; 
+  padding: 1rem 0;
+  border-radius: 27px;
+}
+
+.btnCenter > * {
+  width:100%;
+  padding: 1rem;
 }
