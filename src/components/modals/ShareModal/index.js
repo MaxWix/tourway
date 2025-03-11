@@ -53,7 +53,7 @@ const ShareModal = ({ closeShareModal }) => {
         </div>
         <div className={styles.btnCenter}>
         <Button
-            text="BACK TO TOUR"
+            text="BEGIN TOUR"
             icon={<FontAwesomeIcon icon={faArrowRightLong} />}
             bgColor="#07294d"
             borderColor="#07294d"
