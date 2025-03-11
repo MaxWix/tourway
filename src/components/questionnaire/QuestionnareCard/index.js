@@ -97,6 +97,7 @@ const QuestionnareCard = ({ questions }) => {
             )}
           </div>
           <div className={styles.navigationButtons}>
+            <div className={styles.btnsWhiteBg}>
             {currentQuestionIndex < sortedQuestions.length - 1 ? (
               <button
                 type="button"
@@ -108,6 +109,7 @@ const QuestionnareCard = ({ questions }) => {
             ) : (
               <button type="submit">Submit <span> <FontAwesomeIcon icon={faArrowRightLong}/></span></button>
             )}
+            </div>
           </div>
         </div>
       </form>

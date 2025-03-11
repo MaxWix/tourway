@@ -521,6 +521,16 @@ h4 {
   top: 0;
 }
 
+.tourCardContent .CTAsingle {
+  height: 5.75rem;
+  background-color: white;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  // border-radius: 40px 40px 0 0;
+}
+
 // Map view
 .mapview {
   height: 70vh;
@@ -647,13 +657,6 @@ h4 {
   height: fit-content;
 }
 
-.onScroll {
-  position: absolute;
-  bottom: 0;
-  height: 650px;
-  width: 100%;
-  overflow: scroll;
-}
 
 .onScroll .CTA {
   position: absolute;
