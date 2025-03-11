@@ -1,4 +1,5 @@
 import { React, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { supabase } from "../../../supabaseClient";
 import ImageSlider from "../ImageSlider";
 import styles from "./styles.module.scss";
@@ -6,7 +7,6 @@ import Header from "../../../components/navigation/Header";
 import blueBG from "../../../assets/imgs/DrexelBlue.svg";
 import CircleButton from "../../../components/common/CircleButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useNavigate } from "react-router-dom";
 import {
   faArrowLeftLong,
   faArrowRightLong,
@@ -19,8 +19,26 @@ import VoiceoverIcon from "../../../assets/icons/voiceover.svg";
 import NotesIcon from "../../../assets/icons/notes-outline.svg";
 import Button from "../../common/Button";
 
-const TourCard = ({ tag, closeCard, viewNextStop, currentStopNumber }) => {
+const TourCard = ({
+  tag,
+  closeCard,
+  viewNextStop,
+  currentStopNumber,
+  currentStopIndex,
+  totalStops,
+}) => {
   const [cardData, setCardData] = useState(null);
+  const navigate = useNavigate();
+
+  const isLastStop = currentStopIndex === totalStops - 1;
+
+  const handleNextClick = () => {
+    if (isLastStop) {
+      navigate("/tour/summary"); // Navigate to summary page
+    } else {
+      viewNextStop(); // Go to next stop
+    }
+  };
 
   const tagId = tag;
 
@@ -59,7 +77,6 @@ const TourCard = ({ tag, closeCard, viewNextStop, currentStopNumber }) => {
 
   const headers = cardData ? getHeadersFromDatabase(cardData) : [];
 
-  const navigate = useNavigate();
   console.log(cardData);
 
   return (
@@ -126,7 +143,7 @@ const TourCard = ({ tag, closeCard, viewNextStop, currentStopNumber }) => {
           {/* For every image, put it in the slide */}
           {/* For every image, put it in the slide */}
           {cardData?.headerImages?.length > 0 ? ( // Check if there are images
-            cardData.headerImages.length === 1 ? ( // Check if there's exactly 1 image
+            cardData.headerImages?.length === 1 ? ( // Check if there's exactly 1 image
               <img src={cardData.headerImages[0]} alt="Single Image" /> // Render a single img element
             ) : (
               <ImageSlider images={cardData.headerImages} /> // Render the image slider for multiple images
@@ -146,13 +163,13 @@ const TourCard = ({ tag, closeCard, viewNextStop, currentStopNumber }) => {
 
           <div>
             <h3>{cardData?.header1}</h3>
-            {cardData?.body1.length > 0
+            {cardData?.body1?.length > 0
               ? cardData.body1.map((item) => <p>{item}</p>)
               : null}
           </div>
           <div>
             <h3>{cardData?.header2}</h3>
-            {cardData?.body2.length > 0
+            {cardData?.body2?.length > 0
               ? cardData.body2.map((item) => <p>{item}</p>)
               : null}
             {/* quad images + facilities */}
@@ -199,17 +216,17 @@ const TourCard = ({ tag, closeCard, viewNextStop, currentStopNumber }) => {
           <div>
             <h3>{cardData?.header4}</h3>
             {cardData?.body4?.length > 0
-              ? cardData.body4.map((item) => <p>{item}</p>)
+              ? cardData.body4?.map((item) => <p>{item}</p>)
               : null}
           </div>
         </div>
         <div class="CTAsingle">
           <Button
-            text="NEXT STOP"
+            text={isLastStop ? "Tour Summary" : "Next Stop"}
             icon={<FontAwesomeIcon icon={faArrowRightLong} />}
             bgColor="#07294d"
             borderColor="#07294d"
-            onClick={() => viewNextStop()}
+            onClick={handleNextClick}
           />
         </div>
       </div>

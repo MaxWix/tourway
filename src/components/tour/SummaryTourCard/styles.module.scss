@@ -1,53 +1,54 @@
 @import "../../../styles/custom-mixins.scss";
 
 .summaryTourCard {
-    display: flex;
-    background-color: $lightBlue;
-    border-radius: 0.5rem;
-    height: 136.5px;
-    width: 100%;
-    gap: 0.5rem;
-    justify-content: center;
+  display: flex;
+  background-color: $lightBlue;
+  border-radius: 0.5rem;
+  height: 136.5px;
+  width: 100%;
+  gap: 0.5rem;
+  justify-content: space-between;
+  margin-bottom: 16px;
 }
 
 .summaryTourCardIMG {
-    width: 50%; 
-    background-size: cover; 
-    background-position: 'center'; 
-    background-repeat: 'no-repeat';
-    border-radius: 0 0.5rem 0.5rem 0;
+  width: 50%;
+  background-size: cover;
+  background-position: "center";
+  background-repeat: "no-repeat";
+  border-radius: 0 0.5rem 0.5rem 0;
 }
 
 .summaryTourCardInfo {
-    padding: 1rem 0 1rem 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
+  padding: 1rem 0 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
 }
 
 .summaryTourCardInfo p {
-    font-size: 1rem;
+  font-size: 1rem;
 }
 
 .summaryTourCardInfo {
-    > p:nth-of-type(2) { 
-        font-size: 14px;
-    }
+  > p:nth-of-type(2) {
+    font-size: 14px;
+  }
 }
 
 .CatWrapper {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    align-items: center;
-    gap: .5rem;
-  }
-  
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 .CatWrapper p {
-    background-color: $drexelBlue;
-    color: white;
-    border-radius: 30px;
-    font-size: 10px;
-    padding: 4px 12px;
-    display: inline;
-  }
+  background-color: $drexelBlue;
+  color: white;
+  border-radius: 30px;
+  font-size: 10px;
+  padding: 4px 12px;
+  display: inline;
+}

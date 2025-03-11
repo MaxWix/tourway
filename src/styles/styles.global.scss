@@ -51,7 +51,8 @@ h4 {
   top: 90px;
 }
 
-.mainContentChooseTour > h1, .mainContentChooseTour > p  {
+.mainContentChooseTour > h1,
+.mainContentChooseTour > p {
   color: $dark;
 }
 
@@ -294,8 +295,6 @@ h4 {
   z-index: 10;
   width: 100%;
 }
-
-
 
 .mainContentLogin,
 .mainContentSignUp {
@@ -551,7 +550,6 @@ h4 {
   z-index: 1;
   overflow: unset;
   top: 110px;
- 
 }
 .mapMainContent > * {
   width: calc(100% - 2rem);
@@ -657,7 +655,6 @@ h4 {
   height: fit-content;
 }
 
-
 .onScroll .CTA {
   position: absolute;
   top: calc(100% - 23vh);
@@ -666,16 +663,16 @@ h4 {
 .testingBtns {
   z-index: 10;
   position: absolute;
-  top: 25%
+  top: 25%;
 }
-.testingBtns:first-of-type { 
+.testingBtns:first-of-type {
   left: 10px;
 }
 
-.testingBtns:nth-of-type(2) { 
+.testingBtns:nth-of-type(2) {
   left: 70px;
 }
 
-.testingBtns:nth-of-type(3) { 
+.testingBtns:nth-of-type(3) {
   left: 150px;
 }

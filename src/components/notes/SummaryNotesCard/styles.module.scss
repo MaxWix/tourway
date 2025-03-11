@@ -1,89 +1,88 @@
 @import "../../../styles/custom-mixins.scss";
 
 .summaryNotesCard {
-    background-color: $drexelBlue;
-    padding: 1rem 1.5rem;
-    border-radius: 0.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+  background-color: $drexelBlue;
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-
 .summaryNotesCardHeader {
-    display: flex;
-    justify-content: space-between;
-    color: white;
+  display: flex;
+  justify-content: space-between;
+  color: white;
 }
 
 .summaryNotesCardText {
-    display: flex;
-    gap: 0.5rem;
-    align-self: stretch;
-    width: 100%;
-    align-items: center;
+  display: flex;
+  gap: 0.5rem;
+  align-self: stretch;
+  width: 100%;
+  align-items: center;
 }
 
 .summaryNotesCardText p {
-    font-size: 1.5rem;
-    font-weight: bold;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 .summaryNotesCardText img {
-    width: 1.75rem;
+  width: 1.75rem;
 }
 
 .summaryNotesCardContent {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .timeStops {
-    display: flex;
-    flex-direction: column;
-    color: white;
-    gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  gap: 1rem;
 }
 
-.stops, .time {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    gap: 0.5rem;
+.stops,
+.time {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 0.5rem;
 }
 
 .stops img {
-    color: white;
+  color: white;
 }
 
 .summaryNotesCardButton {
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    font-family: 'Montserrat', Verdana, sans-serif;
-    font-size: 1rem;
-    border-radius: 2rem;
-    cursor: pointer;
-    width: 184px;
-    height: 40px;
-    padding: 1rem;
-    background-color: $lightBlue;
-    color: $drexelBlue;
-    gap: 1rem;
-    font-weight: 600;
-    border: 1px $lightBlue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Montserrat", Verdana, sans-serif;
+  font-size: 1rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  width: 184px;
+  height: 40px;
+  padding: 1rem;
+  background-color: $lightBlue;
+  color: $drexelBlue;
+  gap: 1rem;
+  font-weight: 600;
+  border: 1px $lightBlue;
 }
 
-
 .summaryNotesCardButton p {
-    text-align: center;
-    font-size: 1rem;
-    font-weight: 700;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 700;
 }
 
 .summaryNotesCardButton .icon {
-    font-size: 1.5rem; /* Ensure the icon has a visible size */
-  }
+  font-size: 1.5rem; /* Ensure the icon has a visible size */
+}

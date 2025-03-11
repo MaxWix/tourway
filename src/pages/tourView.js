@@ -277,6 +277,8 @@ const TourView = () => {
             closeCard={closeCard}
             viewNextStop={viewNextStop}
             currentStopNumber={currentStopNumber}
+            currentStopIndex={currentStopIndex}
+            totalStops={matchedStops.length}
           />
         )}
       </div>
