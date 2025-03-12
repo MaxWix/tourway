@@ -29,6 +29,7 @@ import DirectionArrow from "../components/navigation/DirectionArrow";
 import TourTimeandStops from "../components/tour/TourTimeandStops";
 import { useNavigate } from "react-router-dom";
 import ShareModal from "../components/modals/ShareModal";
+import ExitModal from "../components/modals/ExitModal";
 
 // Main TourView component
 const TourView = () => {
@@ -45,6 +46,7 @@ const TourView = () => {
   const [stopCount, setStopCount] = useState(0);
   const [editMode, setEditMode] = useState(false);
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
+  const [isExitModalOpen, setIsExitModalOpen] = useState(false);
 
   const apiUrl = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
   const mapId = process.env.REACT_APP_GOOGLE_MAPS_MAP_ID;
@@ -130,6 +132,13 @@ const TourView = () => {
     setIsShareModalOpen(false);
   };
 
+  const handleExitTour = () => {
+    localStorage.clear();
+    navigate("/tour/summary");
+  };
+
+  console.log(isExitModalOpen);
+
   return (
     <APIProvider apiKey={apiUrl}>
       <div className="tourView">
@@ -158,7 +167,7 @@ const TourView = () => {
                   icon={<FontAwesomeIcon icon={faXmark} />}
                   bgColor="#D0E4F6"
                   iconColor="#07294d"
-                  // onClick={() => navigate("#")}
+                  onClick={() => setIsExitModalOpen(true)}
                 />
               </div>
             </div>
@@ -273,6 +282,12 @@ const TourView = () => {
             </div>
             {isShareModalOpen && (
               <ShareModal closeShareModal={handleCloseShareModal} />
+            )}
+            {isExitModalOpen && (
+              <ExitModal
+                handleExitTour={handleExitTour}
+                setIsExitModalOpen={setIsExitModalOpen}
+              />
             )}
           </>
         ) : (
