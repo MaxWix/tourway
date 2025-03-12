@@ -44,7 +44,7 @@ const Questionnare = () => {
       <div className="mainContent mainContentChooseTour">
         <h1>Tour Questionnaire</h1>
         <p>
-          Answer <b>5 questions </b> below to build your own tour!
+          Answer <b> {questions.length} </b> below to build your own tour!
         </p>
 
         {questions.length > 2 && <QuestionnareCard questions={questions} />}

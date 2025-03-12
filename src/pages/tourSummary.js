@@ -65,7 +65,7 @@ const TourSummary = () => {
               icon={<FontAwesomeIcon icon={faArrowLeftLong} />}
               bgColor="#DFF3F4"
               iconColor="#07294d"
-              onClick={() => navigate("/tour/review")}
+              onClick={() => navigate("/tour")}
             />
           </div>
           <div className="voiceoverButton">
