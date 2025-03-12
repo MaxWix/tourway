@@ -1,100 +1,127 @@
 @import "../../../styles/custom-mixins.scss";
 
 .cardtitle h1 {
-    color: black;
-    font-size: 24px;;
-    font-family:  'Montserrat', Verdana, sans-serif;
-    ;
+  color: black;
+  font-size: 24px;
+  font-family: "Montserrat", Verdana, sans-serif;
 }
 
 .cardtitle h2 {
-    color: $drexelBlue;
-    font-size: 14px;
-    font-family: 'Hind', Verdana, sans-serif;
-    font-weight: 400;
-    margin: 0;
+  color: $drexelBlue;
+  font-size: 14px;
+  font-family: "Hind", Verdana, sans-serif;
+  font-weight: 400;
+  margin: 0;
 }
 .mainContentChooseTour {
-    top: 98;
+  top: 98;
 }
 
 div.cardHead {
-    display: flex;
-    width: calc(100% - 2rem);
-    margin: 0 auto;
-    flex-direction: row;
-    gap: .5rem;
-    position: sticky;
-    top: 0;
-    background-color: white;
-    padding-top: 1rem
+  display: flex;
+  width: calc(100% - 2rem);
+  margin: 0 auto;
+  flex-direction: row;
+  gap: 0.5rem;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  padding-top: 1rem;
 }
 
 .cardtitle {
-    width: 100%;
-    margin: 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    border-radius: 0 4% 0 0;
-    background-color: white;
-    padding: 1rem 1rem 0 1rem;
-    border-radius:0 40px 0 0 ;
+  width: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-radius: 0 4% 0 0;
+  background-color: white;
+  padding: 1rem 1rem 0 1rem;
+  border-radius: 0 40px 0 0;
 }
 
 .cardtitle .titleNum {
-    display: flex;
-    flex-direction: row;
-    gap: .5rem;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  align-items: center;
 }
 
-div.cardHead div > p, .cardtitle p {
-    background-color: $drexelYellow;
-    color: black;
-    height: 26px;
-    width: 26px;
-    font-size: 18px;
-    border-radius: 100%;
-    text-align: center;
-    font-weight: 100;
+div.cardHead div > p,
+.cardtitle p {
+  background-color: $drexelYellow;
+  color: black;
+  height: 26px;
+  width: 26px;
+  font-size: 18px;
+  border-radius: 100%;
+  text-align: center;
+  font-weight: 100;
 }
 
 .cardTop {
-    position: sticky;
-    top: 0;
-    background-color: $drexelBlue;
-    // background-color: white;
-    // padding-top:1rem;
+  position: sticky;
+  top: 0;
+  background-color: $drexelBlue;
+  // background-color: white;
+  // padding-top:1rem;
 }
 .card.tourCardContent .cardTop > div:last-of-type {
-    border-radius: 0;
-  } 
+  border-radius: 0;
+}
 
 .allSections {
-    color: black;
-    width: calc(100% - 2rem);
-    margin:0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+  color: black;
+  width: calc(100% - 2rem);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .allSections h3 {
-    font-size: 24px;
+  font-size: 24px;
 }
 
-.allSections > div > img { 
-    width: 100%;
+.allSections > div > img {
+  width: 100%;
 }
 
 .allSections > div:not(:first-child) {
-    display: flex;
-    flex-direction: column;
-    gap: .5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .invis {
-    display: none;
+  display: none;
 }
 
+.scrollButtonsHolder {
+  color: #000000;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 0.5rem 1rem 1rem 0;
+  background-color: white;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.scrollButtonsHolder button {
+  border-radius: 30px;
+  color: $drexelBlue;
+  font-size: 14px;
+  padding: 4px 12px;
+  background-color: white;
+  border-style: solid;
+  border-color: $drexelBlue;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.scrollButtonsHolder button.active {
+  background-color: $drexelBlue;
+  color: white;
+}

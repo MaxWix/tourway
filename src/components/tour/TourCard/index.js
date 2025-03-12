@@ -28,6 +28,8 @@ const TourCard = ({
   totalStops,
 }) => {
   const [cardData, setCardData] = useState(null);
+  const [majors, setMajors] = useState([]);
+  const [selectedMajor, setSelectedMajor] = useState(null);
   const navigate = useNavigate();
 
   const isLastStop = currentStopIndex === totalStops - 1;
@@ -77,7 +79,38 @@ const TourCard = ({
 
   const headers = cardData ? getHeadersFromDatabase(cardData) : [];
 
+  const fetchMajors = async (tag) => {
+    console.log(cardData?.catTags);
+    if (!tag || cardData?.catTags !== "Academic") return;
+    console.log("fetching...", tag);
+    const { data, error } = await supabase
+      .from("majorsContent")
+      .select("*")
+      .like("id", `${tag}%`); // Match IDs starting with `tag`\\
+
+    console.log("majros", data);
+
+    if (error) {
+      console.error("Error fetching majors:", error);
+    } else {
+      setMajors(data);
+    }
+  };
+
+  useEffect(() => {
+    if (cardData && cardData.tag && cardData.catTags === "Academic") {
+      fetchMajors(cardData.tag);
+    }
+  }, [cardData]);
+
+  const handleMajorClick = (major) => {
+    // Set selectedMajor to the clicked major's id or null if it's already selected
+    setSelectedMajor(major.id);
+    console.log("set");
+  };
+
   console.log(cardData);
+  console.log(majors);
 
   return (
     <>
@@ -167,6 +200,39 @@ const TourCard = ({
               ? cardData.body1.map((item) => <p>{item}</p>)
               : null}
           </div>
+          {majors.length > 0 && (
+            <div>
+              <h3>Related Majors</h3>
+              <div className={styles.scrollButtonsHolder}>
+                {majors.map((major, index) => (
+                  <button
+                    key={index}
+                    onClick={() => handleMajorClick(major)}
+                    className={selectedMajor === major.id ? styles.active : ""}
+                  >
+                    {major.name}
+                  </button>
+                ))}
+              </div>
+              {selectedMajor && (
+                <div>
+                  {majors
+                    .filter((major) => major.id === selectedMajor)
+                    .map((major) =>
+                      Array.isArray(major.content) ? (
+                        major.content.map((text, index) => (
+                          <p key={index}>{text}</p>
+                        ))
+                      ) : (
+                        <p key={major.id}>
+                          {major.content || "No additional details available."}
+                        </p>
+                      )
+                    )}
+                </div>
+              )}
+            </div>
+          )}
           <div>
             <h3>{cardData?.header2}</h3>
             {cardData?.body2?.length > 0
