@@ -50,7 +50,7 @@ const TourSummary = () => {
     <>
       {isSummaryOpen ? (
         <div className="TourSummary">
-          <Header HeaderIMG={SummaryHeader} height="200px" swoopTop="126px" />
+          <Header HeaderIMG={SummaryHeader} height="200px" swoopTop="127px" />
           <div className="headerGraphic headerGraphicSummary">
             <img src={SummaryHeaderGraphic} />
           </div>

@@ -388,7 +388,7 @@ h4 {
 // TOUR SUMMARY
 .mainContentSummary {
   top: 164px;
-  padding: 1rem;
+  padding: 1rem 1rem 4.75rem 1rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -401,16 +401,24 @@ h4 {
 
 .tourSummary p {
   color: $dark;
-  font-size: 1.15rem;
+  font-size: 1rem;
   font-weight: 500;
 }
 
+.tourSummary > p { 
+  margin-bottom: 1rem
+}
+
+
+
 .headerGraphicSummary img {
-  width: 140px;
+  min-width: 110px;
+  width: 20%;
+  max-width: 140px;
 }
 
 .headerGraphicSummary {
-  right: 16px;
+  right: 0;
   top: 60px;
 }
 
@@ -428,11 +436,14 @@ h4 {
 
 .headerTextSummary h4 {
   font-size: 1.25rem;
+  background-color: #07294dc0;
+  width: fit-content;
 }
 
 .headerTextSummary p {
   font-size: 1rem;
   line-height: 140%;
+  background-color: #07294dc0;
 }
 
 // NEXT STEPS AND RESOURCES

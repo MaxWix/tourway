@@ -4,13 +4,14 @@ import CircleButton from "../../common/CircleButton";
 import Button from "../../common/Button";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRightLong, faDownload } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
 import { faClock, faLocationDot, faEye } from "@fortawesome/free-regular-svg-icons";
 import LocationIconOutlineWhite from "../../../assets/icons/location-outline-white.svg";
-import { ReactComponent as EyeIcon } from "../../../assets/icons/view.svg";
-import { ReactComponent as DownloadIcon } from "../../../assets/icons/download.svg";
+// import { ReactComponent as EyeIcon } from "../../../assets/icons/view.svg";
+// import { ReactComponent as DownloadIcon } from "../../../assets/icons/download.svg";
 import NotesIcon from "../../../assets/icons/notes-outline.svg";
-
+import downloadIcon from "../../../assets/icons/download-navy.svg";
+import EyeIcon from "../../../assets/icons/view-navy.svg";
 
 const SummaryNotesCard = () => {
     return (
@@ -23,7 +24,7 @@ const SummaryNotesCard = () => {
                 <CircleButton 
                     bgColor="#d0e4f6"
                     iconColor="#07294d"
-                    icon={<FontAwesomeIcon icon={faDownload} />}
+                    icon={<img src={downloadIcon} />}
                     action="#" />
             </div>
             <div className={styles.summaryNotesCardContent}>
@@ -41,7 +42,7 @@ const SummaryNotesCard = () => {
                     <button className={styles.summaryNotesCardButton}>
                         <p>VIEW NOTES</p>
                         <div className={styles.icon}>
-                        <FontAwesomeIcon icon={faEye} />
+                        <img src={EyeIcon} />
                         </div>
                     </button>
                 </div>

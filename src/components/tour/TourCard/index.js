@@ -16,7 +16,7 @@ import { faX } from "@fortawesome/free-solid-svg-icons";
 import SpecialFacilities from "../SpecialFacilities";
 import ScrollButtons from "../../navigation/ScrollButtons";
 import VoiceoverIcon from "../../../assets/icons/voiceover.svg";
-import NotesIcon from "../../../assets/icons/notes-outline.svg";
+import NotesIcon from "../../../assets/icons/notesblack.svg";
 import Button from "../../common/Button";
 
 const TourCard = ({
@@ -156,8 +156,8 @@ const TourCard = ({
             <div className={styles.notesButton}>
               <CircleButton
                 icon={<img src={NotesIcon} />}
-                bgColor="#0BA3A8"
-                iconColor="white"
+                bgColor="#ffc600"
+                iconColor="black"
                 onClick={() => navigate("#")}
               />
             </div>
@@ -201,38 +201,52 @@ const TourCard = ({
               : null}
           </div>
           {majors.length > 0 && (
-            <div>
-              <h3>Related Majors</h3>
-              <div className={styles.scrollButtonsHolder}>
-                {majors.map((major, index) => (
-                  <button
-                    key={index}
-                    onClick={() => handleMajorClick(major)}
-                    className={selectedMajor === major.id ? styles.active : ""}
-                  >
-                    {major.name}
-                  </button>
-                ))}
-              </div>
-              {selectedMajor && (
-                <div>
-                  {majors
-                    .filter((major) => major.id === selectedMajor)
-                    .map((major) =>
-                      Array.isArray(major.content) ? (
-                        major.content.map((text, index) => (
-                          <p key={index}>{text}</p>
-                        ))
-                      ) : (
-                        <p key={major.id}>
-                          {major.content || "No additional details available."}
-                        </p>
-                      )
-                    )}
+              <div>
+                <h3>Related Majors</h3>
+                <div className={styles.scrollButtonsHolder}>
+                  {majors.map((major, index) => (
+                    <button
+                      key={index}
+                      onClick={() => handleMajorClick(major)}
+                      className={selectedMajor === major.id ? styles.active : ""}
+                    >
+                      {major.name}
+                    </button>
+                  ))}
                 </div>
-              )}
-            </div>
-          )}
+                {selectedMajor && (
+                  <div>
+                    {majors
+                      .filter((major) => major.id === selectedMajor)
+                      .map((major) => {
+                        const content = Array.isArray(major.content)
+                          ? major.content.map((text, index) => <p key={index}>{text}</p>)
+                          : <p>{major.content || "No additional details available."}</p>;
+
+                        const images = major?.imgs?.length > 0 ? (
+                          major.imgs.length === 1 ? (
+                            <img
+                              src={major.imgs[0]}
+                              alt={`${major.name || 'Major'} image`}
+                              className={styles.majorImage || ''}
+                            />
+                          ) : (
+                            <ImageSlider images={major.imgs} />
+                          )
+                        ) : null;
+
+                        return (
+                          <div key={major.id}>
+                            {images}
+
+                            {content}
+                          </div>
+                        );
+                      })}
+                  </div>
+                )}
+              </div>
+            )}
           <div>
             <h3>{cardData?.header2}</h3>
             {cardData?.body2?.length > 0
@@ -291,7 +305,7 @@ const TourCard = ({
             <b>{currentStopNumber}/{totalStops}</b> stops
           </p>
           <Button
-            text={isLastStop ? "Tour Summary" : "Next Stop"}
+            text={isLastStop ? "Finish Tour" : "Next Stop"}
             icon={<FontAwesomeIcon icon={faArrowRightLong} />}
             bgColor="#07294d"
             borderColor="#07294d"
