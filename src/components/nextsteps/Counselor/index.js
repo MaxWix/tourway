@@ -16,7 +16,7 @@ const Counselor = () => {
         <div className={styles.counselorInformation}>
           <h6>Michael Anderson</h6>
           <p>Tel: +1 (123) 456-7890</p>
-          <p>Email: anderson@drexel.edu</p>
+          <p>Email: ma132@drexel.edu</p>
         </div>
         <CircleButton
             bgColor="#d0e4f6"

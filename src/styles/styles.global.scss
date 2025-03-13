@@ -458,11 +458,17 @@ h4 {
 }
 
 .resourcesContainer {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); // 2 columns
-  grid-template-rows: repeat(2, auto); // 2 rows (auto height based on content)
-  gap: 1rem; // Adjust spacing as needed
+  // display: grid;
+  // grid-template-columns: repeat(2, 1fr); // 2 columns
+  // grid-template-rows: repeat(2, auto); // 2 rows (auto height based on content)
+  // gap: 1rem; // Adjust spacing as needed
+  // width: calc(100%);
   width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+
 }
 
 .CTA-1 {

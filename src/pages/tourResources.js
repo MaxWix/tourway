@@ -78,7 +78,7 @@ const navigate = useNavigate();
         icon={<img src={HomeIconFilled} alt="FAQ Icon" />}
         bgColor="#07294d"
         borderColor="#07294d"
-        action="/university/choose-tour" />
+        action="/" />
       </div>
     </div>
   );

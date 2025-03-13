@@ -9,7 +9,7 @@
     padding: 1rem 2rem;
     justify-content: center;
     align-items: center;
-    width: 100%;  // Ensures the card fills the entire grid cell
+    width: calc(50% - .5rem);  // Ensures the card fills the entire grid cell
 }
 
 .resourcesCard p {

@@ -1,0 +1,20 @@
+<svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0_4471_9260" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="25">
+<rect y="0.533203" width="24" height="24" fill="#D9D9D9"/>
+</mask>
+<g mask="url(#mask0_4471_9260)">
+<path d="M5.1875 22.1112V3.11121H21.1875L19.1875 8.11121L21.1875 13.1112H7.1875V22.1112H5.1875ZM7.1875 11.1112H18.2375L17.0375 8.11121L18.2375 5.11121H7.1875V11.1112Z" fill="#07294D"/>
+</g>
+<rect x="6.1875" y="4.11121" width="2" height="2" fill="#07294D"/>
+<rect x="10.1875" y="4.11121" width="2" height="2" fill="#07294D"/>
+<rect x="6.1875" y="8.11121" width="2" height="2" fill="#07294D"/>
+<rect x="10.1875" y="8.11121" width="2" height="2" fill="#07294D"/>
+<rect x="14.1875" y="4.11121" width="2" height="2" fill="#07294D"/>
+<rect x="14.1875" y="8.11121" width="2" height="2" fill="#07294D"/>
+<rect x="12.1875" y="6.11121" width="2" height="2" fill="#07294D"/>
+<rect x="16.1875" y="6.11121" width="2" height="2" fill="#07294D"/>
+<rect x="16.1875" y="10.1112" width="2" height="2" fill="#07294D"/>
+<rect x="12.1875" y="10.1112" width="2" height="2" fill="#07294D"/>
+<rect x="8.1875" y="6.11121" width="2" height="2" fill="#07294D"/>
+<rect x="8.1875" y="10.1112" width="2" height="2" fill="#07294D"/>
+</svg>
