@@ -29,6 +29,8 @@ const TourOverview = () => {
   const [stopCount, setStopCount] = useState(0);
   const [editMode, setEditMode] = useState(false); // Edit mode state
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
+  const [isShareModalOpenAndBegin, setIsShareModalOpenAndBegin] =
+    useState(false);
   const [stops, setStops] = useState([]);
 
   const navigate = useNavigate();
@@ -133,6 +135,7 @@ const TourOverview = () => {
 
   const handleCloseShareModal = () => {
     setIsShareModalOpen(false);
+    setIsShareModalOpenAndBegin(false);
   };
 
   return (
@@ -194,7 +197,7 @@ const TourOverview = () => {
             icon={<FontAwesomeIcon icon={faArrowRightLong} />}
             bgColor="#07294d"
             borderColor="#07294d"
-            onClick={handleStopClick}
+            onClick={setIsShareModalOpenAndBegin}
           />
         </div>
       </div>
@@ -205,6 +208,13 @@ const TourOverview = () => {
       )}
       {isShareModalOpen && (
         <ShareModal closeShareModal={handleCloseShareModal} />
+      )}
+      {isShareModalOpenAndBegin && (
+        <ShareModal
+          closeShareModal={handleCloseShareModal}
+          withBeginButton
+          handleStopClick={handleStopClick}
+        />
       )}
     </div>
   );
