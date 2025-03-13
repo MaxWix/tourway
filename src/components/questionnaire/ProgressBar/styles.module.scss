@@ -2,22 +2,24 @@
 
 .progressBar {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   width: calc(100% - 2rem);
-
   margin: 2rem auto 2rem 1rem;
-  // padding: 10px 0;
-  background-color: #d0e4f6;
   height: 4px;
+  position: relative;
+}
 
+.stepWrapper {
+  display: flex;
+  align-items: center;
 }
 
 .step {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background-color: #d0e4f6;
+  background-color: #d0e4f6; // Default light blue
   display: flex;
   justify-content: center;
   align-items: center;
@@ -25,17 +27,36 @@
   font-size: 14px;
   font-weight: bold;
   transition: background-color 0.3s ease-in-out;
+  z-index: 2; // Ensure steps are above the line
 }
 
 .activeStep {
   background-color: $drexelBlue;
 }
+
 span.number {
   color: black;
   font-family: "Hind";
   font-size: 1rem;
   font-weight: normal;
 }
-.activeStep span.number { 
+.activeStep span.number {
   color: $cloud;
+}
+
+/* Connector line segments between steps */
+.progressSegment {
+  width: 40px; // Adjust as needed
+  height: 4px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* Dark blue line between two active steps */
+.activeSegment {
+  background-color: $drexelBlue;
+}
+
+/* Light blue line when approaching an inactive step */
+.inactiveSegment {
+  background-color: #d0e4f6;
 }
