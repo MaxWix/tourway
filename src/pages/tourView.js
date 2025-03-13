@@ -254,10 +254,11 @@ const TourView = () => {
                 </span>
                 <div className="NameShare">
                   <h3> Drexel University </h3>
-                  <p>
+                   {/* not in the design i beleive */}
+                  {/* <p>
                     {" "}
                     {currentStopNumber}/{matchedStops.length}
-                  </p>
+                  </p> */}
                   <CircleButton
                     icon={<img src={sendIcon} />}
                     bgColor="#D0E4F6"

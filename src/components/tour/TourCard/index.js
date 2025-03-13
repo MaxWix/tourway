@@ -29,7 +29,7 @@ const TourCard = ({
 }) => {
   const [cardData, setCardData] = useState(null);
   const [majors, setMajors] = useState([]);
-  const [selectedMajor, setSelectedMajor] = useState(null);
+  const [selectedMajor, setSelectedMajor] = useState(null);  
   const navigate = useNavigate();
 
   const isLastStop = currentStopIndex === totalStops - 1;
@@ -287,6 +287,9 @@ const TourCard = ({
           </div>
         </div>
         <div class="CTAsingle">
+          <p className={styles.tourNum}>
+            <b>{currentStopNumber}/{totalStops}</b> stops
+          </p>
           <Button
             text={isLastStop ? "Tour Summary" : "Next Stop"}
             icon={<FontAwesomeIcon icon={faArrowRightLong} />}

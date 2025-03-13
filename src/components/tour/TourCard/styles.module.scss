@@ -125,3 +125,25 @@ div.cardHead div > p,
   background-color: $drexelBlue;
   color: white;
 }
+
+p.tourNum {
+  display: flex;
+  background-color: $drexelYellow;
+  color: $drexelBlue;
+  width: 15%;
+  min-width: 35px;
+  flex-direction: column;
+  gap: none;
+  justify-content: center;
+  align-items: center;
+  height: 3.75rem;
+  margin-left: 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+  line-height: 120%;
+  font-size: 14px;
+}
+
+p.tourNum b {
+  font-size: 16px;
+}

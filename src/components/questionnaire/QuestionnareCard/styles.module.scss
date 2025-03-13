@@ -61,5 +61,38 @@
   bottom: 0;
   left: 0;
   background-color: white;
+  display: flex;
+  align-items: center;
   // border-radius: 40px 40px 0 0;
+}
+
+.btnsWhiteBg:has(+ p.questNum ) {
+  justify-content: space-between;
+}
+
+.btnsWhiteBg > p.questNum + .nextButton, .btnsWhiteBg > p.questNum + button[type="submit"]{ 
+  width: calc(80% - 3rem);
+  left: unset;
+  right: 1rem;
+}
+
+p.questNum {
+  display: flex;
+  background-color: $drexelYellow;
+  color: $drexelBlue;
+  width: 20%;
+  flex-direction: column;
+  gap: none;
+  justify-content: center;
+  align-items: center;
+  height: 3.75rem;
+  margin-left: 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+  line-height: 120%;
+  font-size: 14px;
+}
+
+p.questNum b {
+  font-size: 16px;
 }

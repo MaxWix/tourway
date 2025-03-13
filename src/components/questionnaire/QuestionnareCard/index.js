@@ -100,8 +100,8 @@ const QuestionnareCard = ({ questions }) => {
           </div>
           <div className={styles.navigationButtons}>
             <div className={styles.btnsWhiteBg}>
-              <p>
-                {currentQuestionNumber}/{questions.length}
+              <p className={styles.questNum}>
+                <b>{currentQuestionNumber}/{questions.length}</b>questions
               </p>
               {currentQuestionIndex < sortedQuestions.length - 1 ? (
                 <button
