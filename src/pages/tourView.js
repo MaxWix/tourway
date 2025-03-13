@@ -137,7 +137,7 @@ const TourView = () => {
     navigate("/tour/summary");
   };
 
-  console.log(isExitModalOpen);
+  console.log(currentStopIndex);
 
   return (
     <APIProvider apiKey={apiUrl}>
@@ -254,7 +254,7 @@ const TourView = () => {
                 </span>
                 <div className="NameShare">
                   <h3> Drexel University </h3>
-                   {/* not in the design i beleive */}
+                  {/* not in the design i beleive */}
                   {/* <p>
                     {" "}
                     {currentStopNumber}/{matchedStops.length}
@@ -278,6 +278,7 @@ const TourView = () => {
                   editMode={editMode}
                   onDeleteClick={handleDeleteClick}
                   hasEditMode
+                  currentStopIndex={currentStopIndex}
                 />
               </div>
             </div>

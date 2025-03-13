@@ -9,22 +9,6 @@
   position: relative;
 }
 
-.CatWraper {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.CatWraper p {
-  background-color: $drexelBlue;
-  color: white;
-  border-radius: 30px;
-  font-size: 12px;
-  padding: 4px 12px;
-  display: inline;
-}
 .StopsHolder h3 {
   font-weight: 500;
   color: black;
@@ -41,7 +25,7 @@
 }
 
 .circle {
-  background-color: #ffde6b;
+  background-color: $lightBlue;
   border-radius: 25px;
   width: 30px;
   height: 30px;
@@ -54,32 +38,33 @@
 }
 
 .blueCircle {
-  background-color: $drexelBlue;
-  color: white;
-  border-radius: 50%;
+  background-color: $drexelYellow;
+  border-radius: 25px;
   width: 30px;
   height: 30px;
+  min-width: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
-
+  color: black;
+  z-index: 1;
 }
+
 .numNamCat {
   display: flex;
-    flex-direction: row;
-    gap: 1em;
- 
+  flex-direction: row;
+  gap: 1em;
 }
 
 .StopsHolder > div > div {
   display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-    gap:1em;
- }
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  gap: 1em;
+}
 
- .deleteButton {
+.deleteButton {
   height: 2.5rem;
   width: 2.5rem;
   border-radius: 50%;
@@ -87,9 +72,9 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: #FFCCC5;
+  background-color: #ffccc5;
   border: none;
- }
+}
 
 .verticalLine {
   border-left: 2.5px dashed $drexelBlue;
@@ -105,8 +90,12 @@
   color: black;
 }
 
+.activeDuration {
+  min-width: 50px;
+  color: $drexelYellow;
+}
 
-// ON MAP 
+// ON MAP
 :global(.onmap) {
   width: 100%;
   background-color: $drexelBlue;
@@ -114,18 +103,100 @@
   border-radius: 20px 20px 0 0;
 }
 
-:global(.onmap) .StopsHolder h3, :global(.onmap) .StopsHolder .duration  { 
+:global(.onmap) .StopsHolder h3,
+:global(.onmap) .StopsHolder .duration {
   color: white;
   // background-color: blue;
-
 }
 
-:global(.onmap) .verticalLine { 
+:global(.onmap) .verticalLine {
   border-left: 2.5px dashed white;
   z-index: 0;
 }
 
-:global(.onmap) .CatWraper p { 
+.CatWraper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.CatWraper p {
+  background-color: $drexelBlue;
+  color: white;
+  border-radius: 30px;
+  font-size: 12px;
+  padding: 4px 12px;
+  display: inline;
+}
+
+:global(.onmap) .CatWraper p {
   color: black;
   background-color: $lightBlue;
+}
+
+.activeCatWraper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.activeCatWraper p {
+  background-color: $drexelBlue;
+  color: white;
+  border-radius: 30px;
+  font-size: 12px;
+  padding: 4px 12px;
+  display: inline;
+}
+
+:global(.onmap) .activeCatWraper p {
+  color: black;
+  background-color: $drexelYellow;
+}
+
+.active {
+  color: $drexelYellow !important;
+}
+
+.previousCircle {
+  background-color: $light;
+  border-radius: 25px;
+  width: 30px;
+  height: 30px;
+  min-width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  z-index: 1;
+}
+
+.previousCatWraper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.previousCatWraper p {
+  background-color: $light;
+  color: black;
+  border-radius: 30px;
+  font-size: 12px;
+  padding: 4px 12px;
+  display: inline;
+}
+
+.previousDuration {
+  min-width: 50px;
+  color: $light;
+}
+
+.previous {
+  color: $light !important;
 }
