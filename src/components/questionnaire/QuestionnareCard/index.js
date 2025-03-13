@@ -58,6 +58,8 @@ const QuestionnareCard = ({ questions }) => {
   const currentQuestionNumber = currentQuestionIndex + 1;
   console.log(currentQuestionNumber);
 
+  console.log(selectedOptions);
+
   return (
     <>
       <ProgressBar
@@ -101,7 +103,10 @@ const QuestionnareCard = ({ questions }) => {
           <div className={styles.navigationButtons}>
             <div className={styles.btnsWhiteBg}>
               <p className={styles.questNum}>
-                <b>{currentQuestionNumber}/{questions.length}</b>questions
+                <b>
+                  {currentQuestionNumber}/{questions.length}
+                </b>
+                questions
               </p>
               {currentQuestionIndex < sortedQuestions.length - 1 ? (
                 <button

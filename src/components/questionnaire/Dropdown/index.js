@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import React, { useState } from "react";
 import Checkbox from "../Checkbox";
 import styles from "./styles.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,20 +9,26 @@ const Dropdown = ({ accordionOptions, selectedOptions, onChange }) => {
     accordionOptions.map((_, index) => index)
   );
 
-  // const [isOpen, setIsOpen] = useState(false);
-
   const toggleAccordion = (index) => {
     setOpenAccordionIndices((prev) =>
       prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
     );
   };
 
-  console.log(accordionOptions);
+  // Calculate selected count only within the dropdown
+  const dropdownSelectedCount = Object.entries(selectedOptions)
+    .filter(([key]) =>
+      accordionOptions.some((opt) => opt.accordionLabel === key)
+    ) // Filter only dropdown selections
+    .reduce((acc, [, values]) => acc + values.length, 0);
+
+  const maxSelections = 3;
+  const isLimitReached = dropdownSelectedCount >= maxSelections;
 
   return (
     <div className={styles.dropdownContainer}>
       {accordionOptions.map((accordionOption, index) => {
-        const isOpen = openAccordionIndices.includes(index); // Determine if this specific dropdown is open
+        const isOpen = openAccordionIndices.includes(index);
 
         return (
           <div key={index} className={styles.accordionSection}>
@@ -35,7 +41,7 @@ const Dropdown = ({ accordionOptions, selectedOptions, onChange }) => {
               <FontAwesomeIcon icon={isOpen ? faChevronUp : faChevronDown} />
             </button>
 
-            {isOpen && openAccordionIndices.includes(index) && (
+            {isOpen && (
               <div className={styles.accordionOptions}>
                 <Checkbox
                   options={accordionOption.accordionOptions}
@@ -43,7 +49,13 @@ const Dropdown = ({ accordionOptions, selectedOptions, onChange }) => {
                   selectedValues={
                     selectedOptions[accordionOption.accordionLabel] || []
                   }
-                  onChange={onChange}
+                  onChange={(name, updatedValues) => {
+                    // Ensure that adding a new value does not exceed the limit
+                    if (updatedValues.length <= maxSelections) {
+                      onChange(name, updatedValues);
+                    }
+                  }}
+                  isLimitReached={isLimitReached}
                 />
               </div>
             )}
