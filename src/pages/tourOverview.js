@@ -174,6 +174,7 @@ const TourOverview = () => {
           editMode={editMode}
           onDeleteClick={handleDeleteClick}
           hasEditMode
+          yellowCircles
         />
         <div className="CTAdouble">
           {/* Add Stop Button */}

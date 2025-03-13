@@ -9,6 +9,7 @@ const TourList = ({
   editMode,
   onDeleteClick,
   currentStopIndex,
+  yellowCircles = false,
 }) => {
   return (
     <div className={styles.StopsHolder}>
@@ -22,11 +23,13 @@ const TourList = ({
               >
                 <p
                   className={
-                    currentStopIndex === index
-                      ? styles.blueCircle
-                      : currentStopIndex > index
-                      ? styles.previousCircle
-                      : styles.circle
+                    !yellowCircles
+                      ? currentStopIndex === index
+                        ? styles.blueCircle
+                        : currentStopIndex > index
+                        ? styles.previousCircle
+                        : styles.circle
+                      : styles.blueCircle
                   }
                 >
                   {index + 1}
