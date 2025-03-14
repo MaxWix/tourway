@@ -25,7 +25,7 @@
 }
 
 .CTAButton:active {
-    animation: buttonPress .25s cubic-bezier(0.075, 0.82, 0.165, 1);
+    animation: buttonPress .4s ease-in-out;
 }
   
   @keyframes buttonPress {

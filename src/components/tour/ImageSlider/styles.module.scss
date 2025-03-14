@@ -39,6 +39,8 @@
 
 .imgItem a, .imgItem {
   height: 100%;
+  aspect-ratio: 1 / 1;
+  width: 80px;
 }
 
 .imgItem img {

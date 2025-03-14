@@ -35,6 +35,10 @@ h4 {
   // filter: drop-shadow(0px -4px 4px rgba(3, 70, 72, 0.15));
 }
 
+.mainContent:has(.CTAdouble span img ) {
+  padding-bottom: 9rem;
+}
+
 .mainContent > p,
 .mainContent > h1,
 .mainContent > h3 {
@@ -660,21 +664,26 @@ h4 {
   font-size: 24px;
 }
 
+.onScroll {
+  position: absolute;
+  // bottom: -50%;
+  top: calc(100% - 23vh);
+}
+
 .onmap {
   // position: sticky;
 
   // top: 500px;
-  position: absolute;
-  // bottom: -50%;
-  top: calc(100% - 15vh);
-
+  
   z-index: 2;
   height: fit-content;
 }
 
 .onScroll .CTA {
-  position: absolute;
-  top: calc(100% - 23vh);
+  position: relative;
+  bottom: 1rem;
+//   // top: calc(100% - 15vh);
+//   // margin-bottom: 3.75rem;
 }
 
 .testingBtns {
