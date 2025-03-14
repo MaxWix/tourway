@@ -47,6 +47,8 @@ const TourView = () => {
   const [editMode, setEditMode] = useState(false);
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
   const [isExitModalOpen, setIsExitModalOpen] = useState(false);
+  const [isExitModalClosing, setIsExitModalClosing] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
 
   const apiUrl = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
   const mapId = process.env.REACT_APP_GOOGLE_MAPS_MAP_ID;
@@ -129,7 +131,21 @@ const TourView = () => {
   const currentStopNumber = currentStopIndex + 1; //
 
   const handleCloseShareModal = () => {
-    setIsShareModalOpen(false);
+    setIsClosing(true);
+    
+    setTimeout(() => {
+      setIsShareModalOpen(false);
+      setIsClosing(false);
+    }, 400);
+  };
+
+  const handleCloseExitModal = () => {
+    setIsExitModalClosing(true);
+    
+    setTimeout(() => {
+      setIsExitModalOpen(false);
+      setIsExitModalClosing(false);
+    }, 400); // Match animation duration
   };
 
   const handleExitTour = () => {
@@ -283,13 +299,18 @@ const TourView = () => {
               </div>
             </div>
             {isShareModalOpen && (
-              <ShareModal closeShareModal={handleCloseShareModal} />
+              <div className={`shareModalCon ${isClosing ? 'closing' : ''}`}>
+               <ShareModal closeShareModal={handleCloseShareModal} />
+              </div>
             )}
             {isExitModalOpen && (
-              <ExitModal
-                handleExitTour={handleExitTour}
-                setIsExitModalOpen={setIsExitModalOpen}
-              />
+              <div className={`exitModalCon ${isExitModalClosing ? 'closing' : ''}`}>
+                <ExitModal
+                  handleExitTour={handleExitTour}
+                  setIsExitModalOpen={handleCloseExitModal}
+                  isClosing={isExitModalClosing}
+                />
+              </div>
             )}
           </>
         ) : (

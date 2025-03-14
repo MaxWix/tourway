@@ -12,20 +12,61 @@
   justify-content: center;
   align-items: center;
   z-index: 11;
+  transition: all .15s;
 }
+
 
 .shareModalCon {
   background: white;
   width: calc(100% - 2rem);
   max-width: 375px;
   height: fit-content !important;
-  // padding: 20px;
   border-radius: 10px;
   position: relative;
   overflow-y: auto;
   z-index: 101;
+
+  /* Default opening animation */
+  animation: modalAppear .5s ;
 }
 
+/* Apply closing animation when the 'closing' class is present */
+:global(.shareModalCon.closing) .shareModalCon {
+  animation: modalClose .4s ;
+}
+
+@keyframes modalAppear {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+    transform: translateY(100%);
+  }
+  50% {
+    opacity: 50%;
+    transform: scale(110%);
+    transform: translateY(-5%);
+  }
+  100% {
+    opacity: 100%;
+    transform: scale(100%);
+    transform: translateY(0%);
+  }
+}
+
+@keyframes modalClose {
+  0% {
+    opacity: 100%;
+    transform: scale(100%);
+  }
+  50% {
+    opacity: 50%;
+    transform: scale(110%);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
 
 .modalHeader {
   background-color: $drexelBlue;
@@ -53,7 +94,7 @@
 
 .modalContent {
   width: 100%;
-  padding: 1rem 1rem 0 1rem;
+  padding: 1rem;
   // max-height: 250px;
   display: flex;
   flex-direction: column;
@@ -120,6 +161,6 @@
 }
 
 .btnCenter > * {
-  width:100%;
-  padding: 1rem;
+  width:100% !important; 
+  padding: 0 1rem 1rem 1rem!important; 
 }

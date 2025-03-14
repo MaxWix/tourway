@@ -47,3 +47,20 @@ svg {
     fill: $tourway-teal;
     width: 20px;
 }
+
+.universityCard:active {
+    animation: buttonScale 0.2s ease-out;
+}
+
+
+@keyframes buttonScale {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.10);
+    }
+    100% {
+        transform: scale(1);
+    }
+}

@@ -14,6 +14,7 @@
     // width: calc(100vw - 2rem);
     width: 100%;
     overflow-x: scroll;
+    overflow-y: visible;
     border-radius: 0 0 0 0;
 }
 
@@ -26,11 +27,63 @@
     border-style: solid;
     border-color: $drexelBlue;
     white-space: nowrap;
+    position: relative;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-// .styles_scrollButtonsHolder__AmSn6 button.active {
-//     background-color: black;
-//   }
+.scrollButtonsHolder button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.7);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%);
+    transform-origin: 50% 50%;
+
+}
+.scrollButtonsHolder button:active {
+    animation: buttonScale 0.3s ease-out;
+}
+
+.scrollButtonsHolder button.active::after {
+    animation: ripple 0.4s ease-out;
+}
+
+.scrollButtonsHolder button:not(.active):focus::after {
+    background: rgba(0, 36, 95, 0.3); /* Using Drexel Blue with transparency */
+    animation: ripple 0.4s ease-out;
+}
+
+@keyframes buttonScale {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0, 0);
+        opacity: 0.5;
+    }
+    20% {
+        transform: scale(8, 8);
+        opacity: 0.3;
+    }
+    100% {
+        opacity: 0;
+        transform: scale(15, 15);
+    }
+}
 
 :global(.universityBio) .scrollButtonsHolder  {
     width: calc(100% - 1rem);

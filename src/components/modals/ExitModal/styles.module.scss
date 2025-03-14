@@ -115,3 +115,45 @@
   height: 100%;
 }
 
+// MICROINTERACTIONS
+
+.exitModalCon {
+  animation: modalAppear .5s ;
+}
+
+:global(.exitModalCon.closing) .exitModalCon{
+  animation: modalClose .4s .03s ;
+}
+
+@keyframes modalAppear {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+    transform: translateY(-100%);
+  }
+  50% {
+    opacity: 50%;
+    transform: scale(110%);
+    transform: translateY(5%);
+  }
+  100% {
+    opacity: 100%;
+    transform: scale(100%);
+    transform: translateY(0%);
+  }
+}
+
+@keyframes modalClose {
+  0% {
+    opacity: 100%;
+    transform: scale(100%);
+  }
+  50% {
+    opacity: 50%;
+    transform: scale(110%);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+}

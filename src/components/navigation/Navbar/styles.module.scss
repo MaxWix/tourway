@@ -31,16 +31,35 @@ $tourway-text: #034648;
     flex-direction: column;
     gap: 8px;
     height: 80%;
+    
 }
 
 span {
     color: white;
     font-size: 0.8rem;
     line-height: 1rem;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .active {
     border-bottom: 2px solid white; 
     color: white; 
     padding-bottom: 0;
+}
+
+a.navItem:active {
+    animation: buttonScale 0.2s ease-out;
+}
+
+
+@keyframes buttonScale {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.10);
+    }
+    100% {
+        transform: scale(1);
+    }
 }

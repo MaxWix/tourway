@@ -9,8 +9,35 @@ const ScrollButtons = ({
   bottomBuffer = 40 
 }) => {
   const [activeHeader, setActiveHeader] = useState(null);
+  const [combinedHeaders, setCombinedHeaders] = useState([]);
+  
+  // Check for Related Majors header and add it as the second item
+  useEffect(() => {
+    const allH3Elements = Array.from(document.querySelectorAll('h3'));
+    const relatedMajorsH3 = allH3Elements.find(h3 => 
+      h3.textContent.trim().toLowerCase() === 'related majors'
+    );
+    
+    // If we found the Related Majors header, insert it as the second item
+    if (relatedMajorsH3) {
+      const updatedHeaders = [...headers];
+      const relatedMajorsText = "Related Majors";
+      
+      // Insert as second item (index 1) if there are at least 2 items
+      // Otherwise just add it to the end
+      if (updatedHeaders.length >= 1) {
+        updatedHeaders.splice(1, 0, relatedMajorsText);
+      } else {
+        updatedHeaders.push(relatedMajorsText);
+      }
+      
+      setCombinedHeaders(updatedHeaders);
+    } else {
+      setCombinedHeaders(headers);
+    }
+  }, [headers]);
 
-  // More efficient scroll handler using useCallback
+  // Scroll handler using useCallback
   const handleScroll = useCallback(() => {
     const scrollPosition = window.scrollY;
     const h3Elements = Array.from(document.querySelectorAll('h3'));
@@ -43,15 +70,23 @@ const ScrollButtons = ({
       const sectionBottom = nextH3 ? nextH3.offsetTop : lastElement.offsetTop + lastElement.offsetHeight;
       
       sections.push({
-        top: sectionTop + topBuffer, // Use topBuffer prop
-        bottom: sectionBottom + bottomBuffer, // Use bottomBuffer prop
+        header: currentH3.textContent.trim(),
+        top: sectionTop + topBuffer,
+        bottom: sectionBottom + bottomBuffer,
       });
     }
 
     // Find which section we're currently in
     let newActiveHeader = null;
-    for (let i = 0; i < sections.length; i++) {
-      if (scrollPosition >= sections[i].top && scrollPosition < sections[i].bottom) {
+    for (let i = 0; i < combinedHeaders.length; i++) {
+      // Find matching section for this header
+      const matchingSection = sections.find(section => 
+        section.header.toLowerCase() === combinedHeaders[i].toLowerCase()
+      );
+      
+      if (matchingSection && 
+          scrollPosition >= matchingSection.top && 
+          scrollPosition < matchingSection.bottom) {
         newActiveHeader = i;
         break;
       }
@@ -61,12 +96,19 @@ const ScrollButtons = ({
     if (newActiveHeader !== activeHeader) {
       setActiveHeader(newActiveHeader);
     }
-  }, [activeHeader, topBuffer, bottomBuffer]);
+  }, [activeHeader, topBuffer, bottomBuffer, combinedHeaders]);
 
   const handleHeaderClick = (index) => {
-    const h3Elements = document.querySelectorAll('h3');
-    if (h3Elements[index]) {
-      const elementPosition = h3Elements[index].offsetTop - scrollOffset;
+    const headerText = combinedHeaders[index];
+    const h3Elements = Array.from(document.querySelectorAll('h3'));
+    
+    // Find the h3 element that matches this header text
+    const targetH3 = h3Elements.find(h3 => 
+      h3.textContent.trim().toLowerCase() === headerText.toLowerCase()
+    );
+    
+    if (targetH3) {
+      const elementPosition = targetH3.offsetTop - scrollOffset;
 
       window.scrollTo({
         top: elementPosition,
@@ -98,7 +140,7 @@ const ScrollButtons = ({
 
   return (
     <div className={styles.scrollButtonsHolder}>
-      {headers.map((header, index) => (
+      {combinedHeaders.map((header, index) => (
         <button
           key={index}
           onClick={() => handleHeaderClick(index)}

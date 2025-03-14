@@ -27,6 +27,7 @@ const TourOverview = () => {
   const [matchedStops, setMatchedStops] = useState([]);
   const [totalDuration, setTotalDuration] = useState(0);
   const [stopCount, setStopCount] = useState(0);
+  const [isClosing, setIsClosing] = useState(false);
   const [editMode, setEditMode] = useState(false); // Edit mode state
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
   const [isShareModalOpenAndBegin, setIsShareModalOpenAndBegin] =
@@ -136,6 +137,12 @@ const TourOverview = () => {
   const handleCloseShareModal = () => {
     setIsShareModalOpen(false);
     setIsShareModalOpenAndBegin(false);
+    setIsClosing(true);
+    
+    setTimeout(() => {
+      setIsShareModalOpen(false);
+      setIsClosing(false);
+    }, 400);
   };
 
   return (
@@ -206,9 +213,11 @@ const TourOverview = () => {
       {isModalOpen && (
         <TourEditModal onClose={handleModalClose} matchedStops={matchedStops} />
       )}
-      {isShareModalOpen && (
-        <ShareModal closeShareModal={handleCloseShareModal} />
-      )}
+        {isShareModalOpen && (
+          <div className={`shareModalCon ${isClosing ? 'closing' : ''}`}>
+            <ShareModal closeShareModal={handleCloseShareModal} />
+          </div>
+        )}
       {isShareModalOpenAndBegin && (
         <ShareModal
           closeShareModal={handleCloseShareModal}

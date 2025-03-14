@@ -24,6 +24,16 @@
     font-weight: 600;
 }
 
+.CTAButton:active {
+    animation: buttonPress .25s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+  
+  @keyframes buttonPress {
+    0%   {transform: scale(100%)}
+    30%  {transform: scale(90%)}
+    100% {transform: scale(105%)}
+  }
+
 .CTAButtonLink {
     text-decoration: none;
     display: block;

@@ -48,6 +48,16 @@
   z-index: 2;
 }
 
+.nextButton:active, button[type="submit"]:active {
+  animation: buttonPress .25s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+@keyframes buttonPress {
+  0%   {transform: scale(100%)}
+  50%  {transform: scale(90%)}
+  100% {transform: scale(100%)}
+}
+
 .nextButton span, button[type="submit"] span { 
   font-size: 1.5rem; /* Ensure the icon has a visible size */
 

@@ -18,6 +18,8 @@ import ScrollButtons from "../../navigation/ScrollButtons";
 import VoiceoverIcon from "../../../assets/icons/voiceover.svg";
 import NotesIcon from "../../../assets/icons/notesblack.svg";
 import Button from "../../common/Button";
+import ExitModal from "../../modals/ExitModal";
+
 
 const TourCard = ({
   tag,
@@ -30,6 +32,9 @@ const TourCard = ({
   const [cardData, setCardData] = useState(null);
   const [majors, setMajors] = useState([]);
   const [selectedMajor, setSelectedMajor] = useState(null);  
+  const [isExitModalOpen, setIsExitModalOpen] = useState(false);
+  const [isExitModalClosing, setIsExitModalClosing] = useState(false);
+  
   const navigate = useNavigate();
 
   const isLastStop = currentStopIndex === totalStops - 1;
@@ -109,6 +114,19 @@ const TourCard = ({
     console.log("set");
   };
 
+  const handleCloseExitModal = () => {
+    setIsExitModalClosing(true);
+    
+    setTimeout(() => {
+      setIsExitModalOpen(false);
+      setIsExitModalClosing(false);
+    }, 400); // Match animation duration
+  };
+  const handleExitTour = () => {
+    localStorage.clear();
+    navigate("/tour/summary");
+  };
+
   console.log(cardData);
   console.log(majors);
 
@@ -139,7 +157,7 @@ const TourCard = ({
               icon={<FontAwesomeIcon icon={faXmark} />}
               bgColor="#D0E4F6"
               iconColor="#07294d"
-              onClick={() => navigate("#")}
+              onClick={() => setIsExitModalOpen(true)}
             />
           </div>
           <div className={styles.cardtitle}>
@@ -305,14 +323,24 @@ const TourCard = ({
             <b>{currentStopNumber}/{totalStops}</b> stops
           </p>
           <Button
-            text={isLastStop ? "Finish Tour" : "Next Stop"}
+            text={isLastStop ? "FINISH TOUR" : "NEXT STOP"}
             icon={<FontAwesomeIcon icon={faArrowRightLong} />}
             bgColor="#07294d"
             borderColor="#07294d"
             onClick={handleNextClick}
           />
         </div>
-      </div>
+        </div>
+        {isExitModalOpen && (
+              <div className={`exitModalCon ${isExitModalClosing ? 'closing' : ''}`}>
+                <ExitModal
+                  handleExitTour={handleExitTour}
+                  setIsExitModalOpen={handleCloseExitModal}
+                  isClosing={isExitModalClosing}
+                />
+              </div>
+            )}
+  
     </>
   );
 };
