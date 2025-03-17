@@ -413,7 +413,9 @@ h4 {
   margin-bottom: 1rem
 }
 
-
+.TourSummary h1, .TourResources .mainContent h1 {
+  margin: 0;
+}
 
 .headerGraphicSummary img {
   min-width: 110px;

@@ -33,7 +33,7 @@ const navigate = useNavigate();
       <div className="backButton">
       <CircleButton
           icon={<FontAwesomeIcon icon={faArrowLeftLong} />}
-          bgColor="#DFF3F4"
+          bgColor="#D0E4F6"
           iconColor="#07294d"
           onClick={() => navigate('/tour/summary')} 
         />
@@ -41,7 +41,7 @@ const navigate = useNavigate();
       <div className="voiceoverButton">
       <CircleButton
           icon={<img src={VoiceoverIcon} alt="Voiceover Icon" />}
-          bgColor="#DFF3F4"
+          bgColor="#D0E4F6"
           iconColor="#07294d"
           onClick={() => navigate('/')} 
         />
@@ -49,7 +49,7 @@ const navigate = useNavigate();
       <div className="exitButton">
       <CircleButton
           icon={<FontAwesomeIcon icon={faXmark} />}
-          bgColor="#ffc600"
+          bgColor="#D0E4F6"
           iconColor="#07294d"
           onClick={() => navigate('/')} 
         />
