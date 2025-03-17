@@ -76,13 +76,13 @@ const TourView = () => {
 
   const goToNextStop = () => {
     if (matchedStops && currentStopIndex < matchedStops.length - 1) {
-      setCurrentStopIndex((prev) => prev + 1); // Move to the next stop
+      setCurrentStopIndex((prev) => prev + 1);
     }
   };
 
   const goToPreviousStop = () => {
     if (matchedStops && currentStopIndex > 0) {
-      setCurrentStopIndex((prev) => prev - 1); // Move to the previous stop
+      setCurrentStopIndex((prev) => prev - 1);
     }
   };
 
@@ -97,10 +97,7 @@ const TourView = () => {
   };
 
   const viewNextStop = () => {
-    // First, close the card to return to map view
     closeCard();
-
-    // Then, go to the next stop
     goToNextStop();
   };
 
@@ -132,7 +129,7 @@ const TourView = () => {
 
   const handleCloseShareModal = () => {
     setIsClosing(true);
-    
+
     setTimeout(() => {
       setIsShareModalOpen(false);
       setIsClosing(false);
@@ -141,19 +138,17 @@ const TourView = () => {
 
   const handleCloseExitModal = () => {
     setIsExitModalClosing(true);
-    
+
     setTimeout(() => {
       setIsExitModalOpen(false);
       setIsExitModalClosing(false);
-    }, 400); // Match animation duration
+    }, 400);
   };
 
   const handleExitTour = () => {
     localStorage.clear();
     navigate("/tour/summary");
   };
-
-  console.log(currentStopIndex);
 
   return (
     <APIProvider apiKey={apiUrl}>
@@ -270,11 +265,6 @@ const TourView = () => {
                 </span>
                 <div className="NameShare">
                   <h3> Drexel University </h3>
-                  {/* not in the design i beleive */}
-                  {/* <p>
-                    {" "}
-                    {currentStopNumber}/{matchedStops.length}
-                  </p> */}
                   <CircleButton
                     icon={<img src={sendIcon} />}
                     bgColor="#D0E4F6"
@@ -285,7 +275,7 @@ const TourView = () => {
                 <TourTimeandStops
                   totalDuration={totalDuration}
                   stopCount={stopCount}
-                  onEditClick={handleEditClick} // Toggle edit mode
+                  onEditClick={handleEditClick}
                   editMode={editMode}
                 />
                 <TourList
@@ -299,12 +289,16 @@ const TourView = () => {
               </div>
             </div>
             {isShareModalOpen && (
-              <div className={`shareModalCon ${isClosing ? 'closing' : ''}`}>
-               <ShareModal closeShareModal={handleCloseShareModal} />
+              <div className={`shareModalCon ${isClosing ? "closing" : ""}`}>
+                <ShareModal closeShareModal={handleCloseShareModal} />
               </div>
             )}
             {isExitModalOpen && (
-              <div className={`exitModalCon ${isExitModalClosing ? 'closing' : ''}`}>
+              <div
+                className={`exitModalCon ${
+                  isExitModalClosing ? "closing" : ""
+                }`}
+              >
                 <ExitModal
                   handleExitTour={handleExitTour}
                   setIsExitModalOpen={handleCloseExitModal}
@@ -352,7 +346,7 @@ function Directions({ matchedStops, currentStopIndex, currentStopNumber }) {
         { enableHighAccuracy: true, maximumAge: 0 }
       );
 
-      return () => navigator.geolocation.clearWatch(watchId); // Cleanup on unmount
+      return () => navigator.geolocation.clearWatch(watchId);
     }
   }, []);
 
@@ -369,7 +363,7 @@ function Directions({ matchedStops, currentStopIndex, currentStopNumber }) {
 
     const directionsService = new window.google.maps.DirectionsService();
 
-    const origin = userLocation; // Live location
+    const origin = userLocation;
     const destination = matchedStops[currentStopIndex]?.Coordinates;
 
     if (!destination) return;
@@ -388,15 +382,14 @@ function Directions({ matchedStops, currentStopIndex, currentStopNumber }) {
         }
       }
     );
-  }, [map, isApiLoaded, matchedStops, currentStopIndex, userLocation]); // Update when location or stop changes
-
+  }, [map, isApiLoaded, matchedStops, currentStopIndex, userLocation]);
   // Render directions on the map
   useEffect(() => {
     if (!map || !isApiLoaded || !window.google || !directions) return;
 
     const renderer = new window.google.maps.DirectionsRenderer({
       map: map,
-      suppressMarkers: true, // Hides extra Google markers
+      suppressMarkers: true,
     });
 
     renderer.setDirections(directions);
@@ -412,10 +405,10 @@ function Directions({ matchedStops, currentStopIndex, currentStopNumber }) {
     if (directions) {
       const leg = directions.routes[0]?.legs[0];
       if (leg) {
-        let accumulatedTime = Date.now(); // Start from the current time
+        let accumulatedTime = Date.now();
 
         const routeSteps = leg.steps.map((step) => {
-          accumulatedTime += step.duration.value * 1000; // Add step duration in milliseconds
+          accumulatedTime += step.duration.value * 1000;
 
           return {
             instruction: step.instructions,

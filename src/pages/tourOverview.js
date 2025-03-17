@@ -45,7 +45,6 @@ const TourOverview = () => {
 
   useEffect(() => {
     if (formData) {
-      console.log("Querying with form data:", formData);
     }
   }, [formData]);
 
@@ -138,7 +137,7 @@ const TourOverview = () => {
     setIsShareModalOpen(false);
     setIsShareModalOpenAndBegin(false);
     setIsClosing(true);
-    
+
     setTimeout(() => {
       setIsShareModalOpen(false);
       setIsClosing(false);
@@ -213,11 +212,11 @@ const TourOverview = () => {
       {isModalOpen && (
         <TourEditModal onClose={handleModalClose} matchedStops={matchedStops} />
       )}
-        {isShareModalOpen && (
-          <div className={`shareModalCon ${isClosing ? 'closing' : ''}`}>
-            <ShareModal closeShareModal={handleCloseShareModal} />
-          </div>
-        )}
+      {isShareModalOpen && (
+        <div className={`shareModalCon ${isClosing ? "closing" : ""}`}>
+          <ShareModal closeShareModal={handleCloseShareModal} />
+        </div>
+      )}
       {isShareModalOpenAndBegin && (
         <ShareModal
           closeShareModal={handleCloseShareModal}

@@ -9,7 +9,7 @@ const SummaryTourCard = ({ stop, tag, openCard }) => {
   const tagId = tag;
 
   useEffect(() => {
-    if (!tagId) return; // Prevent query if tag is null/undefined
+    if (!tagId) return;
 
     const fetchCardData = async () => {
       const { data, error } = await supabase
@@ -22,14 +22,11 @@ const SummaryTourCard = ({ stop, tag, openCard }) => {
         console.error("Error fetching card data:", error);
       } else {
         setCardData(data);
-        console.log("Data:", data);
       }
     };
 
     fetchCardData();
-  }, [tagId]); // Runs when `tag` changes
-
-  console.log(cardData);
+  }, [tagId]);
 
   return (
     <div

@@ -92,13 +92,15 @@ div.cardHead div > p,
   width: 100%;
   border-radius: 13px;
   object-fit: cover;
-  animation: imgOpen .2s ease-in-out;
+  animation: imgOpen 0.2s ease-in-out;
 }
 @keyframes imgOpen {
-  0% {opacity: 0;
-  transform: scale(0%);
+  0% {
+    opacity: 0;
+    transform: scale(0%);
   }
-  100% {opacity: 100%;
+  100% {
+    opacity: 100%;
     transform: scale(100%);
   }
 }
@@ -124,80 +126,83 @@ div.cardHead div > p,
   justify-content: flex-start;
 }
 .scrollButtonsHolder button {
-    border-radius: 30px;
-    color: $drexelBlue;
-    font-size: 14px;
-    padding: 4px 12px;
-    background-color: white;
-    border-style: solid;
-    border-color: $drexelBlue;
-    white-space: nowrap;
-    // position: relative;
-    transition: background-color 0.3s, color 0.3s;
+  border-radius: 30px;
+  color: $drexelBlue;
+  font-size: 14px;
+  padding: 4px 12px;
+  background-color: white;
+  border-style: solid;
+  border-color: $drexelBlue;
+  white-space: nowrap;
+  // position: relative;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .scrollButtonsHolder button::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 5px;
-    height: 5px;
-    background: rgba(255, 255, 255, 0.7);
-    opacity: 0;
-    border-radius: 100%;
-    transform: scale(1, 1) translate(-50%);
-    transform-origin: 50% 50%;
-
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.7);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
 }
 .scrollButtonsHolder button:active {
-    animation: buttonScale 0.3s ease-out;
+  animation: buttonScale 0.3s ease-out;
 }
 
 .scrollButtonsHolder button.active::after {
-    animation: ripple 0.4s ease-out;
+  animation: ripple 0.4s ease-out;
 }
 
 .scrollButtonsHolder button:not(.active):focus::after {
-    background: rgba(0, 36, 95, 0.3); /* Using Drexel Blue with transparency */
-    animation: ripple 0.4s ease-out;
+  background: rgba(0, 36, 95, 0.3); /* Using Drexel Blue with transparency */
+  animation: ripple 0.4s ease-out;
 }
 
 @keyframes buttonScale {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.05);
-    }
-    100% {
-        transform: scale(1);
-    }
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 @keyframes ripple {
-    0% {
-        transform: scale(0, 0);
-        opacity: 0.5;
-    }
-    20% {
-        transform: scale(8, 8);
-        opacity: 0.3;
-    }
-    100% {
-        opacity: 0;
-        transform: scale(15, 15);
-    }
+  0% {
+    transform: scale(0, 0);
+    opacity: 0.5;
+  }
+  20% {
+    transform: scale(8, 8);
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(15, 15);
+  }
 }
 
-:global(.universityBio) .scrollButtonsHolder  {
-    width: calc(100% - 1rem);
-    // width: 100%;
+:global(.universityBio) .scrollButtonsHolder {
+  width: calc(100% - 1rem);
+  // width: 100%;
 }
 
 .scrollButtonsHolder button.active {
-    background-color: $drexelBlue;
-    color: white;
+  background-color: $drexelBlue;
+  color: white;
+}
+
+.scrollButtonsHolder button.lightblue {
+  background-color: $lightBlue;
 }
 
 p.tourNum {

@@ -6,12 +6,11 @@ import Input from "../components/common/Input";
 import CircleButton from "../components/common/CircleButton";
 
 const Profile = () => {
-  console.log("Profile");
   return (
     <div className="Profile">
-    <div>
-      <Navbar />
-    </div>
+      <div>
+        <Navbar />
+      </div>
     </div>
   );
 };

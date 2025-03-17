@@ -42,18 +42,16 @@ const TourEditModal = ({ onClose, matchedStops }) => {
     fetchQuestions();
   }, [matchedStops]);
 
-  console.log(questions);
-
   // Handle changes when checkboxes are selected
   const handleOptionChange = (name, value) => {
-    const updatedValues = Array.isArray(value) ? value : [value]; // Ensure it's always an array
+    const updatedValues = Array.isArray(value) ? value : [value];
 
     setSelectedOptions((prev) => ({
       ...prev,
       [name]: updatedValues,
     }));
 
-    return updatedValues; // Return only the array of values
+    return updatedValues;
   };
 
   const handleSaveChanges = () => {

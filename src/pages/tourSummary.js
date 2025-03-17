@@ -33,7 +33,6 @@ const TourSummary = () => {
   }, []);
 
   const openCard = (tag) => {
-    console.log("open card called", tag);
     setTagId(tag);
     setIsSummaryOpen(false);
   };
@@ -41,10 +40,6 @@ const TourSummary = () => {
   const closeCard = () => {
     setIsSummaryOpen(true);
   };
-
-  console.log(stops);
-
-  console.log(isSummaryOpen);
 
   return (
     <>

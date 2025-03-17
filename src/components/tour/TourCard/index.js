@@ -20,7 +20,6 @@ import NotesIcon from "../../../assets/icons/notesblack.svg";
 import Button from "../../common/Button";
 import ExitModal from "../../modals/ExitModal";
 
-
 const TourCard = ({
   tag,
   closeCard,
@@ -31,26 +30,27 @@ const TourCard = ({
 }) => {
   const [cardData, setCardData] = useState(null);
   const [majors, setMajors] = useState([]);
-  const [selectedMajor, setSelectedMajor] = useState(null);  
+  const [selectedMajor, setSelectedMajor] = useState(null);
+  const [selectedMajorIds, setSelectedMajorIds] = useState([]);
   const [isExitModalOpen, setIsExitModalOpen] = useState(false);
   const [isExitModalClosing, setIsExitModalClosing] = useState(false);
-  
+
   const navigate = useNavigate();
 
   const isLastStop = currentStopIndex === totalStops - 1;
 
   const handleNextClick = () => {
     if (isLastStop) {
-      navigate("/tour/summary"); // Navigate to summary page
+      navigate("/tour/summary");
     } else {
-      viewNextStop(); // Go to next stop
+      viewNextStop();
     }
   };
 
   const tagId = tag;
 
   useEffect(() => {
-    if (!tagId) return; // Prevent query if tag is null/undefined
+    if (!tagId) return;
 
     const fetchCardData = async () => {
       const { data, error } = await supabase
@@ -63,12 +63,11 @@ const TourCard = ({
         console.error("Error fetching card data:", error);
       } else {
         setCardData(data);
-        console.log("Data:", data);
       }
     };
 
     fetchCardData();
-  }, [tagId]); // Runs when `tag` changes
+  }, [tagId]);
 
   const getHeadersFromDatabase = (cardData) => {
     // Define the columns to check
@@ -76,24 +75,19 @@ const TourCard = ({
 
     // Filter out columns with no value and map to their values
     const headers = columns
-      .map((column) => cardData?.[column]?.trim()) // Trim whitespace and handle undefined/null
-      .filter((header) => header); // Remove empty strings, null, or undefined
-
+      .map((column) => cardData?.[column]?.trim())
+      .filter((header) => header);
     return headers;
   };
 
   const headers = cardData ? getHeadersFromDatabase(cardData) : [];
 
   const fetchMajors = async (tag) => {
-    console.log(cardData?.catTags);
     if (!tag || cardData?.catTags !== "Academic") return;
-    console.log("fetching...", tag);
     const { data, error } = await supabase
       .from("majorsContent")
       .select("*")
-      .like("id", `${tag}%`); // Match IDs starting with `tag`\\
-
-    console.log("majros", data);
+      .like("id", `${tag}%`);
 
     if (error) {
       console.error("Error fetching majors:", error);
@@ -111,24 +105,29 @@ const TourCard = ({
   const handleMajorClick = (major) => {
     // Set selectedMajor to the clicked major's id or null if it's already selected
     setSelectedMajor(major.id);
-    console.log("set");
   };
 
   const handleCloseExitModal = () => {
     setIsExitModalClosing(true);
-    
+
     setTimeout(() => {
       setIsExitModalOpen(false);
       setIsExitModalClosing(false);
-    }, 400); // Match animation duration
+    }, 400);
   };
   const handleExitTour = () => {
     localStorage.clear();
     navigate("/tour/summary");
   };
 
-  console.log(cardData);
-  console.log(majors);
+  useEffect(() => {
+    const storedFormData = JSON.parse(localStorage.getItem("formData")) || {};
+    const selectedIds = Object.values(storedFormData).flat();
+    setSelectedMajorIds(selectedIds);
+  }, []);
+
+  const isHighlighted = (majorId) =>
+    selectedMajorIds?.includes(majorId) ?? false;
 
   return (
     <>
@@ -219,52 +218,72 @@ const TourCard = ({
               : null}
           </div>
           {majors.length > 0 && (
-              <div>
-                <h3>Related Majors</h3>
-                <div className={styles.scrollButtonsHolder}>
-                  {majors.map((major, index) => (
+            <div>
+              <h3>Related Majors</h3>
+              <div className={styles.scrollButtonsHolder}>
+                {majors
+                  .slice() // Create a shallow copy to avoid mutating state
+                  .sort((a, b) => {
+                    const aHighlighted = isHighlighted(a.id) ? 1 : 0;
+                    const bHighlighted = isHighlighted(b.id) ? 1 : 0;
+                    return bHighlighted - aHighlighted; // Prioritize highlighted items
+                  })
+                  .map((major, index) => (
                     <button
                       key={index}
                       onClick={() => handleMajorClick(major)}
-                      className={selectedMajor === major.id ? styles.active : ""}
+                      className={`${
+                        selectedMajor === major.id
+                          ? styles.active
+                          : isHighlighted(major.id)
+                          ? styles.lightblue
+                          : ""
+                      }`}
                     >
                       {major.name}
                     </button>
                   ))}
-                </div>
-                {selectedMajor && (
-                  <div>
-                    {majors
-                      .filter((major) => major.id === selectedMajor)
-                      .map((major) => {
-                        const content = Array.isArray(major.content)
-                          ? major.content.map((text, index) => <p key={index}>{text}</p>)
-                          : <p>{major.content || "No additional details available."}</p>;
+              </div>
+              {selectedMajor && (
+                <div>
+                  {majors
+                    .filter((major) => major.id === selectedMajor)
+                    .map((major) => {
+                      const content = Array.isArray(major.content) ? (
+                        major.content.map((text, index) => (
+                          <p key={index}>{text}</p>
+                        ))
+                      ) : (
+                        <p>
+                          {major.content || "No additional details available."}
+                        </p>
+                      );
 
-                        const images = major?.imgs?.length > 0 ? (
+                      const images =
+                        major?.imgs?.length > 0 ? (
                           major.imgs.length === 1 ? (
                             <img
                               src={major.imgs[0]}
-                              alt={`${major.name || 'Major'} image`}
-                              className={styles.majorImage || ''}
+                              alt={`${major.name || "Major"} image`}
+                              className={styles.majorImage || ""}
                             />
                           ) : (
                             <ImageSlider images={major.imgs} />
                           )
                         ) : null;
 
-                        return (
-                          <div key={major.id}>
-                            {images}
+                      return (
+                        <div key={major.id}>
+                          {images}
 
-                            {content}
-                          </div>
-                        );
-                      })}
-                  </div>
-                )}
-              </div>
-            )}
+                          {content}
+                        </div>
+                      );
+                    })}
+                </div>
+              )}
+            </div>
+          )}
           <div>
             <h3>{cardData?.header2}</h3>
             {cardData?.body2?.length > 0
@@ -320,7 +339,10 @@ const TourCard = ({
         </div>
         <div class="CTAsingle">
           <p className={styles.tourNum}>
-            <b>{currentStopNumber}/{totalStops}</b> stops
+            <b>
+              {currentStopNumber}/{totalStops}
+            </b>{" "}
+            stops
           </p>
           <Button
             text={isLastStop ? "FINISH TOUR" : "NEXT STOP"}
@@ -330,17 +352,16 @@ const TourCard = ({
             onClick={handleNextClick}
           />
         </div>
+      </div>
+      {isExitModalOpen && (
+        <div className={`exitModalCon ${isExitModalClosing ? "closing" : ""}`}>
+          <ExitModal
+            handleExitTour={handleExitTour}
+            setIsExitModalOpen={handleCloseExitModal}
+            isClosing={isExitModalClosing}
+          />
         </div>
-        {isExitModalOpen && (
-              <div className={`exitModalCon ${isExitModalClosing ? 'closing' : ''}`}>
-                <ExitModal
-                  handleExitTour={handleExitTour}
-                  setIsExitModalOpen={handleCloseExitModal}
-                  isClosing={isExitModalClosing}
-                />
-              </div>
-            )}
-  
+      )}
     </>
   );
 };

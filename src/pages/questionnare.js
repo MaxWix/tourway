@@ -22,7 +22,6 @@ const Questionnare = () => {
         console.error("error fetching questions:", error);
       } else {
         setQuestions(data);
-        console.log(data);
       }
     };
 

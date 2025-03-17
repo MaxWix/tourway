@@ -33,7 +33,6 @@ const QuestionnareCard = ({ questions }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Selected Option Values:", selectedOptions);
 
     localStorage.setItem("formData", JSON.stringify(selectedOptions));
     navigate("/tour/overview");
@@ -56,9 +55,6 @@ const QuestionnareCard = ({ questions }) => {
 
   const currentQuestion = sortedQuestions[currentQuestionIndex];
   const currentQuestionNumber = currentQuestionIndex + 1;
-  console.log(currentQuestionNumber);
-
-  console.log(selectedOptions);
 
   return (
     <>

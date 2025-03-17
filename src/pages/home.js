@@ -32,18 +32,18 @@ const universities = [
 ];
 
 const Home = () => {
-  console.log("Home");
   return (
     <div className="home">
-      <Header 
+      <Header
         HeaderIMG={HomeHeader}
         showSwoop={false}
-        showTourwaySwoop={true} />
+        showTourwaySwoop={true}
+      />
       <div className="headerGraphic">
         <img src={HomeHeaderGraphic} />
       </div>
       <div className="mainContent">
-        <SearchBar placeholder="Search colleges"/>
+        <SearchBar placeholder="Search colleges" />
         <div className="tourwayPath">
           <img src={TourwayPath} />
         </div>

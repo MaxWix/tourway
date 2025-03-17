@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const NavMenu = () => {
-  console.log("NavMenu");
   return (
     <div className="NavMenu">
       <nav>
