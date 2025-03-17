@@ -231,7 +231,7 @@ const TourView = () => {
             </div>
 
             {/* Buttons for Navigation */}
-            <button
+            {/* <button
               className="testingBtns"
               onClick={goToPreviousStop}
               disabled={currentStopIndex === 0}
@@ -246,7 +246,7 @@ const TourView = () => {
               onClick={() => openCard(currentStop.tag)}
             >
               View Stop
-            </button>
+            </button> */}
             <div className="onScroll">
               <div className="CTA">
                 <Button
